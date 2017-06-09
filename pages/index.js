@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import stylesheet from 'styles/index.scss'
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
+import Master from '../src/containers/Master';
 
 
 const Index = props => {
-    return (
+  return (
+    <Master>
       <div>
-        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         <div>
             Hello NextJS
         </div>
       </div>
-    );
+    </Master>
+  );
 };
 
 Index.propTypes = {
