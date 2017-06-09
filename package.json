@@ -1,0 +1,23 @@
+{
+  "name": "themoviedb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pvtri96/themoviedb-web",
+  "author": "Tri Pham",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "2.4.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-logic": "^0.12.1",
+    "rxjs": "^5.4.0"
+  }
+}
