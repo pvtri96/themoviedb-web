@@ -10,7 +10,7 @@ const Index = props => {
       <div>
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         <div>
-            Hello NextJS
+            { process.env.APP_NAME }
         </div>
       </div>
     );

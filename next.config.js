@@ -1,5 +1,8 @@
 const path = require('path')
 const glob = require('glob')
+const Dotenv = require('dotenv-webpack')
+
+require('dotenv').config()
 
 module.exports = {
   webpack: (config, { dev }) => {
@@ -30,7 +33,14 @@ module.exports = {
           }
         ]
       }
-    )
+    );
+
+    config.plugins.push(
+      new Dotenv({
+        path: './.env', // Path to .env file (this is the default)
+        //safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
+      })
+    );
     return config
   }
 }
