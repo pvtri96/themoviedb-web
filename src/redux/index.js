@@ -15,7 +15,7 @@ const middleware = applyMiddleware(
 );
 
 const reducer = combineReducers({
-    users: UsersReducer
+    users: UsersReducer //Remove if no need
 });
 
 export const initStore = () => {
