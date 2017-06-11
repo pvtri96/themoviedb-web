@@ -1,8 +1,8 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { UsersReducer } from './Users';
 import logic from './logics';
 import axios from 'axios';
 import { createLogicMiddleware } from 'redux-logic';
+import {MoviesReducers} from './Discover';
 
 const deps = { // injected dependencies for logic
   http: axios
@@ -15,7 +15,7 @@ const middleware = applyMiddleware(
 );
 
 const reducer = combineReducers({
-    users: UsersReducer //Remove if no need
+    movies: MoviesReducers
 });
 
 export const initStore = () => {
