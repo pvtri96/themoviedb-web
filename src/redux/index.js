@@ -1,5 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { UsersReducer } from './Users';
+import { PeopleReducer } from './People';
 import logic from './logics';
 import axios from 'axios';
 import { createLogicMiddleware } from 'redux-logic';
@@ -15,7 +15,7 @@ const middleware = applyMiddleware(
 );
 
 const reducer = combineReducers({
-    users: UsersReducer //Remove if no need
+    people: PeopleReducer
 });
 
 export const initStore = () => {

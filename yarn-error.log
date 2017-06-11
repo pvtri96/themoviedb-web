@@ -1,0 +1,64 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Hong Minh\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Utilities 1.6\;E:\DTU\Xamppp\php\php\php7.1.0;C:\ProgramData\ComposerSetup\bin;E:\DTU\Xamppp\php\php\php7.1.0\ext;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;E:\DTU\file cai dat\Ruby\Ruby23-x64\bin;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files (x86)\Java\jdk1.7.0_55\jre;C:\Program Files (x86)\Java\jdk1.7.0_55\bin;E:\DTU\file cai dat\Ruby\Ruby23-x64\bin;C:\Users\Hong Minh\AppData\Local\Microsoft\WindowsApps;e:\dtu\opensever\modules\php\PHP-5.6;C:\Users\Hong Minh\AppData\Roaming\Composer\vendor\bin;C:\xampp\php;C:\Users\Hong Minh\AppData\Roaming\npm;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files (x86)\Java\jdk1.7.0_55\bin;C:\Program Files (x86)\Java\jdk1.7.0_55\jre
+
+Yarn version: 
+  0.24.4
+
+Node version: 
+  7.10.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "themoviedb",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/pvtri96/themoviedb-web",
+    "author": "Tri Pham",
+    "license": "MIT",
+    "scripts": {
+      "dev": "next",
+      "build": "next build",
+      "start": "next start"
+    },
+    "dependencies": {
+      "autoprefixer": "6.7.6",
+      "axios": "^0.16.2",
+      "babel-plugin-module-resolver": "2.5.0",
+      "babel-plugin-wrap-in-js": "^1.1.0",
+      "bootstrap": "4.0.0-alpha.6",
+      "font-awesome": "^4.7.0",
+      "glob": "7.1.1",
+      "next": "beta",
+      "node-sass": "^4.4.0",
+      "postcss-easy-import": "2.0.0",
+      "postcss-loader": "1.3.3",
+      "prop-types": "^15.5.10",
+      "raw-loader": "^0.5.1",
+      "react": "^15.5.4",
+      "react-dom": "^15.5.4",
+      "react-redux": "^5.0.5",
+      "react-transition-group": "^1.1.3",
+      "reactstrap": "^4.6.2",
+      "redux": "^3.6.0",
+      "redux-logic": "^0.12.1",
+      "rxjs": "^5.4.0",
+      "sass-loader": "^4.1.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: read ECONNRESET
+      at exports._errnoException (util.js:1050:11)
+      at TLSWrap.onread (net.js:582:26)

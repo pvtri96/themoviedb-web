@@ -5,12 +5,9 @@ import {
   USERS_FETCH_REJECTED
 } from './actions';
 
-const initialState = {
-  list: [],
-  fetchStatus: ''
-};
+import {INITIAL_STATE} from './actions';
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = INITIAL_STATE, action) {
   switch(action.type) {
   case USERS_FETCH:
     return {

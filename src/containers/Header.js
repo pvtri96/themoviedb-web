@@ -32,7 +32,7 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="" navbar>
               <NavItem>
-                <Link href="/"><NavLink>Home</NavLink></Link>
+                <Link href="people.js"><NavLink>Home</NavLink></Link>
               </NavItem>
             </Nav>
           </Collapse>

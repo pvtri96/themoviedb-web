@@ -4,7 +4,7 @@ class DummyComponent extends Component {
     render() {
         return (
             <div>
-                
+
             </div>
         );
     }
