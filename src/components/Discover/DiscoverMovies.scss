@@ -1,0 +1,42 @@
+.list{
+  padding: 24px 0;
+  .index {
+    width: 500px;
+    float: left;
+    margin: 20px;
+    display: flex;
+    box-shadow: 5px 5px 5px #e5e5e8;
+    position: relative;
+    .image{
+      height: 300px;
+      width: 180px;
+    }
+    .detail{
+      margin: 5px;
+      .title{
+        text-decoration: none;
+        font-weight: 'bold';
+        color: black;
+      }
+      .second-row{
+        display: flex;
+        .release-date{
+          .calendar{
+            margin-right: 5px;
+          }
+        }
+        .vote-average{
+          position: absolute;
+          right: 0;
+          margin-right: 5px;
+          .star{
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    &:hover{
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    }
+  }
+}

@@ -18,6 +18,7 @@ const Master = (props) => (
       <style dangerouslySetInnerHTML={{ __html: vendorsheet }} />
       {/* Import Global stylesheet */}
       <title>The Movie DB</title>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
     </Head>
     {/* End customize head tag*/}
     {/* Page body */}
@@ -30,7 +31,6 @@ const Master = (props) => (
           {props.children}
         </div>
       </div>
-    <Footer></Footer>
     </div>
   </div>
 );
