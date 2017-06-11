@@ -1,5 +1,7 @@
-import { UsersActionCreators } from './Users';
+import { MovieListActionCreators } from './Movies/MovieList';
 
 export default {
-  UsersActionCreators
+  // UsersActionCreators,
+  MovieListActionCreators
 }
+//dung
