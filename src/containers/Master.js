@@ -30,7 +30,6 @@ const Master = (props) => (
           {props.children}
         </div>
       </div>
-    <Footer></Footer>
     </div>
   </div>
 );

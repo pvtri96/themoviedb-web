@@ -6,7 +6,7 @@ import Master from '../src/containers/Master';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Peopple from '../src/components/People/PeopleComponent';
+import PeopleComponent from '../src/components/People/PeopleComponent';
 import withRedux from 'next-redux-wrapper';
 import {initStore} from '../src/redux';
 
@@ -16,7 +16,7 @@ const Index = props => {
     <Master>
       <div>
         <div>
-            <Peopple />
+            <PeopleComponent />
         </div>
       </div>
     </Master>

@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {PeopleActionCreators} from '../../redux/People';
+import Person from './Person';
 
-const ListPeople=({getPeople})=>{
+
+const ListPeople=({listPeople, getPeople})=>{
+  console.log(listPeople);
+  let list = listPeople.map((person)=>(
+    <Person person={person} key={person.id}/>
+  ));
+  // console.log(list);
   return (
-    <ul>
+    <div>
       <button onClick={getPeople}>People</button>
-    </ul>
+      <h3>Popular people</h3>
+      <div>
+        {list}
+      </div>
+    </div>
+
   )
 }
 const mapStateToProps=(state)=>{
-  console.log(state);
+  // console.log(state);
   return {
-    listPeople: state.people
+    listPeople: state.people.listPeople
   };
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -22,4 +34,4 @@ const mapDispatchToProps=(dispatch)=>{
 }
 const peopleConnect= connect(mapStateToProps, mapDispatchToProps)(ListPeople);
 
-export default peopleConnect
+export default peopleConnect;
