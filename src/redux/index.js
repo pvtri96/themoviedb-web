@@ -23,6 +23,15 @@ const reducer = combineReducers({
     movieList: MovieListReducer
 });
 
+const store = createStore(reducer, middleware);
+
+store.middleware = middleware;
+
+store.middleware.whenCompleted = () => {
+
+  res.end();
+}
+
 export const initStore = () => {
-    return createStore(reducer, middleware);
+    return store;
 };

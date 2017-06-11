@@ -9,27 +9,31 @@ import {Card, CardImg,CardSubtitle,
 import MovieShowing from './MovieShowing';
 
 
+class MoviesList extends Component {
+  constructor(props) {
+    super(props);
+    this.onLoad = this.onLoad.bind(this);
+  }
 
+  onLoad() {
+    this.props.onLoad();
+  }
 
+  render() {
+    this.onLoad();
 
-
-const MoviesList = ({ movies, onClick}) => {
-  return (
-    <div >
-        <button onClick={onClick}>
-          Get Movies
-        </button>
-
-        <Row >
-          {movies.map(movie =>
-            <Col md="6" key={movie.id}>
-              <MovieShowing movie={movie} />
-            </Col>
-          )}
-        </Row>
-    </div>
-  );
-
+    return (
+      <div >
+          <Row >
+            {this.props.movies.map(movie =>
+              <Col md="6" key={movie.id}>
+                <MovieShowing movie={movie} />
+              </Col>
+            )}
+          </Row>
+      </div>
+    );
+  }
 }
 
 
@@ -42,8 +46,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    onClick : () => dispatch(MovieListActionCreators.moviesFetch())
+    onLoad : () => dispatch(MovieListActionCreators.moviesFetch())
   }
 }
+
 
 export default connect(mapState,mapDispatch)(MoviesList);
