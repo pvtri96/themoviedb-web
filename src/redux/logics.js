@@ -1,5 +1,5 @@
-import { UsersLogic } from './Users';
+import { MoviesLogic } from './movie';
 
 export default [
-  ...UsersLogic
+  ...MoviesLogic
 ];

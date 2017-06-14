@@ -1,5 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { UsersReducer } from './Users';
+import { MoviesReducer } from './movie';
 import logic from './logics';
 import axios from 'axios';
 import { createLogicMiddleware } from 'redux-logic';
@@ -14,10 +14,10 @@ const middleware = applyMiddleware(
   logicMiddleware
 );
 
-const reducer = combineReducers({
-    users: UsersReducer //Remove if no need
+const movieReducer = combineReducers({
+  movies: MoviesReducer
 });
 
 export const initStore = () => {
-    return createStore(reducer, middleware);
+    return createStore(movieReducer, middleware);
 }

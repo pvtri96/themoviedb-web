@@ -1,5 +1,5 @@
-import { UsersActionCreators } from './Users';
+import { MoviesActionCreators } from './movie';
 
 export default {
-  UsersActionCreators
+  MoviesActionCreators
 }
