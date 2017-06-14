@@ -1,6 +1,6 @@
 
 export const INITIAL_STATE = {
-  movie: {},
+  detail: {},
   fetchStatus :''
 };
 

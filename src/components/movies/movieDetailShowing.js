@@ -8,8 +8,6 @@ import FontAwesome      from 'react-fontawesome';
 import { MovieActionCreators } from '../../redux/movies/movie';
 import { connect } from 'react-redux';
 
-
-
 class MovieDetailShowing extends Component
 {
   constructor(props)
@@ -30,25 +28,25 @@ class MovieDetailShowing extends Component
 
   render()
   {
-    let movie = this.props.movie;
+    let movieDetail = this.props.movieDetail;
     return (
-      <Card key={movie.id}>
+      <Card key={movieDetail.id}>
         <Row>
           <Col md="4" >
             <CardImg  width="90%" src={process.env.MOVIE_IMG_URL +
-            movie.poster_path} alt={movie.original_title} />
+            movieDetail.poster_path} alt={movieDetail.original_title} />
           </Col>
 
           <Col>
             <CardBlock>
               <CardTitle>
-                <h1>{movie.original_title} ({new Date(movie.release_date).getFullYear()})</h1>
+                <h1>{movieDetail.original_title} ({new Date(movieDetail.release_date).getFullYear()})</h1>
               </CardTitle>
               <br />
 
               <CardText>
                 <h3>Overview</h3>
-                {movie.overview}
+                {movieDetail.overview}
               </CardText>
 
               <Button onClick={this.goBack} >
@@ -67,7 +65,7 @@ class MovieDetailShowing extends Component
 
 const mapStateToProps = (state) => {
   return {
-    movie: state.movieDetail.movie
+    movieDetail: state.movie.detail
   }
 }
 

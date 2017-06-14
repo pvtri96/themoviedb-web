@@ -1,5 +1,5 @@
 export const INITIAL_STATE = {
-  movies: [],
+  list: [],
   fetchStatus :''
 };
 

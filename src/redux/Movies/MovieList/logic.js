@@ -11,16 +11,13 @@ export const moviesFetchLogic = createLogic({
   cancelType: actionTypes.MOVIES_FETCH_CANCEL,
   latest: true,
 
-  async process({ http, getState, action}, dispatch, done) {
+  async process({ http, action}, dispatch, done) {
     // console.log(action);
     try {
-      //const movies = MoviesListFilteringActionCreators.getMovies(POPULAR);
-      // const movies = await http.get('https://api.themoviedb.org/3/movie/popular/?api_key=80654656c6586a0c705642639595a994&language=en-US&page=1')
-      const movies = await http.get(process.env.MOVIE_URL + 'popular' + '?api_key=' + process.env.API_KEY)
+      const movies = await http.get(process.env.MOVIE_URL + action.payload + '?api_key=' + process.env.API_KEY)
       .then(res => res.data.results)
-      .then(results => dispatch(moviesFetchFullfilled(results)));
+      .then(list => dispatch(moviesFetchFullfilled(list)));
 
-      // console.log(movies);
     } catch (err) {
       console.log(err);
       dispatch(moviesFetchRejected(err));

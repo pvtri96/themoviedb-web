@@ -1,5 +1,4 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-// import { UsersReducer } from './Users';
 import { MovieListReducer } from './movies/movieList';
 import { MovieReducer } from './movies/movie';
 import logic from './logics';
@@ -13,23 +12,18 @@ const deps = { // injected dependencies for logic
 
 const logicMiddleware = createLogicMiddleware(logic, deps);
 
-
 const middleware = composeWithDevTools(applyMiddleware(
   logicMiddleware
 ));
 
-
-
 const reducer = combineReducers({
-    // users: UsersReducer,  //Remove if no need
-    movieList: MovieListReducer,
-    movieDetail: MovieReducer
+    movies: MovieListReducer,
+    movie: MovieReducer
 });
 
-const store = createStore(reducer, middleware);
+const store = createStore(reducer, middleware); // de khong tao nhieu store
 
 
 export const initStore = () => {
-    // return createStore(reducer, middleware);
     return store;
 };

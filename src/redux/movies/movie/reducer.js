@@ -1,17 +1,17 @@
 import actionTypes from './actionTypes';
 
-
 const Reducer = (state = actionTypes.INITIAL_STATE, action) => {
   switch(action.type) {
     case actionTypes.MOVIE_DETAIL_FETCH :
       return {
         ...state,
-        fetchStatus: `Data fetch ${(new Date()).toLocaleDateString()}`
+        fetchStatus: `Data fetch ${(new Date()).toLocaleTimeString()}`
       };
     case actionTypes.MOVIE_DETAIL_FETCH_FULLFILLED :
       return {
         ...state,
-        movie: action.payload
+        detail: action.payload,
+        fetchStatus: `Date fetch success ${(new Date()).toLocaleTimeString()}`
       }
 
     case actionTypes.MOVIE_DETAIL_FETCH_CANCEL :
@@ -23,7 +23,7 @@ const Reducer = (state = actionTypes.INITIAL_STATE, action) => {
     case actionTypes.MOVIE_DETAIL_FETCH_REJECTED :
       return {
         ...state,
-        fetchStatus: `Error : ${action.payload}`
+        fetchStatus: `Error : ${action.payload} ${(new Date()).toLocaleTimeString()}`
       }
 
     default :

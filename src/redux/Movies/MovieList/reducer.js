@@ -5,14 +5,14 @@ const Reducer = (state = actionTypes.INITIAL_STATE, action) => {
     case actionTypes.MOVIES_FETCH :
       return {
         ...state,
-        fetchStatus : `Data fetching ... ${(new Date()).toLocaleDateString()}`
+        fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
       };
 
     case actionTypes.MOVIES_FETCH_FULLFILLED :
       return {
         ...state,
-        movies: action.payload,
-        fetchStatus : 'Data fetched success !'
+        list: action.payload,
+        fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
       };
 
     case actionTypes.MOVIES_FETCH_CANCEL :
@@ -24,7 +24,7 @@ const Reducer = (state = actionTypes.INITIAL_STATE, action) => {
     case actionTypes.MOVIES_FETCH_REJECTED :
       return {
         ...state,
-        fetchStatus: `Error: ${action.payload}`
+        fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
       };
     default :
       return state;

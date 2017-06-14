@@ -1,7 +1,8 @@
 import actionTypes from './actionTypes';
 
-export const moviesFetch = () => ({
-  type: actionTypes.MOVIES_FETCH
+export const moviesFetch = (filter) => ({
+  type: actionTypes.MOVIES_FETCH,
+  payload: filter
 });
 
 export const moviesFetchFullfilled = (movies) => ({
@@ -19,21 +20,7 @@ export const moviesFetchRejected = (err) => ({
   error: true
 });
 
-// export const popular = () => ({
-//   type: POPULAR
-// });
 
-// export const topRated = () => ({
-//   type: TOP_RATED
-// });
-
-// export const upcoming = () => ({
-//   type: UPCOMING
-// });
-
-// export const nowPlaying = () => ({
-//   type: NOW_PLAYING
-// });
 
 export default {
   moviesFetch,
@@ -41,10 +28,6 @@ export default {
   moviesFetchCancel,
   moviesFetchRejected,
 
-  // popular,
-  // topRated,
-  // upcoming,
-  // nowPlaying
 }
 
 

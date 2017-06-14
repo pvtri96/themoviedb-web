@@ -6,8 +6,6 @@ import {Card, CardImg,CardSubtitle,
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 
-
-
 const MovieShowing = (props) => {
   let movie = props.movie;
   return (
