@@ -1,22 +1,27 @@
-import React from 'react';
+
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../src/containers/Master';
-import MovieListShowing from '../src/components/Movies/MovieListShowing';
+import MovieListShowing from '../src/components/movies/movieListShowing';
 import withRedux from 'next-redux-wrapper';
 import { initStore } from '../src/redux';
+import { MovieListActionCreators } from '../src/redux/movies/movieList';
 
 
-const Index = props => {
-  return (
-    <Master>
-      <div>
-        <MovieListShowing />
-      </div>
-    </Master>
-  );
-};
+class Index extends Component {
+
+  render() {
+    return (
+      <Master>
+        <div>
+          <MovieListShowing />
+        </div>
+      </Master>
+    );
+  }
+}
 
 
 export default withRedux(initStore)(Index);

@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { MovieListActionCreators } from '../../redux/Movies/MovieList';
+import { MovieListActionCreators } from '../../redux/movies/movieList';
 import {Card, CardImg,CardSubtitle,
   Row, Col,CardText,
 
    CardBlock} from 'reactstrap';
 
-import MovieShowing from './MovieShowing';
+import MovieShowing from './movieShowing';
 
 
 class MoviesList extends Component {
+
   constructor(props) {
     super(props);
-    this.onLoad = this.onLoad.bind(this);
+    // this.onLoad = this.onLoad.bind(this);
   }
 
-  onLoad() {
+  componentDidMount(){
     this.props.onLoad();
   }
 
   render() {
-    this.onLoad();
-
     return (
       <div >
           <Row >
@@ -37,18 +36,18 @@ class MoviesList extends Component {
 }
 
 
-const mapState = (state) => {
-  console.log(state.movieList.movies);
+const mapStateToProps = (state) => {
+  console.log(state);
   return {
     movies : state.movieList.movies
   }
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoad : () => dispatch(MovieListActionCreators.moviesFetch())
   }
 }
 
 
-export default connect(mapState,mapDispatch)(MoviesList);
+export default connect(mapStateToProps,mapDispatchToProps)(MoviesList);

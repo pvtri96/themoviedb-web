@@ -22,7 +22,7 @@ const MovieShowing = (props) => {
           <Col>
             <CardBlock>
               <h5 style={{marginBottom: '15px'}}>
-                <Link as={`/movie/detail/id=${movie.id}`} href={`/movieDetail?id=${movie.id}`}>
+                <Link href={`/movie-detail?id=${movie.id}`}>
                   <a style={{textDecoration: 'none'}}>
                     {movie.title.length > 23 ?
                       movie.title.substring(0, 23)+ ' ...' :
