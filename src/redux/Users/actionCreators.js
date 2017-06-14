@@ -1,26 +1,34 @@
-import {
-  USERS_FETCH,
-  USERS_FETCH_CANCEL,
-  USERS_FETCH_FULFILLED,
-  USERS_FETCH_REJECTED
-} from './actions';
+import axios from 'axios';
+import actionTypes from './actionTypes';
+
+const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
 // action creators
-export const usersFetch = () => ({ type: USERS_FETCH });
-export const usersFetchCancel = () => ({ type: USERS_FETCH_CANCEL });
-export const usersFetchFulfilled = (users) => ({
-  type: USERS_FETCH_FULFILLED,
+const usersFetch = () => ({ type: actionTypes.USERS_FETCH });
+const usersFetchFulfilled = (users) => ({
+  type: actionTypes.USERS_FETCH_FULFILLED,
   payload: users
 });
-export const usersFetchRejected = (err) => ({
-  type: USERS_FETCH_REJECTED,
+const usersFetchRejected = (err) => ({
+  type: actionTypes.USERS_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
+// actions
+export const fetchUsers = () => async (dispatch) => {
+  //console.log(dispatch);
+  //Dispath user fetch
+  dispatch(usersFetch());
+  try {
+    const users = await axios.get(API_URL).then(response => response.data);
+    return dispatch(usersFetchFulfilled(users))
+  }
+  catch (err) {
+    return dispatch(usersFetchRejected(err))
+  }
+};
+
 export default {
-  usersFetch,
-  usersFetchCancel,
-  usersFetchFulfilled,
-  usersFetchRejected
+  fetchUsers
 };

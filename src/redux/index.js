@@ -1,23 +1,12 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { UsersReducer } from './Users';
-import logic from './logics';
-import axios from 'axios';
-import { createLogicMiddleware } from 'redux-logic';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import rootReducer from './rootReducer';
 
-const deps = { // injected dependencies for logic
-  http: axios
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+
+export const getStore = () => store;
+
+export default {
+  getStore
 };
-
-const logicMiddleware = createLogicMiddleware(logic, deps);
-
-const middleware = applyMiddleware(
-  logicMiddleware
-);
-
-const reducer = combineReducers({
-    users: UsersReducer //Remove if no need
-});
-
-export const initStore = () => {
-    return createStore(reducer, middleware);
-}
