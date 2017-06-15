@@ -15,7 +15,7 @@
 
 .dropdown-content {
   display: none;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .dropdown-list {
@@ -26,9 +26,10 @@
       display: flex;
       position: absolute;
       .nav-link {
-        padding-top: 5px;
+        padding: 5px 0;
         min-width: 130px;
         font-size: 1em;
+        text-align: center;
       }
     }
   }

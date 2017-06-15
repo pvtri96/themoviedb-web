@@ -1,5 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { MoviesReducer } from './movie';
+import { DetailsReducer } from './details';
 import logic from './logics';
 import axios from 'axios';
 import { createLogicMiddleware } from 'redux-logic';
@@ -15,7 +16,8 @@ const middleware = applyMiddleware(
 );
 
 const movieReducer = combineReducers({
-  movies: MoviesReducer
+  movies: MoviesReducer,
+  movieDetails: DetailsReducer
 });
 
 const store = createStore(movieReducer, middleware);
