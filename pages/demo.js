@@ -1,37 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// or, if you work with plain css
-// import stylesheet from 'styles/index.css'
 import Master from '../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../src/redux';
-import usersActionsCreators from '../src/redux/Users/actionCreators';
+import { usersActions, usersSelector } from '../src/redux/users';
 
-const Index = props => {
-  return (
-    <Master>
+class Index extends Component {
+  static getInitialProps ({ store }) {
+    store.dispatch(usersActions.fetchUsers());
+  }
+
+  render() {
+    return (
       <div>
-        <div>
-          { process.env.APP_NAME }
-        </div>
-        <button onClick={props.fetchUsers}>
-          Fetch users
-        </button>
+        <Master>
+          <div>
+            <div>
+              { process.env.APP_NAME }
+            </div>
+            <button onClick={ this.props.fetchUsers }>
+              Fetch users
+            </button>
+            <h1>
+              { this.props.users.map(({id, name}) => (
+                <p key={id}>
+                  {name}
+                </p>
+              )) }
+            </h1>
+          </div>
+        </Master>
       </div>
-    </Master>
-  );
-};
+    );
+  }
+}
 
 Index.propTypes = {
-
+  fetchUsers: PropTypes.func,
+  users: PropTypes.array
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUsers: () => {
-      dispatch(usersActionsCreators.fetchUsers());
-    }
-  };
-};
+const mapStateToProps = state => ({
+  users: usersSelector(state).list
+});
 
-export default withRedux(getStore, null, mapDispatchToProps)(Index);
+const mapDispatchToProps = dispatch => ({
+  fetchUsers: () => {
+    dispatch(usersActions.fetchUsers());
+  }
+});
+
+export default withRedux(getStore, mapStateToProps, mapDispatchToProps)(Index);

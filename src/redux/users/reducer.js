@@ -1,9 +1,16 @@
 import actionTypes from './actionTypes';
 
+export const KEY = 'users';
+
 const initialState = {
   list: [],
   fetchStatus: ''
 };
+
+export const selector = (state) => ({
+  list: state[KEY].list,
+  fetchStatus: state[KEY].fetchStatus
+});
 
 export default (state = initialState, action) => {
   switch(action.type) {

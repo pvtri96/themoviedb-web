@@ -1,19 +1,11 @@
 import axios from 'axios';
-import actionTypes from './actionTypes';
+import {
+  usersFetchRequested,
+  usersFetchFulfilled,
+  usersFetchRejected
+} from './actionCreators';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users';
-
-// action creators
-const usersFetchRequested = () => ({ type: actionTypes.USERS_FETCH_REQUESTED });
-const usersFetchFulfilled = (users) => ({
-  type: actionTypes.USERS_FETCH_FULFILLED,
-  payload: users
-});
-const usersFetchRejected = (err) => ({
-  type: actionTypes.USERS_FETCH_REJECTED,
-  payload: err,
-  error: true
-});
 
 // Use async await
 export const fetchUsers = () => async (dispatch) => {
@@ -22,10 +14,10 @@ export const fetchUsers = () => async (dispatch) => {
   dispatch(usersFetchRequested());
   try {
     const users = await axios.get(API_URL).then(response => response.data);
-    return dispatch(usersFetchFulfilled(users))
+    return dispatch(usersFetchFulfilled(users));
   }
   catch (err) {
-    return dispatch(usersFetchRejected(err))
+    return dispatch(usersFetchRejected(err));
   }
 };
 
