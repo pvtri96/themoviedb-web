@@ -6,7 +6,7 @@ import Master from '../src/containers/Master';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import PeopleComponent from '../src/components/People/PeopleComponent';
+import ListPeopleShowing from '../src/components/People/ListPeopleShowing';
 import withRedux from 'next-redux-wrapper';
 import {initStore} from '../src/redux';
 
@@ -16,15 +16,12 @@ const Index = props => {
     <Master>
       <div>
         <div>
-            <PeopleComponent />
+            <ListPeopleShowing />
         </div>
       </div>
     </Master>
   );
 };
 
-Index.propTypes = {
-
-};
 
 export default withRedux(initStore)(Index);
