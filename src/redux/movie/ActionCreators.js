@@ -6,7 +6,7 @@ import { MOVIE_FETCH,
 
 export const moviesFetch = () => ({ type: MOVIE_FETCH });
 export const moviesFetchCancel = () => ({ type: MOVIE_FETCH_CANCEL });
-export const moviesFetchFulfiller = ( movies ) => ({
+export const moviesFetchFulfilled = ( movies ) => ({
   type: MOVIE_FETCH_FULFILLED,
   payload: movies
 });
@@ -20,6 +20,6 @@ export const moviesFetchRejected = ( err ) => ({
 export default {
   moviesFetch,
   moviesFetchCancel,
-  moviesFetchFulfiller,
+  moviesFetchFulfilled,
   moviesFetchRejected
 };

@@ -18,6 +18,8 @@ const movieReducer = combineReducers({
   movies: MoviesReducer
 });
 
+const store = createStore(movieReducer, middleware);
+
 export const initStore = () => {
-    return createStore(movieReducer, middleware);
+    return store;
 }

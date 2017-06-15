@@ -9,8 +9,8 @@ import {
 } from './ActionCreators';
 
 export const moviesFetchLogic = createLogic({
-  type: MOVIES_FETCH,
-  cancelType: MOVIES_FETCH_CANCEL,
+  type: MOVIE_FETCH,
+  cancelType: MOVIE_FETCH_CANCEL,
   latest: true, // take latest only
 
   // use axios injected as http from configureStore logic deps
@@ -20,7 +20,7 @@ export const moviesFetchLogic = createLogic({
     try {
       // the delay query param adds arbitrary delay to the response
       const movies = await http.get(`https://api.themoviedb.org/3/movie/popular?api_key=e1c2e1e415becaf826d5e1ee0b5f4792`)
-                        .then(response => response.data); // use data property of payload
+                        .then(response => response.data.results); // use data property of payload
       dispatch(moviesFetchFulfilled(movies));
     } catch(err) {
       console.error(err); //
@@ -28,6 +28,7 @@ export const moviesFetchLogic = createLogic({
     }
     done(); // call when finished dispatching
   }
+
 });
 
 export default [
