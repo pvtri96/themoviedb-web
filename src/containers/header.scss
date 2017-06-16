@@ -1,0 +1,53 @@
+.navbar {
+  background-color: $navbar-bg;
+  height: 120px;
+}
+
+.logo {
+  color: $logo-color !important;
+  font-size: $font-size-large;
+  font-weight: 600;
+}
+
+.dropdown{
+  padding-left: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  padding-left: 10px;
+}
+
+.dropdown-list {
+  &:hover {
+    position: relative;
+    .dropdown-content {
+      display: block;
+      display: flex;
+      position: absolute;
+      .nav-link {
+        padding: 5px 0;
+        min-width: 130px;
+        font-size: 1em;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+ul, li {
+  display: inline-block;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.nav-link {
+  padding: 0;
+  font-size: 1.3em;
+  font-weight: 600;
+}

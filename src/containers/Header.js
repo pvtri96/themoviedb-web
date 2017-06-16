@@ -13,13 +13,15 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      popoverOpen: false
     };
   }
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      popoverOpen: !this.state.popoverOpen
     });
   }
 
@@ -32,7 +34,51 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="" navbar>
               <NavItem>
-                <Link href="/"><NavLink>Home</NavLink></Link>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>Discover</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Movies</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>TV Shows</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>Movies</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Up Coming</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Now Playing</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>TV Shows</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>On TV</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Airing Today</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>People</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular People</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
               </NavItem>
             </Nav>
           </Collapse>

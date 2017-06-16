@@ -26,11 +26,15 @@ const Master = (props) => (
       <Header></Header>
       {/* Import Local stylesheet */}
       {/* Use some bootstrap css classes */}
-      <div className="p-5">
+      <div className="body-content p-5">
         <div className="container">
           {props.children}
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      <Footer></Footer>
+>>>>>>> origin
     </div>
   </div>
 );
