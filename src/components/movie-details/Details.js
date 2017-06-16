@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { detailsAction, detailSelector } from '../../redux/details';
+import { detailsAction, detailsSelector } from '../../redux/details';
 class Details extends Component {
   constructor(props){
     super(props);
@@ -26,7 +26,7 @@ class Details extends Component {
 }
 
 const mapStateToProp = state => ({
-  movieDetails: detailSelector(state).detail
+  movieDetails: detailsSelector(state).detail
 });
 
 const dispatchStateToProps = (dispatch) => {
