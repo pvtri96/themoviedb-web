@@ -7,10 +7,7 @@ const initialState = {
   fetchStatus: ''
 };
 
-export const selector = (state) => ({
-  list: state[KEY].list,
-  fetchStatus: state[KEY].fetchStatus
-});
+export const selector = (state) => state[KEY];
 
 export default (state = initialState, action) => {
   switch(action.type) {
