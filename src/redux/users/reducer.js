@@ -7,10 +7,7 @@ const initialState = {
   fetchStatus: ''
 };
 
-export const selector = (state) => ({
-  list: state[KEY].list,
-  fetchStatus: state[KEY].fetchStatus
-});
+export const selector = (state) => state[KEY];
 
 export default (state = initialState, action) => {
   switch(action.type) {
@@ -30,11 +27,6 @@ export default (state = initialState, action) => {
     return {
       ...state,
       fetchStatus: `errored: ${action.payload}`
-    };
-  case actionTypes.USERS_FETCH_CANCEL:
-    return {
-      ...state,
-      fetchStatus: 'user cancelled'
     };
   default:
     return state;
