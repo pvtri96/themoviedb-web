@@ -1,35 +1,37 @@
-import {
-  USERS_FETCH,
-  USERS_FETCH_CANCEL,
-  USERS_FETCH_FULFILLED,
-  USERS_FETCH_REJECTED
-} from './actions';
+import actionTypes from './actionTypes';
+
+export const KEY = 'users';
 
 const initialState = {
   list: [],
   fetchStatus: ''
 };
 
-export default function reducer(state = initialState, action) {
+export const selector = (state) => ({
+  list: state[KEY].list,
+  fetchStatus: state[KEY].fetchStatus
+});
+
+export default (state = initialState, action) => {
   switch(action.type) {
-  case USERS_FETCH:
+  case actionTypes.USERS_FETCH:
     return {
       ...state,
       fetchStatus: `fetching... ${(new Date()).toLocaleString()}`,
       list: []
     };
-  case USERS_FETCH_FULFILLED:
+  case actionTypes.USERS_FETCH_FULFILLED:
     return {
       ...state,
       list: action.payload,
       fetchStatus: `Results from ${(new Date()).toLocaleString()}`
     };
-  case USERS_FETCH_REJECTED:
+  case actionTypes.USERS_FETCH_REJECTED:
     return {
       ...state,
       fetchStatus: `errored: ${action.payload}`
     };
-  case USERS_FETCH_CANCEL:
+  case actionTypes.USERS_FETCH_CANCEL:
     return {
       ...state,
       fetchStatus: 'user cancelled'
@@ -37,4 +39,4 @@ export default function reducer(state = initialState, action) {
   default:
     return state;
   }
-}
+};
