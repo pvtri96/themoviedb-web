@@ -1,8 +1,8 @@
 import actionTypes from './actionTypes';
 
-export const detailFetch = (id) => ({
-   type: actionTypes.DETAIL_FETCH,
-   payload: id
+export const detailFetchRequested = (id) => ({
+  type: actionTypes.DETAIL_FETCH_REQUESTED,
+  payload: id
 });
 
 export const detailFetchCancel = () => ({ type: actionTypes.DETAIL_FETCH_CANCEL });
@@ -19,7 +19,7 @@ export const detailFetchRejected = (err) => ({
 });
 
 export default {
-  detailFetch,
+  detailFetchRequested,
   detailFetchCancel,
   detailFetchFulfilled,
   detailFetchRejected

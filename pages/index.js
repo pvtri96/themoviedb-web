@@ -3,15 +3,16 @@ import React from 'react';
 // import stylesheet from 'styles/index.css'
 import Master from '../src/containers/Master';
 // import ListMovies from '../src/components/list/ListMovies';
-import {initStore} from '../src/redux';
+import {getStore} from '../src/redux';
 import withRedux from 'next-redux-wrapper';
+import Movies from '../src/components/list/ListMovies';
 
-const Index = props => {
+const Index = () => {
   return (
     <Master>
       <div>
         <div>
-          { process.env.APP_NAME }
+          <Movies></Movies>
         </div>
       </div>
     </Master>
@@ -22,4 +23,4 @@ Index.propTypes = {
 
 };
 
-export default withRedux(initStore)(Index);
+export default withRedux(getStore)(Index);

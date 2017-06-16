@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import Movie from './Movie';
-import { MoviesActionCreators } from '../../redux/movie';
+import { moviesActions, moviesSelector } from '../../redux/movies';
 
 class ListMovies extends Component {
   constructor(props){
@@ -28,17 +28,14 @@ class ListMovies extends Component {
   }
 };
 
-const mapStateToProp = (state) => {
-  console.log(state);
-  return {
-    movies: state.movies.list
-  };
-};
+const mapStateToProp = state => ({
+  movies: moviesSelector(state).list
+});
 
 const dispatchStateToProps = (dispatch) => {
   return {
     fetchMovies: () => {
-      dispatch(MoviesActionCreators.moviesFetch());
+      dispatch(moviesActions.fetchMovies());
     }
   };
 };

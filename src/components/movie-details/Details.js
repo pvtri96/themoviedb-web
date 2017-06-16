@@ -1,7 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { DetailsActionCreators } from '../../redux/details';
-
+import { detailsAction, detailSelector } from '../../redux/details';
 class Details extends Component {
   constructor(props){
     super(props);
@@ -26,17 +25,14 @@ class Details extends Component {
   }
 }
 
-const mapStateToProp = (state) => {
-  console.log(state);
-  return {
-    movieDetails: state.movieDetails.detail
-  }
-}
+const mapStateToProp = state => ({
+  movieDetails: detailSelector(state).detail
+});
 
 const dispatchStateToProps = (dispatch) => {
   return {
     fetchDetails: (id) => {
-      dispatch(DetailsActionCreators.detailFetch(id));
+      dispatch(detailsAction.fetchDetails(id));
     }
   };
 };
