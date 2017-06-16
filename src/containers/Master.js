@@ -26,8 +26,8 @@ const Master = (props) => (
       <Header></Header>
       {/* Import Local stylesheet */}
       {/* Use some bootstrap css classes */}
-      <div className="p-5">
-        <div className="container">
+      <div className="p-5" style={{ backgroundColor: '#f4f4f4'}}>
+        <div className="container" >
           {props.children}
         </div>
       </div>

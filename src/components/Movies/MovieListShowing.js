@@ -7,14 +7,13 @@ DropdownItem,
 
    CardBlock} from 'reactstrap';
 
-import MovieShowing from './movieShowing';
+import MovieShowing from './MovieShowing';
 
 
 class MoviesList extends Component {
 
   constructor(props) {
     super(props);
-    // this.onLoad = this.onLoad.bind(this);
     this.state = {
       dropdownOpen: false,
     }
@@ -30,7 +29,7 @@ class MoviesList extends Component {
   }
 
   componentDidMount(){
-    this.props.onFilterPopular();
+    this.props.onLoad(MovieListActionTypes.POPULAR);
   }
 
   render() {
@@ -45,13 +44,13 @@ class MoviesList extends Component {
                 Filter
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem onClick={this.props.onFilterPopular} >Popular</DropdownItem>
+                <DropdownItem onClick={()=> this.props.onLoad(MovieListActionTypes.POPULAR)} >Popular</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={this.props.onFilterNowPlaying} >Now playing</DropdownItem>
+                <DropdownItem onClick={()=> this.props.onLoad(MovieListActionTypes.NOW_PLAYING)} >Now playing</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={this.props.onFilterTopRated} >Top Rated</DropdownItem>
+                <DropdownItem onClick={()=> this.props.onLoad(MovieListActionTypes.TOP_RATED)} >Top Rated</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={this.props.onFilterUpcoming} >Upcoming</DropdownItem>
+                <DropdownItem onClick={()=> this.props.onLoad(MovieListActionTypes.UPCOMING)} >Upcoming</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </Col>
@@ -77,19 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
-    onFilterPopular: () => {
-      dispatch(MovieListActionCreators.moviesFetch(MovieListActionTypes.POPULAR))
-    },
-    onFilterNowPlaying: () => {
-      dispatch(MovieListActionCreators.moviesFetch(MovieListActionTypes.NOW_PLAYING))
-    },
-    onFilterTopRated: () => {
-      dispatch(MovieListActionCreators.moviesFetch(MovieListActionTypes.TOP_RATED))
-    },
-    onFilterUpcoming: () => {
-      dispatch(MovieListActionCreators.moviesFetch(MovieListActionTypes.UPCOMING))
-    },
+    onLoad: (filter) => dispatch(MovieListActionCreators.moviesFetch(filter))
   }
 }
 

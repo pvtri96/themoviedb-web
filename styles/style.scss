@@ -1,0 +1,75 @@
+.content-movie {
+  margin: 20px 0px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 3px 3px 5px #aaa;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+
+  .img {
+    position: relative;
+    width: 35%;
+    .meta {
+      height: 40px;
+      width: 100%;
+      padding: 10px;
+      line-height: 50%;
+      position: absolute;
+      bottom: 0;
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer
+    }
+    &:hover .meta {
+      background-color: rgba(255,255,255,0.8);
+      display: block;
+    }
+  }
+
+}
+
+.content {
+  width: 65%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+
+  .info {
+    padding: 16px;
+    background-color: white;
+    height: 80%;
+
+    .title {
+      height: 15%;
+    }
+
+    .release_day {
+      font-size: 15px;
+      color: #666;
+    }
+
+    .overview {
+      height: 60%;
+      margin: 20px 0px;
+
+    }
+  }
+
+  .more_info {
+    background-color: white;
+    height: 20%;
+    border-top: 1px solid #ddd;
+    line-height: 150%;
+    padding: 16px;
+
+    a {
+      text-decoration: none;
+      &:hover {
+         text-shadow: 1px 1px #bdc3c7;
+      }
+    }
+  }
+}
