@@ -31,11 +31,6 @@ export default (state = initialState, action) => {
       ...state,
       fetchStatus: `errored: ${action.payload}`
     };
-  case actionTypes.USERS_FETCH_CANCEL:
-    return {
-      ...state,
-      fetchStatus: 'user cancelled'
-    };
   default:
     return state;
   }
