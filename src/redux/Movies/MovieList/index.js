@@ -1,4 +1,9 @@
-export { default as MovieListActionCreators } from './actionCreators';
-export { default as MovieListActionTypes } from './actionTypes';
-export { default as MovieListLogic} from './logic';
-export { default as MovieListReducer} from './reducer';
+export { default as movieListActionCreators } from './actionCreators';
+export { default as movieListActionTypes } from './actionTypes';
+export { default as movieListActions} from './actions';
+export { default as movieListReducer} from './reducer';
+export {
+  selector as movieListSelector,
+  filter as movieListFilter ,
+  KEY as movieListKEY
+} from './reducer';
