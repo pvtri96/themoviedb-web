@@ -11,6 +11,7 @@ const Index = props => {
   return (
     <Master>
       <div>
+        <ListMovies></ListMovies>
       </div>
     </Master>
   );
