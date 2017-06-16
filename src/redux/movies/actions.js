@@ -5,7 +5,7 @@ import actionCreators from './actionCreators';
 export const fetchMovies = () => async (dispatch) => {
   dispatch(actionCreators.moviesFetchRequested());
   try {
-    const movies = await axios.get(process.env.MOVIE_URL + 'popular', {
+    const movies = await axios.get(process.env.TV_SHOW_URL + 'popular', {
       params: {
         api_key: process.env.API_KEY
       }

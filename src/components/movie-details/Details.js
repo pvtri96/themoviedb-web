@@ -19,7 +19,7 @@ class Details extends Component {
     let movieDetails = this.props.movieDetails;
     return (
       <div>
-        { movieDetails.title }
+        { movieDetails.original_name }
       </div>
     );
   }

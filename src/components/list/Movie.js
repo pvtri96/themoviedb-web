@@ -7,7 +7,7 @@ const Movie = (props) => {
   return (
     <div>
       <Link href={`/tv-show/movie-details?id=${movie.id}`}>
-        <b> { movie.title } </b>
+        <b> { movie.original_name } </b>
       </Link>
       <div>{ movie.id }</div>
       <img src={ imageURL+movie.poster_path } alt={ movie.title }/>
