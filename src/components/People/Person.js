@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {PeopleActionCreators} from '../../redux/People';
-import { Row, Col, CardDeck, CardGroup, Card, CardImg, CardBlock, CardText} from 'reactstrap';
+import React from 'react';
+import {Col, CardImg} from 'reactstrap';
 import Link from 'next/link';
-import PersonDetailShowing from '../Person/personDetailShowing';
 import stylesheet from './listPeopleShowing.scss';
 
-const Person =(props)=>{
+const Person = (props) =>{
   let person = props.person;
   return(
     <Col >

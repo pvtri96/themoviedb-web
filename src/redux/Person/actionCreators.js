@@ -1,31 +1,22 @@
-import {
-  PERSON_FETCH,
-  PERSON_FETCH_FULFILLED,
-  PERSON_FETCH_CANCEL,
-  PERSON_FETCH_REJECTED
-} from './actions';
+import actionTypes from './actionTypes';
 
-export const personFetch=(id)=>(
-  {
-    type: PERSON_FETCH,
-    payload: id
-  }
-);
-export const personFetchCancel=()=>({type: PERSON_FETCH_CANCEL});
+export const personFetchRequested=(id)=>({
+  type: actionTypes.PERSON_FETCH_REQUESTED,
+  payload: id
+});
 export const personFetchFulfilled=(person)=>({
-  type: PERSON_FETCH_FULFILLED,
+  type: actionTypes.PERSON_FETCH_FULFILLED,
   payload: person
 });
 
 export const personFetchRejected=(err)=>({
-  type: PERSON_FETCH_REJECTED,
+  type: actionTypes.PERSON_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 export default {
-  personFetch,
-  personFetchCancel,
+  personFetchRequested,
   personFetchFulfilled,
   personFetchRejected
 };
