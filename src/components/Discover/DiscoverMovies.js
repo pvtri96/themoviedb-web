@@ -1,28 +1,34 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {MoviesActionCreators} from '../../redux/Discover';
+import {MoviesActionCreators} from '../../redux/discover/movie';
 import Movie from './Movie';
 import stylesheet from './DiscoverMovies.scss';
 
-const DiscoverMovies = ({movies,getMovies}) => {
-    let discoverMovies = movies.map(movie =>
-         <Movie movie={movie} key={movie.id} > </Movie>
-    );
+class DiscoverMovies extends Component{
+  constructor (props){
+      super(props);
+      this.getMovies= this.getMovies.bind(this);
+  }
+  componentDidMount() {
+    this.getMovies();
+  }
+  getMovies(){
+    this.props.getMovies();
+  }
+  render(){
     return (
       <div>
         <div>
-          <button onClick={getMovies}>
-          Get Movies
-          </button>
-        </div>
-        <div>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           <div className="list">
-            {discoverMovies}
+            {this.props.movies.map(movie =>
+              <Movie movie={movie} key={movie.id} />
+            )}
           </div>
         </div>
       </div>
     )
+  }
 }
 
 const mapStateToProps = (state) =>{

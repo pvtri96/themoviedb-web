@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
+import StringSolve from '../../../service/StringSolve';
 
 let picture= "https://image.tmdb.org/t/p/w500/";
 const Movie = (props) => {
@@ -9,29 +10,29 @@ const Movie = (props) => {
   let path= picture+movie.poster_path;
   return (
     <div className="index">
-      <img className="image" src={path} alt={movie.original_title} />
+      <div className="image avatar">
+          <img src={path} alt={movie.original_title} />
+      </div>
       <div className="detail">
         <div>
-          <Link href={`/movieDetail?id=${movie.id}`} >
+          <Link href={`/movie-detail?id=${movie.id}`} >
             <a className="title">
-              <h5>{movie.title}</h5>
+              <h5>{StringSolve.subTitle(25,movie.title)}</h5>
             </a>
           </Link>
         </div>
         <div className="second-row">
           <div className="release-date">
-            <FontAwesome name='calendar' size='1x' className="calendar"/>
+            <FontAwesome name='calendar' size='lg' className="calendar"/>
             {movie.release_date}
           </div>
           <div className="vote-average">
             {movie.vote_average}
-            <FontAwesome name='star' size='1x' className="star"/>
+            <FontAwesome name='star' size='lg' className="star"/>
           </div>
         </div>
         <div>
-          <p>
-            We don't have an overview translated in English. Help us expand our database by adding one.
-          </p>
+          {StringSolve.subString(25,movie.overview)}
         </div>
       </div>
     </div>

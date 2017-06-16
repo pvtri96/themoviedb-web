@@ -1,5 +1,7 @@
-import {MoviesLogic} from './Discover';
+import {MoviesLogic} from './discover/movie';
+import {MovieDetailLogic} from './discover/movieDetail';
 
 export default [
-  ...MoviesLogic
+  ...MoviesLogic,
+  ...MovieDetailLogic
 ];
