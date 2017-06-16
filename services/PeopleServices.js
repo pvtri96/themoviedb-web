@@ -3,11 +3,11 @@ import axios from 'axios';
 const apiSite = process.env.API_SITE;
 const apiKey = process.env.API_KEY;
 
-const MAX_LENGTH = 25;
+const MAX_LENGTH = 100;
 
 class PeopleService {
 
-static reduceText (text) {
+  static reduceText (text) {
     let words = text.split(' ');
     let parts = [];
     for(let i=0; i<words.length; i++) {
@@ -21,7 +21,6 @@ static reduceText (text) {
 
     return parts.join(" ");
   }
-
   static concatString (arr) {
     let str = '';
     for(let i=0; i<arr.length; i++) {

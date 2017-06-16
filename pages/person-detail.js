@@ -1,6 +1,6 @@
 import React from 'react';
 import Master from '../src/containers/Master';
-import PersonDetailShowing from '../src/components/Person/PersonDetailShowing';
+import PersonDetailShowing from '../src/components/Person/personDetailShowing';
 import withRedux from 'next-redux-wrapper';
 import {initStore} from '../src/redux';
 

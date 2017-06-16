@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {PeopleActionCreators} from '../../redux/People';
-import Person from './Person';
+import Person from './person';
 import {Row, Col, CardDeck, CardGroup, Card, CardImg, CardBlock, CardText} from 'reactstrap';
-import stylesheet from './ListPeopleShowing.scss';
+import stylesheet from './listPeopleShowing.scss';
 
 class ListPeople extends Component{
   constructor(props){
@@ -30,9 +30,7 @@ class ListPeople extends Component{
         )}
               <br />
       </CardDeck>
-
       </Row>
-
       <Row>
         <div className="pagonation">
           <p className="left">

@@ -21,4 +21,25 @@ body {
       }
   }
 }
+.modal_biogr {
+  max-width: 80%;
+}
+a .md_readmore{
+  color: green;
+  a:visit {
+    color: green;
+  }
+  a:hover {
+    color: green;
+  }
+}
+.sub_nav{
+  background-color: white;
+  width:100%;
+  box-shadow: 2px solid #e6e6ff;
+  text-align: center;
+  h5{
+    color: grey;
+  }
+}
 
