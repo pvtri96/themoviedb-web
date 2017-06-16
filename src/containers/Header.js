@@ -89,11 +89,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-// <Button id="Popover1"  onClick={this.toggle}>
-//                   Movie
-//                 </Button>
-//                 <Popover placement="bottom" isOpen={this.state.popoverOpen} target="Popover1" toggle={this.toggle}>
-//                   <PopoverContent><NavLink href="/" >asfs</NavLink></PopoverContent>
-//                   <PopoverContent>Popular</PopoverContent>
-//                 </Popover>
