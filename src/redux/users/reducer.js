@@ -2,16 +2,16 @@ import actionTypes from './actionTypes';
 
 export const KEY = 'users';
 
-const initialState = {
+export const INITIAL_STATE = {
   list: [],
   fetchStatus: ''
 };
 
 export const selector = (state) => state[KEY];
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-  case actionTypes.USERS_FETCH:
+  case actionTypes.USERS_FETCH_REQUESTED:
     return {
       ...state,
       fetchStatus: `fetching... ${(new Date()).toLocaleString()}`,

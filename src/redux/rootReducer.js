@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { usersReducer, KEY } from './users';
+import { usersReducer, USERS_KEY } from './users';
 
 export default combineReducers({
-  [KEY]: usersReducer //Remove if no need
+  [USERS_KEY]: usersReducer //Remove if no need
 });
