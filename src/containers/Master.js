@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 //Import stylesheet
-// import vendorsheet from 'styles/vendor.scss';
+import vendorsheet from 'styles/vendor.scss';
 // import mastersheet from './MasterLayout.scss';
 // If you dont have scss, just import css.
 // import vendorsheet from 'styles/vendor.css';
@@ -15,6 +15,7 @@ const Master = (props) => (
     {/* Customize head tag of the page */}
     <Head>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <style dangerouslySetInnerHTML={{ __html: vendorsheet }} />
       {/* Import Global stylesheet */}
       <title>The Movie DB</title>
     </Head>
@@ -24,12 +25,12 @@ const Master = (props) => (
       <Header></Header>
       {/* Import Local stylesheet */}
       {/* Use some bootstrap css classes */}
-      <div className="p-5">
+      <div className="body-content p-5">
         <div className="container">
           {props.children}
         </div>
       </div>
-    <Footer></Footer>
+      <Footer></Footer>
     </div>
   </div>
 );
