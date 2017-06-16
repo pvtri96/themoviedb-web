@@ -1,23 +1,18 @@
 import actionTypes from './actionTypes';
 
 export const KEY = 'movies';
-const initialState = {
+export const INITIAL_STATE = {
   list: [],
   fecthStatus: ''
 };
 
 export const selector = (state) => state[KEY];
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case actionTypes.MOVIES_FETCH_REQUESTED:
     return{
       ...state,
       fecthStatus: `fetching...`,
-    };
-  case actionTypes.MOVIES_FETCH_CANCEL:
-    return{
-      ...state,
-      fecthStatus: `cancelled`
     };
   case actionTypes.MOVIES_FETCH_REJECTED:
     return{

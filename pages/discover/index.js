@@ -1,26 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../../src/containers/Master';
 import DiscoverMovies from '../../src/components/discover/DiscoverMovies';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../../src/redux';
+import { getStore } from '../../src/redux';
+import {moviesActions} from '../../src/redux/discover/movie';
 
-const Index = props => {
-  return (
-    <Master>
-      <div>
+class Index extends Component{
+  static async getInitialProps ({store}){
+    await store.dispatch(moviesActions.fetchMovies());
+  }
+  render (){
+    return (
+      <Master>
         <div>
+          <div>
             <DiscoverMovies> </DiscoverMovies>
+          </div>
         </div>
-      </div>
-    </Master>
-  );
-};
+      </Master>
+    );
+  }
+}
 
 Index.propTypes = {
 
 };
 
-export default withRedux(initStore)(Index);
+export default withRedux(getStore)(Index);

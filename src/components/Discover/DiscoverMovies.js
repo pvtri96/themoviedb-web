@@ -1,47 +1,36 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {MoviesActionCreators} from '../../redux/discover/movie';
+import {moviesActions, moviesSelector} from '../../redux/discover/movie';
 import Movie from './Movie';
 import stylesheet from './DiscoverMovies.scss';
 
-class DiscoverMovies extends Component{
-  constructor (props){
-      super(props);
-      this.getMovies= this.getMovies.bind(this);
-  }
-  componentDidMount() {
-    this.getMovies();
-  }
-  getMovies(){
-    this.props.getMovies();
-  }
-  render(){
-    return (
+const DiscoverMovies = (props) =>{
+  let movies = props.movies;
+  return (
+    <div>
       <div>
-        <div>
-          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-          <div className="list">
-            {this.props.movies.map(movie =>
-              <Movie movie={movie} key={movie.id} />
-            )}
-          </div>
+        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+        <div className="list">
+          {movies.map(movie =>
+            <Movie movie={movie} key={movie.id} />
+          )}
         </div>
       </div>
-    )
-  }
+    </div>
+  );
 }
 
 const mapStateToProps = (state) =>{
   console.log(state);
   return{
-    movies: state.movies.list
+    movies: moviesSelector(state).list
   }
 }
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-    getMovies: () => {
-      dispatch(MoviesActionCreators.moviesFetch());
+    fetchMovies: () => {
+      dispatch(moviesActions.fetchMovies());
     }
   }
 }

@@ -11,7 +11,7 @@ const Movie = (props) => {
   return (
     <div className="index">
       <div className="image avatar">
-          <img src={path} alt={movie.original_title} />
+        <img src={path} alt={movie.original_title} />
       </div>
       <div className="detail">
         <div>
