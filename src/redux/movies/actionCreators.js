@@ -1,7 +1,6 @@
 import actionTypes from './actionTypes';
 
-export const moviesFetch = () => ({ type: actionTypes.MOVIE_FETCH });
-export const moviesFetchCancel = () => ({ type: actionTypes.MOVIE_FETCH_CANCEL });
+export const moviesFetchRequested = () => ({ type: actionTypes.MOVIE_FETCH_REQUESTED });
 export const moviesFetchFulfilled = ( movies ) => ({
   type: actionTypes.MOVIE_FETCH_FULFILLED,
   payload: movies
@@ -14,8 +13,7 @@ export const moviesFetchRejected = ( err ) => ({
 });
 
 export default {
-  moviesFetch,
-  moviesFetchCancel,
+  moviesFetchRequested,
   moviesFetchFulfilled,
   moviesFetchRejected
 };

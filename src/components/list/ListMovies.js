@@ -14,7 +14,7 @@ class ListMovies extends Component {
   }
 
   fetchMovies () {
-     this.props.fetchMovies();
+    this.props.fetchMovies();
   }
 
   render() {
@@ -32,15 +32,15 @@ const mapStateToProp = (state) => {
   console.log(state);
   return {
     movies: state.movies.list
-  }
-}
+  };
+};
 
 const dispatchStateToProps = (dispatch) => {
   return {
     fetchMovies: () => {
       dispatch(MoviesActionCreators.moviesFetch());
     }
-  }
-}
+  };
+};
 
 export default connect( mapStateToProp , dispatchStateToProps )( ListMovies );

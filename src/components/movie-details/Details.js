@@ -5,7 +5,7 @@ import { DetailsActionCreators } from '../../redux/details';
 class Details extends Component {
   constructor(props){
     super(props);
-      this.fetchDetails = this.fetchDetails.bind(this);
+    this.fetchDetails = this.fetchDetails.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +20,11 @@ class Details extends Component {
     let movieDetails = this.props.movieDetails;
     return (
       <div>
-         { movieDetails.title }
+        { movieDetails.title }
       </div>
-    )
+    );
   }
-};
+}
 
 const mapStateToProp = (state) => {
   console.log(state);
@@ -38,7 +38,7 @@ const dispatchStateToProps = (dispatch) => {
     fetchDetails: (id) => {
       dispatch(DetailsActionCreators.detailFetch(id));
     }
-  }
-}
+  };
+};
 
 export default connect ( mapStateToProp, dispatchStateToProps )( Details );
