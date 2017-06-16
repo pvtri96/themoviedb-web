@@ -1,4 +1,6 @@
-export {default as MoviesActionTypes} from './actionTypes';
-export {default as MoviesActionCreators} from './actionCreators';
-export {default as MoviesLogic} from './logic';
-export {default as MoviesReducers} from './reducers';
+export {moviesActionCreators} from './actionCreators';
+export {moviesAtions} from './actions';
+export {moviesActionTypes} from './actionTypes';
+export {moviesReducer} from './reducers';
+export {selector as moviesSelector} from './reducers';
+export {MOVIES_KEY} from './reducers';

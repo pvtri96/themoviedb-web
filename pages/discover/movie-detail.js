@@ -12,8 +12,8 @@ const Movie_Detail = props => {
     <Master>
       <div>
         <div>
-            <MovieDetail id={props.url.query.id}>
-            </MovieDetail>
+          <MovieDetail id={props.url.query.id}>
+          </MovieDetail>
         </div>
       </div>
     </Master>
