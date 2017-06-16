@@ -1,10 +1,10 @@
 import Master from '../../src/containers/Master';
-import Details from '../../src/components/movie-details/Details';
+import Details from '../../src/components/tvshow-details/Details';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
 import React from 'react';
 
-const MovieDetails = (props) => (
+const TVShowDetails = (props) => (
   <Master>
     <div>
       <Details id={ props.url.query.id } />
@@ -12,5 +12,5 @@ const MovieDetails = (props) => (
   </Master>
 )
 
-export default withRedux(getStore)(MovieDetails);
+export default withRedux(getStore)(TVShowDetails);
 

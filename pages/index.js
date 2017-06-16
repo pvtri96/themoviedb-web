@@ -5,14 +5,14 @@ import Master from '../src/containers/Master';
 // import ListMovies from '../src/components/list/ListMovies';
 import {getStore} from '../src/redux';
 import withRedux from 'next-redux-wrapper';
-import Movies from '../src/components/list/ListMovies';
+import TVShows from '../src/components/list/ListTVShows';
 
 const Index = () => {
   return (
     <Master>
       <div>
         <div>
-          <Movies></Movies>
+          <TVShows></TVShows>
         </div>
       </div>
     </Master>

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { usersReducer,  USERS_KEY } from './users';
-import { moviesReducer, MOVIES_KEY} from './movies';
+import { tvshowsReducer, TVSHOWS_KEY} from './tvshows';
 import { detailsReducer, DETAILS_KEY} from './details';
 
 export default combineReducers({
   [USERS_KEY]: usersReducer, //Remove if no need
-  [MOVIES_KEY]: moviesReducer,
+  [TVSHOWS_KEY]: tvshowsReducer,
   [DETAILS_KEY]: detailsReducer
 });
