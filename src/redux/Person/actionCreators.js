@@ -1,8 +1,7 @@
 import actionTypes from './actionTypes';
 
-export const personFetchRequested=(id)=>({
+export const personFetchRequested=()=>({
   type: actionTypes.PERSON_FETCH_REQUESTED,
-  payload: id
 });
 export const personFetchFulfilled=(person)=>({
   type: actionTypes.PERSON_FETCH_FULFILLED,

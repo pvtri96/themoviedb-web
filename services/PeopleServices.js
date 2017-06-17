@@ -8,7 +8,9 @@ const MAX_LENGTH = 100;
 class PeopleService {
 
   static reduceText (text) {
-    let words = text.split(' ');
+    let str = "";
+    str = text;
+    let words = str.split(' ');
     let parts = [];
     for(let i=0; i<words.length; i++) {
       if(i < MAX_LENGTH) {
@@ -36,7 +38,6 @@ class PeopleService {
     return axios.get(apiSite + 'person/' + id, {
       params: {
         api_key: apiKey,
-        language: dbLanguage
       }
     });
   }

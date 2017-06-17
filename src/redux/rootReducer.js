@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { usersReducer, KEY } from './users';
-import { peopleReducer, KEY_PEOPLE } from './people';
-import { personReducer, KEY_PERSON } from './person';
+import { peopleReducer, PEOPLE_KEY } from './people';
+import { personReducer, PERSON_KEY } from './person';
+//import { usersReducer, USERS_KEY } from './users';
 
 export default combineReducers({
-  [KEY]: usersReducer, //Remove if no need
-  [KEY_PEOPLE]: peopleReducer,
-  [KEY_PERSON]: personReducer
+  // [USERS_KEY]: usersReducer,
+  [PEOPLE_KEY]: peopleReducer,
+  [PERSON_KEY]: personReducer
 });

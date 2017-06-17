@@ -1,13 +1,13 @@
 import actionTypes from './actionTypes';
 
-export const KEY_PERSON = 'person';
+export const PERSON_KEY = 'person';
 
 export const INITIAL_STATE = {
   person: {},
   fetchStatus:''
 };
 
-export const selector =(state) => state[KEY_PERSON];
+export const selector =(state) => state[PERSON_KEY];
 
 export default (state = INITIAL_STATE, action)=>{
   switch (action.type){

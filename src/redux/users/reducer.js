@@ -11,7 +11,7 @@ export const selector = (state) => state[KEY];
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
-  case actionTypes.USERS_FETCH:
+  case actionTypes.USERS_FETCH_REQUESTED:
     return {
       ...state,
       fetchStatus: `fetching... ${(new Date()).toLocaleString()}`,

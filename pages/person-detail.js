@@ -1,19 +1,19 @@
 import React from 'react';
 import Master from '../src/containers/Master';
-import PersonDetailShowing from '../src/components/Person/personDetailShowing';
+import PersonDetail from '../src/components/people/PersonDetail';
 import withRedux from 'next-redux-wrapper';
-import {initStore} from '../src/redux';
+import { getStore } from '../src/redux';
 
-const PersonDetail = props => {
+const Detail = props => {
   return (
     <Master>
       <div>
         <div>
-            <PersonDetailShowing id={props.url.query.id} />
+          <PersonDetail id={props.url.query.id} />
         </div>
       </div>
     </Master>
   );
 };
 
-export default withRedux(initStore)(PersonDetail);
+export default withRedux(getStore)(Detail);

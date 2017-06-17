@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, CardImg} from 'reactstrap';
 import Link from 'next/link';
-import stylesheet from './listPeopleShowing.scss';
+import stylesheet from './People.scss';
 
 const Person = (props) =>{
   let person = props.person;
@@ -10,8 +10,8 @@ const Person = (props) =>{
       <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <div className="item">
         <Link href={`/person-detail?id=${person.id}`}>
-        <a><CardImg top width="255px" height="254px" src={process.env.IMAGE + person.profile_path}
-        alt="Can't show the image" /></a>
+          <a><CardImg top width="255px" height="254px" src={process.env.IMAGE + person.profile_path}
+            alt="Can't show the image" /></a>
         </Link>
         <div className="meta">
           <Link href={`/person-detail?id=${person.id}`}>
@@ -21,6 +21,10 @@ const Person = (props) =>{
       </div>
     </Col>
   );
-}
+};
 
 export default Person;
+
+
+
+

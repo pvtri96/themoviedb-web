@@ -1,6 +1,7 @@
 export { default as personActionCreators } from './actionCreators';
-export { default as personActions } from './actionTypes';
+export { default as personActionTypes } from './actionTypes';
 export { default as personReducer } from './reducer';
-export { default as personLogic } from './logic';
+export { default as personActions } from './actions';
 export { selector as personSelector} from './reducer';
-export { KEY_PERSON } from './reducer';
+export { PERSON_KEY } from './reducer';
+export { INITIAL_STATE as PERSON_INITIAL_STATE } from './reducer';
