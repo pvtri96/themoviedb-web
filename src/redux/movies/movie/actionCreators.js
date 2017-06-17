@@ -1,12 +1,7 @@
 import actionTypes from './actionTypes';
 
-export const movieDetailFetch = (id) => ({
-  type: actionTypes.MOVIE_DETAIL_FETCH,
-  payload: id
-});
-
-export const movieDetailFetchCancel = () => ({
-  type: actionTypes.MOVIE_DETAIL_FETCH_CANCEL,
+export const movieDetailFetchRequested = () => ({
+  type: actionTypes.MOVIE_DETAIL_FETCH_REQUESTED
 });
 
 export const movieDetailFetchFullfilled = (movie) => ({
@@ -14,15 +9,14 @@ export const movieDetailFetchFullfilled = (movie) => ({
   payload: movie
 });
 
-export const movieDetailFetchReject = (err) => ({
+export const movieDetailFetchRejected = (err) => ({
   type: actionTypes.MOVIE_DETAIL_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 export default {
-  movieDetailFetch,
-  movieDetailFetchCancel,
+  movieDetailFetchRequested,
   movieDetailFetchFullfilled,
-  movieDetailFetchReject
-}
+  movieDetailFetchRejected
+};

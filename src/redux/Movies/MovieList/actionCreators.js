@@ -1,13 +1,13 @@
 import actionTypes from './actionTypes';
 
-export const moviesFetchRequested = (filter) => ({
-  type: actionTypes.MOVIES_FETCH_REQUESTED,
-  payload: filter
+export const moviesFetchRequested = () => ({
+  type: actionTypes.MOVIES_FETCH_REQUESTED
 });
 
-export const moviesFetchFullfilled = (movies) => ({
+export const moviesFetchFullfilled = (movies, genres) => ({
   type: actionTypes.MOVIES_FETCH_FULLFILLED,
-  payload: movies
+  payload: movies,
+  genres: genres
 });
 
 export const moviesFetchRejected = (err) => ({
@@ -17,10 +17,13 @@ export const moviesFetchRejected = (err) => ({
 });
 
 
+
+
 export default {
   moviesFetchRequested,
   moviesFetchFullfilled,
   moviesFetchRejected,
+
 };
 
 

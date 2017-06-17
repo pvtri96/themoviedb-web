@@ -1,18 +1,21 @@
 
-import React, { Component } from 'react';
-import MovieDetailShowing from '../../src/components/movies/MovieDetailShowing';
+import React ,{ Component }from 'react';
+import MovieDetail from '../../src/components/movies/MovieDetail';
 import Master from '../../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../../src/redux';
+import { getStore } from '../../src/redux';
+import { movieActions} from '../../src/redux/movies/movie';
 
-const MovieDetail = (props) =>  (
+const Index = (props) =>  (
   <Master>
     <div>
-      <MovieDetailShowing id={props.url.query.id} />
+      <MovieDetail id={props.url.query.id} />
     </div>
   </Master>
 );
 
-export default  withRedux(initStore)(MovieDetail);
+
+
+export default withRedux(getStore)(Index);
 
 

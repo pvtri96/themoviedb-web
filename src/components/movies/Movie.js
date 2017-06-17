@@ -75,25 +75,26 @@ const lengthTitle = 5;
 const lengthOverview = 25;
 
 
-const MovieShowing = (props) => {
+const Movie = (props) => {
   let movie = props.movie;
+  let genres = props.genres;
   return (
 
     <div>
       <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
       <div className="content-movie">
         <div className="img">
-          <Link href={`/movie-detail?id=${movie.id}`}>
+          <Link href={`/movies/movie-detail?id=${movie.id}`}>
             <a>
-            <img  width="100%" height="278px" src={process.env.MOVIE_IMG_URL +
-            movie.poster_path} alt={movie.title} />
+              <img  width="100%" height="278px" src={process.env.MOVIE_IMG_URL +
+              movie.poster_path} alt={movie.title} />
 
-            <div className="meta">
-              <FontAwesome
-                name="heartbeat"
-                style={{ fontSize: '25px', color: '#c0392b'}}
-              />
-            </div>
+              <div className="meta">
+                <FontAwesome
+                  name="heartbeat"
+                  style={{ fontSize: '25px', color: '#c0392b'}}
+                />
+              </div>
             </a>
           </Link>
 
@@ -103,18 +104,18 @@ const MovieShowing = (props) => {
         <div className="content">
           <div className="info" >
             <div className="title">
-              <Link href={`/movie-detail?id=${movie.id}`}>
-                <a style={{textDecoration: 'none'}}>
-                  {MoviesService.reduceText(movie.title,lengthTitle)}
-              </a>
+              <Link href={`/movies/movie-detail?id=${movie.id}`}>
+                <a className="link_title">
+                  {MoviesService.reduceWordsText(movie.title,lengthTitle)}
+                </a>
               </Link>
 
               <span style={{float:'right'}}>
-                  {movie.vote_average} 	{' '}
-                  <FontAwesome
-                    name="star"
-                  />
-                </span>
+                {movie.vote_average.toFixed(1)} 	{' '}
+                <FontAwesome
+                  name="star"
+                />
+              </span>
             </div>
 
             <div className="release_day">
@@ -122,21 +123,25 @@ const MovieShowing = (props) => {
                 name="calendar"
               /> 	&nbsp;
               {new Date(movie.release_date).getFullYear()}
+
+              <span className="genres">
+                <i>{MoviesService.reducerLengthText(genres, 35)}</i>
+              </span>
             </div>
 
             <div className="overview">
-              {MoviesService.reduceText(movie.overview,lengthOverview)}
+              {MoviesService.reduceWordsText(movie.overview,lengthOverview)}
             </div>
           </div>
 
 
 
           <div className="more_info">
-            <Link href={`/movie-detail?id=${movie.id}`}>
-                  <a >
-                    More info
-                </a>
-                </Link>
+            <Link href={`/movies/movie-detail?id=${movie.id}`}>
+              <a >
+                More info
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -144,4 +149,4 @@ const MovieShowing = (props) => {
   );
 }
 
-export default MovieShowing;
+export default Movie;

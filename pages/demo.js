@@ -6,28 +6,26 @@ import { getStore } from '../src/redux';
 import { usersActions, usersSelector } from '../src/redux/users';
 
 class Index extends Component {
-  // static getInitialProps ({ store }) {
-  //   store.dispatch(usersActions.fetchUsers());
-  // }
-
+  static async getInitialProps ({ store, isServer }) {
+    await store.dispatch(usersActions.fetchUsers());
+    return { isServer };
+  }
   render() {
     return (
-      <div>
-        <Master>
-          <div>
-            <button onClick={ this.props.fetchUsers }>
-              Fetch users
-            </button>
-            <h1>
-              { this.props.users.map(({id, name}) => (
-                <div key={id}>
-                  {name}
-                </div>
-              )) }
-            </h1>
-          </div>
-        </Master>
-      </div>
+      <Master>
+        <div>
+          <button onClick={ this.props.fetchUsers }>
+            Fetch users
+          </button>
+          <h1>
+            { this.props.users.map(({id, name}) => (
+              <div key={id}>
+                {name}
+              </div>
+            )) }
+          </h1>
+        </div>
+      </Master>
     );
   }
 }

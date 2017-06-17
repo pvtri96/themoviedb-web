@@ -2,11 +2,11 @@ import React , { Component }from 'react';
 import {Card, CardImg,CardTitle,
   Row, Col,CardText, Button,
 
-   CardBlock} from 'reactstrap';
+  CardBlock} from 'reactstrap';
 import PropTypes        from 'prop-types';
 import FontAwesome      from 'react-fontawesome';
-import { MovieActionCreators } from '../../redux/movies/movie';
 import { connect } from 'react-redux';
+import { movieSelector , movieActions} from '../../redux/movies/movie';
 
 class MovieDetailShowing extends Component
 {
@@ -21,9 +21,9 @@ class MovieDetailShowing extends Component
     window.history.back();
   }
 
-  componentDidMount()
-  {
-    this.props.onLoad(this.props.id);
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchMovieDetail(this.props.id);
   }
 
   render()
@@ -51,9 +51,8 @@ class MovieDetailShowing extends Component
 
               <Button onClick={this.goBack} >
                 <FontAwesome
-                    name='arrow-left'
-                    size='1x'
-                  />
+                  name='arrow-left'
+                />
                   &nbsp;&nbsp;Back to List</Button>
             </CardBlock>
           </Col>
@@ -64,16 +63,17 @@ class MovieDetailShowing extends Component
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    movieDetail: state.movie.detail
+    movieDetail: movieSelector(state).detail
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoad : (id) => dispatch(MovieActionCreators.movieDetailFetch(id))
-  }
-}
+    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id))
+  };
+};
 
 MovieDetailShowing.propTypes = {
   id: PropTypes.string,

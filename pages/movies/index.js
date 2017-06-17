@@ -1,22 +1,23 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../../src/containers/Master';
-import MovieListShowing from '../../src/components/movies/MovieListShowing';
+import MovieList from '../../src/components/movies/MovieList';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../../src/redux';
-import { MovieListActionCreators } from '../../src/redux/movies/movieList';
+import { getStore } from '../../src/redux';
+import { movieListActions} from '../../src/redux/movies/movieList';
 
 
 class Index extends Component {
-
+  static async getInitialProps({ store }) {
+    await store.dispatch(movieListActions.fetchMovies());
+  }
   render() {
     return (
       <Master>
         <div>
-          <MovieListShowing />
+          <MovieList />
         </div>
       </Master>
     );
@@ -24,4 +25,4 @@ class Index extends Component {
 }
 
 
-export default withRedux(initStore)(Index);
+export default withRedux(getStore)(Index);

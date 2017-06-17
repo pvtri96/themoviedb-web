@@ -1,16 +1,28 @@
 import axios from 'axios';
 import actionCreators from './actionCreators';
 
-export const fetchMovies = () => async (action, dispatch) => {
+export const fetchMovies = (filter = 'popular') => async (dispatch) => {
   dispatch(actionCreators.moviesFetchRequested());
   try {
-    const movies = await axios.get(process.env.MOVIE_URL + action.payload + '?api_key=' + process.env.API_KEY)
+    const movies = await axios.get(process.env.API_URL + 'movie/' + filter , {
+      params: {
+        api_key: process.env.API_KEY
+      }
+    })
       .then(resp => resp.data.results);
-    return dispatch(actionCreators.moviesFetchFullfilled(movies));
+
+    const genres = await axios.get(process.env.API_URL + 'genre/movie/list' , {
+      params: {
+        api_key: process.env.API_KEY
+      }
+    })
+      .then(resp => resp.data.genres);
+    return dispatch(actionCreators.moviesFetchFullfilled(movies,genres));
   } catch (error) {
     return dispatch(actionCreators.moviesFetchRejected(error));
   }
 };
+
 
 export default {
   fetchMovies
