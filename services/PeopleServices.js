@@ -8,9 +8,7 @@ const MAX_LENGTH = 100;
 class PeopleService {
 
   static reduceText (text) {
-    let str = "";
-    str = text;
-    let words = str.split(' ');
+    let words = text.split(" ");
     let parts = [];
     for(let i=0; i<words.length; i++) {
       if(i < MAX_LENGTH) {
@@ -21,7 +19,18 @@ class PeopleService {
       }
     }
 
-    return parts.join(" ");
+    return parts.join(' ');
+  }
+
+  static reduceWord (text, limit) {
+    let words= text.split(' ');
+    let arr=[];
+    if(words.length > limit){
+      arr = text.split(' ', limit);
+      arr.push(" ...");
+      return arr.join(" ");
+    }
+    return text;
   }
   static concatString (arr) {
     let str = '';

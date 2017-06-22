@@ -4,6 +4,8 @@ export const PERSON_KEY = 'person';
 
 export const INITIAL_STATE = {
   person: {},
+  know_for:{},
+  externalIds:{},
   fetchStatus:''
 };
 
@@ -14,14 +16,15 @@ export default (state = INITIAL_STATE, action)=>{
   case actionTypes.PERSON_FETCH_REQUESTED:
     return {
       ...state,
-      fetchStatus: `fetching... ${(new Date()).toLocaleString()}`,
-      person: {}
+      fetchStatus: `fetching... ${(new Date()).toLocaleString()}`
     };
   case actionTypes.PERSON_FETCH_FULFILLED:
     return {
       ...state,
       fetchStatus: `Results from ${(new Date()).toLocaleString()}`,
-      person:action.payload
+      person:action.payload,
+      know_for: action.know_for,
+      externalIds: action.externalIds
     };
   case actionTypes.PERSON_FETCH_REJECTED:
     return {

@@ -5,10 +5,10 @@ import {
   peopleFetchRejected
 } from './actionCreators';
 
-export const fetchPeople=()=> async (dispatch)=>{
+export const fetchPeople=(page)=> async (dispatch)=>{
   dispatch(peopleFetchRequested());
   try {
-    const people = await axios.get(`https://api.themoviedb.org/3/person/popular?api_key=14240ace62bcafe15227f35ad9cd8580&language=en-US&page=1`)
+    const people = await axios.get(process.env.PEOPLE_SITE +`?api_key=` + process.env.API_KEY + `&page=` + page)
       .then(response => response.data.results);
     return dispatch(peopleFetchFulfilled(people));
   }

@@ -15,6 +15,7 @@ const Master = (props) => (
     {/* Customize head tag of the page */}
     <Head>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  />
       <style dangerouslySetInnerHTML={{ __html: vendorsheet }} />
       {/* Import Global stylesheet */}
       <title>The Movie DB</title>

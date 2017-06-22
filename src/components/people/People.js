@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, CardDeck,} from 'reactstrap';
+import {Row, CardDeck,Button} from 'reactstrap';
 import Person from './Person';
 import stylesheet from './People.scss';
 import { peopleActions, peopleSelector } from '../../redux/people';
+import FontAwesome from 'react-fontawesome';
 
+let page = 1;
 class PeopleShowing extends Component {
   constructor(props){
     super(props);
   }
-
   render(){
     console.log(this.props.listPeople);
     return (
@@ -27,10 +28,14 @@ class PeopleShowing extends Component {
         <Row>
           <div className="pagination">
             <p className="left">
-              Currently on page:
+             Currently on page: {page}{' '}
             </p>
-            <p className="right">
-            </p>
+            <div className="right">
+              <a onClick={()=> this.props.previousClick(--page)}>
+                <FontAwesome name='arrow-circle-left' /></a>
+              <a onClick={()=> this.props.previousClick(++page)}>
+                <FontAwesome name='arrow-circle-right' /></a>{'  '}
+            </div>
           </div>
         </Row>
       </div>
@@ -52,7 +57,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPeople: () => {
-      dispatch(peopleActions.fetchPeople());
+      dispatch(peopleActions.fetchPeople(1));
+    },
+    nextClick: (page) =>{
+      dispatch(peopleActions.fetchPeople(page));
+    },
+    previousClick: (page) =>{
+      dispatch(peopleActions.fetchPeople(page));
     }
   };
 };
