@@ -1,6 +1,6 @@
 .content-movie {
   margin: 20px 0px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
   &:hover {
     box-shadow: 3px 3px 5px #aaa;
   }
@@ -18,7 +18,10 @@
       position: absolute;
       bottom: 0;
       display: none;
+
+
     }
+
 
     &:hover {
       cursor: pointer
@@ -85,3 +88,25 @@
     }
   }
 }
+
+.tooltipHeartbeat {
+  margin-bottom: 10px;
+  background-color: rgba(44, 62, 80, 0.90);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width:30%;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 56%;
+  left: -8.7%;
+}
+.sort_down {
+  color: #2c3e50;
+  position: absolute;
+  top: 78%;
+  left: 48%;
+
+}
+

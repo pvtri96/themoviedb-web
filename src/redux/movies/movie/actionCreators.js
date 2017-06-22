@@ -4,9 +4,13 @@ export const movieDetailFetchRequested = () => ({
   type: actionTypes.MOVIE_DETAIL_FETCH_REQUESTED
 });
 
-export const movieDetailFetchFullfilled = (movie) => ({
+export const movieDetailFetchFullfilled = (movie,credits, reviews, videos,recommendations) => ({
   type: actionTypes.MOVIE_DETAIL_FETCH_FULLFILLED,
-  payload: movie
+  payload: movie,
+  credits,
+  reviews,
+  videos,
+  recommendations
 });
 
 export const movieDetailFetchRejected = (err) => ({

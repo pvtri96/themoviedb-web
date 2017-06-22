@@ -11,7 +11,6 @@ export const filter = {
   top_rated: 'top_rated',
   upcoming: 'upcoming',
   now_playing: 'now_playing',
-
 };
 
 export const KEY = 'movies';

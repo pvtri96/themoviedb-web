@@ -16,7 +16,7 @@ class Index extends Component {
   render() {
     return (
       <Master>
-        <div>
+        <div className="container pt-5">
           <MovieList />
         </div>
       </Master>

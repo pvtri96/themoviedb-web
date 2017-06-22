@@ -14,8 +14,6 @@ import { getGenresMovie } from '../../services/movies/moviesService';
 
 class MoviesList extends Component {
 
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -57,7 +55,7 @@ class MoviesList extends Component {
         </Row>
         <Row >
           {this.props.list.map(movie => (
-            <Col md="6" key={movie.id}>
+            <Col md="6" xs="12" key={movie.id}>
               <Movie movie={movie} genres={getGenresMovie(movie.genre_ids, this.props.genres)} detail={this.props.detail}/>
             </Col>
           ))
