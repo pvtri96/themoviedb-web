@@ -11,11 +11,37 @@
       &.avatar {
         height: 300px;
         width: 180px;
+        position: relative;
         img {
           height: 100%;
           width: 100%;
         }
       }
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #f7f7f7;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: 0.1s ease;
+        .text {
+          white-space: nowrap;
+          color: black;
+          font-size: 20px;
+          position: absolute;
+          overflow: hidden;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .image:hover .overlay {
+      height: 15%;
     }
     .detail{
       margin: 5px;
@@ -41,9 +67,6 @@
           }
         }
       }
-    }
-    &:hover{
-      box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
     }
   }
 }

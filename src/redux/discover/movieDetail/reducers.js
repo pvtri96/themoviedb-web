@@ -1,36 +1,34 @@
 import actionTypes from './actionTypes';
 
-const initialState = {
+export const KEY = 'movieDetail';
+export const INITIAL_STATE = {
   detail: {},
   fetchStatus: ''
 };
 
-export default function Reducer (state = initialState, action){
+export const selector = (state) =>state[KEY];
+
+export default (state = INITIAL_STATE, action) =>{
   switch (action.type) {
-    case actionTypes.MOVIE_DETAIL_FETCH:
-      return {
-        ...state,
-        fetchStatus: 'fetching...',
-      }
-    case actionTypes.MOVIE_DETAIL_FETCH_CANCEL:
-      return {
-        ...state,
-        fetchStatus: 'canceled',
-      }
-    case actionTypes.MOVIE_DETAIL_FETCH_FULFILLED:
-      return {
-        ...state,
-        fetchStatus: 'success',
-        detail: action.payload
-      }
-    case actionTypes.MOVIE_DETAIL_FETCH_REJECTED:
-      return {
-        ...state,
-        fetchStatus: 'rejected',
-        error: 'errors: ${action.payload}'
-      }
-    default:
-      return state;
+  case actionTypes.MOVIE_DETAIL_FETCH:
+    return {
+      ...state,
+      fetchStatus: 'fetching...',
+    };
+  case actionTypes.MOVIE_DETAIL_FETCH_FULFILLED:
+    return {
+      ...state,
+      fetchStatus: 'success',
+      detail: action.payload
+    };
+  case actionTypes.MOVIE_DETAIL_FETCH_REJECTED:
+    return {
+      ...state,
+      fetchStatus: 'rejected',
+      error: 'errors: ${action.payload}'
+    };
+  default:
+    return state;
   }
 
 }

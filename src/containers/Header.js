@@ -36,9 +36,9 @@ class Header extends Component {
               <NavItem>
                 <ul className="dropdown">
                   <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/"><NavLink>Discover</NavLink></Link>
+                    <Link className="dropdown-title" href="/discover"><NavLink>Discover</NavLink></Link>
                     <ul className="dropdown-content">
-                      <li><Link href="/"><NavLink>Movies</NavLink></Link></li>
+                      <li><Link href="/discover"><NavLink>Movies</NavLink></Link></li>
                       <li><Link href="/"><NavLink>TV Shows</NavLink></Link></li>
                     </ul>
                   </li>

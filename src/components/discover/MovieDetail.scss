@@ -1,0 +1,36 @@
+.detail {
+  width: 1000px;
+  margin: 20px;
+  display: flex;
+  box-shadow: 5px 5px 5px #e5e5e8;
+  position: relative;
+  .image{
+    height: 400px;
+    width: 240px;
+  }
+  .information{
+    margin: 10px;
+    .title{
+      font-weight: 600px;
+      color: #000000
+    }
+    .secondRow{
+      display: flex;
+      .voteAverage{
+        position: absolute;
+        right: 0;
+        margin-right: 5px;
+        .star{
+          margin-left: 5px;
+        }
+      }
+      .releaseDate{
+        .calendar{
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+}
+

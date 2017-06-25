@@ -12,10 +12,13 @@ const Movie = (props) => {
     <div className="index">
       <div className="image avatar">
         <img src={path} alt={movie.original_title} />
+        <div className="overlay">
+          <div className="text">Hello World</div>
+        </div>
       </div>
       <div className="detail">
         <div>
-          <Link href={`/movie-detail?id=${movie.id}`} >
+          <Link href={`/discover/movie-detail?id=${movie.id}`} >
             <a className="title">
               <h5>{StringSolve.subTitle(25,movie.title)}</h5>
             </a>

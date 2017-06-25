@@ -31,10 +31,6 @@ const Master = (props) => (
           {props.children}
         </div>
       </div>
-<<<<<<< HEAD
-=======
-      <Footer></Footer>
->>>>>>> origin
     </div>
   </div>
 );

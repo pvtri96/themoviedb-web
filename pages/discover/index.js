@@ -17,7 +17,7 @@ class Index extends Component{
       <Master>
         <div>
           <div>
-            <DiscoverMovies> </DiscoverMovies>
+            <DiscoverMovies > </DiscoverMovies>
           </div>
         </div>
       </Master>

@@ -1,27 +1,32 @@
-import React from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../../src/containers/Master';
 import MovieDetail from '../../src/components/discover/MovieDetail';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../src/redux';
+import { getStore } from '../../src/redux';
+import {movieDetailActions} from '../../src/redux/discover/movieDetail';
 
-const Movie_Detail = props => {
-  return (
-    <Master>
-      <div>
+class Movie_Detail extends Component {
+  static async getInitialProps({store, query}) {
+    await store.dispatch(movieDetailActions.fetchMovieDetail(query.id));
+  }
+  render (){
+    return (
+      <Master>
         <div>
-          <MovieDetail id={props.url.query.id}>
-          </MovieDetail>
+          <div>
+            <MovieDetail/>
+          </div>
         </div>
-      </div>
-    </Master>
-  );
-};
+      </Master>
+    );
+  }
+}
 
 Movie_Detail.propTypes = {
 
 };
 
-export default withRedux(initStore)(Movie_Detail);
+export default withRedux(getStore)(Movie_Detail);
