@@ -4,6 +4,7 @@
 @import '../src/containers/header.scss';
 
 .body-content {
-  min-height: 592px;
+  min-height: 100vh;
+  padding-top: 200px;
 }
 

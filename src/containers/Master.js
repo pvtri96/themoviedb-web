@@ -21,17 +21,13 @@ const Master = (props) => (
     </Head>
     {/* End customize head tag*/}
     {/* Page body */}
-    <div>
-      <Header></Header>
-      {/* Import Local stylesheet */}
-      {/* Use some bootstrap css classes */}
-      <div className="body-content p-5">
-        <div className="container">
-          {props.children}
-        </div>
-      </div>
-      <Footer></Footer>
+    <Header></Header>
+    {/* Import Local stylesheet */}
+    {/* Use some bootstrap css classes */}
+    <div className="body-content">
+      {props.children}
     </div>
+    <Footer></Footer>
   </div>
 );
 

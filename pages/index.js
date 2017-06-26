@@ -7,7 +7,7 @@ import Master from '../src/containers/Master';
 const Index = props => {
   return (
     <Master>
-      <div>
+      <div className="container">
         <div>
           { process.env.APP_NAME }
         </div>
