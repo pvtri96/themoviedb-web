@@ -51,3 +51,29 @@ a {
   font-size: 1.3em;
   font-weight: 600;
 }
+
+.search-bar {
+  background-color: white;
+  height: 50px;
+  border-bottom: 1px solid #dedede;
+}
+.search {
+  padding: 0 50px;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  .fa-search {
+    align-items: center;
+    font-size: 1.3em;
+    color: #acacac;
+    &:hover {
+      color: black;
+      transition: all 0.0s;
+    }
+  }
+}
+
+.search-box {
+  border: none;
+  font-style: oblique;
+}

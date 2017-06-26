@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button, Popover, PopoverTitle, PopoverContent } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Link from 'next/link';
 // import stylesheet from './movie/Main.scss';
 //
@@ -27,7 +27,7 @@ class Header extends Component {
 
   render () {
     return (
-      <div>
+      <div className="fixed-top">
         <Navbar color="red" light toggleable inverse={true}>
           <NavbarToggler right onClick={this.toggle} />
           <Link href="/"><NavbarBrand className="logo">Reactstrap Navbar</NavbarBrand></Link>
@@ -83,6 +83,14 @@ class Header extends Component {
             </Nav>
           </Collapse>
         </Navbar>
+        <Form>
+          <FormGroup className="search-bar">
+            <div className="search d-flex">
+              <i className="fa fa-search d-flex" aria-hidden="true"></i>
+              <Input className="search-box" type="seach" name="seach" id="search" placeholder="Search for movie, tv show, person..."></Input>
+            </div>
+          </FormGroup>
+        </Form>
       </div>
     );
   }

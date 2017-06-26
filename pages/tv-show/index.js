@@ -10,9 +10,7 @@ import withRedux from 'next-redux-wrapper';
 const Index = () => {
   return (
     <Master>
-      <div>
-        <ListTVShows></ListTVShows>
-      </div>
+      <ListTVShows></ListTVShows>
     </Master>
   );
 };

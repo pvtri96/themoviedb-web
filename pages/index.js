@@ -10,11 +10,7 @@ import TVShows from '../src/components/list/ListTVShows';
 const Index = () => {
   return (
     <Master>
-      <div>
-        <div>
-          <TVShows></TVShows>
-        </div>
-      </div>
+      <TVShows></TVShows>
     </Master>
   );
 };

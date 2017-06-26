@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from './rootReducer';
 import { USERS_INITIAL_STATE, USERS_KEY } from './users';
 import { TVSHOWS_INITIAL_STATE, TVSHOWS_KEY } from './tvshows';
-import { DETAILS_INITIAL_STATE, DETAILS_KEY } from './details';
+import { DETAILS_INITIAL_STATE, DETAILS_KEY } from './detail';
 
 const INITIAL_STATE = {
   [USERS_KEY]: USERS_INITIAL_STATE,

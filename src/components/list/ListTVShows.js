@@ -19,7 +19,7 @@ class ListMovies extends Component {
 
   render() {
     return (
-      <div>
+      <div className="list container d-flex">
         {this.props.tvshows.map( tvshow => (
           <TVShows tvshow = {tvshow} key = {tvshow.id} />
         ))}
