@@ -15,24 +15,24 @@ class ContentHeader extends Component {
   }
 
   render() {
-    const movieDetail = this.props.movieDetail;
+    let detail = this.props.detail;
     // console.log(this.props.credits);
     let credits = this.props.credits;
     if(!credits)
       return (
         <div></div>
       );
-    const crew = moviesService.getCrewMovie(credits.crew, limitLengthCrew);
+    let crew = moviesService.getCrewMovie(credits.crew, limitLengthCrew);
 
     return (
       <div className="contentHeader d-flex">
         <div>
           <img src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
-          movieDetail.poster_path} alt={movieDetail.title} placeholder={movieDetail.title} />
+          detail.poster_path} alt={detail.title} placeholder={detail.title} />
         </div>
 
         <div className="info_movie">
-          <h1>{movieDetail.original_title} ({new Date(movieDetail.release_date).getFullYear()})</h1>
+          <h1>{detail.original_title} ({new Date(detail.release_date).getFullYear()})</h1>
 
           <div className="action d-flex">
             <div className="item">
@@ -81,7 +81,7 @@ class ContentHeader extends Component {
           <div>
             <h4>Overview</h4>
             <div>
-              {movieDetail.overview}
+              {detail.overview}
             </div>
             <br />
             <h4>Featured Crew</h4>
@@ -109,7 +109,7 @@ class ContentHeader extends Component {
 const mapStateToProps = (state) => {
   // console.log(state);
   return {
-    movieDetail: movieSelector(state).detail,
+    detail: movieSelector(state).detail,
     credits: movieSelector(state).credits,
   };
 };

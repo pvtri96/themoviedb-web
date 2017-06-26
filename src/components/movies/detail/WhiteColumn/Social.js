@@ -13,6 +13,10 @@ class Social extends Component {
 
   render(){
     let reviews = this.props.reviews;
+    if( !reviews)
+      return (<div></div>);
+    // if(reviews.length == 0 )
+    //   return (<div>We don't have any reviews for this movie. Would you like to write one?</div>);
     let review = moviesService.getRandomReview(reviews);
     return (
       <div>
@@ -24,29 +28,37 @@ class Social extends Component {
           </div>
         </div> {/* Social */}
 
-        <div className="grouped">
-          <div className="avatar">
-            <img width="100" src="https://football-board.de/img/default_user.jpg" alt="user image"/>
-          </div> {/* avatar */}
+        {reviews.length !== 0 ?
+          <div>
+            <div className="grouped">
+              <div className="avatar">
+                <img width="100" src="https://football-board.de/img/default_user.jpg" alt="user image"/>
+              </div> {/* avatar */}
 
-          <div className="info">
-            <h4>A review by {review.author}</h4>
-            <p><strong>By</strong> {review.author}</p>
-            <div >
-              <ReactMarkdown source={moviesService.reduceWordsText(review.content,105)} />
-              <Link href={review.url}>
-                <a className="link"><b>Read more</b></a>
-              </Link>
+              <div className="info">
+                <h4>A review by {review.author}</h4>
+                <p><strong>By</strong> {review.author}</p>
+                <div >
+                  <ReactMarkdown source={moviesService.reduceWordsText(review.content,105)} />
+                  <Link href={review.url}>
+                    <a className="link"><b>Read more</b></a>
+                  </Link>
+                </div>
+              </div>
             </div>
+            <Link href="#">
+              <a className="link"><h5>Read All Reviews</h5></a>
+            </Link>
+            <br/>
           </div>
-        </div> { /* grouded */}
-
-
-        <Link href="#">
-          <a className="link"><h5>Read All Reviews</h5></a>
-        </Link>
-        <br/>
+          :
+          <div>
+            <div className="no_review">We don't have any reviews for this movie. Would you like to write one?</div>
+          </div>
+        }
         <hr/>
+
+
       </div>
     );
   }

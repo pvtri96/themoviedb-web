@@ -59,15 +59,30 @@ export const getRandomReview = (reviews) => {
 
 export const getLimitVideos = (videos, limit) => {
   return videos.slice(0, limit);
-}
+};
 
 export const getLimitBackdrops = (backdrops, limit) => {
   return backdrops.slice(0, limit);
-}
+};
 
 export const getLimitPosters = (posters, limit) => {
   return posters.slice(0, limit);
-}
+};
+
+export const setMinutesToHours = (time) => {
+  const m = time % 60;
+  const h = (time - m) / 60;
+  return h + "h " + m + "m";
+};
+
+export const setTextMoney = m => {
+  let result = m.toLocaleString(
+    "en-US", // use a string like 'en-US' to override browser locale
+    { minimumFractionDigits: 2 }
+  );
+  return result;
+};
+
 
 export default {
   changeTextDate,
@@ -79,6 +94,8 @@ export default {
   getRandomReview,
   getLimitVideos,
   getLimitBackdrops,
-  getLimitPosters
+  getLimitPosters,
+  setMinutesToHours,
+  setTextMoney,
 
 };

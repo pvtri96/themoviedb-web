@@ -23,6 +23,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
       credits: action.credits,
       reviews: action.reviews,
       recommendations: action.recommendations,
+      releaseDates: action.releaseDates,
       fetchStatus: `Date fetch success ${(new Date()).toLocaleTimeString()}`
     };
 

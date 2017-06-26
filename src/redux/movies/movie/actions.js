@@ -2,10 +2,6 @@ import axios from 'axios'  ;
 
 import actionCreators from './actionCreators';
 
-// payload: detail,
-//   credits,
-//   reviews,
-//   recommendations
 
 export const fetchMovieDetail = (id) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
@@ -43,52 +39,27 @@ export const fetchMovieDetail = (id) => async (dispatch) => {
       .then(resp => resp.data.results);
       // get recommendations
 
-    return dispatch(actionCreators.movieDetailFetchFullfilled(detail, credits, reviews, recommendations));
+    const releaseDates = await axios.get(process.env.API_URL + 'movie/' + id + '/release_dates', {
+      params: {
+        api_key: process.env.API_KEY
+      }
+    })
+      .then(resp => resp.data.results)
+      .then(temp => temp.filter(t => t.iso_3166_1 === "US" ))
+      .then(temp => temp[0].release_dates);
+
+      // get recommendations
+
+
+    return dispatch(actionCreators.movieDetailFetchFullfilled(detail, credits,
+      reviews, recommendations, releaseDates));
   } catch(error) {
     return dispatch(actionCreators.movieDetailFetchRejected(error));
   }
 };
 
-export const fetchMovieCredits = (id) => async (dispatch) => {
-  dispatch(actionCreators.movieDetailFetchRequested());
-  const credits = await axios.get(process.env.API_URL + 'movie/' + id + '/credits', {
-    params: {
-      api_key: process.env.API_KEY
-    }
-  })
-    .then(resp => resp.data);
-    // get credits
-  return dispatch(actionCreators.movieDetailFetchFullfilled([], credits, [], [] ));
-};
-
-export const fetchMovieReviews = (id) => async (dispatch) => {
-  dispatch(actionCreators.movieDetailFetchRequested());
-  const reviews = await axios.get(process.env.API_URL + 'movie/' + id + '/reviews', {
-    params: {
-      api_key: process.env.API_KEY
-    }
-  })
-    .then(resp => resp.data.results);
-    // get reviews
-  return dispatch(actionCreators.movieDetailFetchFullfilled([], [], reviews, []));
-};
-
-export const fetchMovieRecommendations = (id) => async (dispatch) => {
-  dispatch(actionCreators.movieDetailFetchRequested());
-  const recommendations = await axios.get(process.env.API_URL + 'movie/' + id + '/recommendations', {
-    params: {
-      api_key: process.env.API_KEY
-    }
-  })
-    .then(resp => resp.data.results);
-    // get recommendations
-  return dispatch(actionCreators.movieDetailFetchFullfilled([], [], [], recommendations));
-};
 
 
 export default {
-  fetchMovieDetail,
-  fetchMovieCredits,
-  fetchMovieReviews,
-  fetchMovieRecommendations
-};
+  fetchMovieDetail
+}

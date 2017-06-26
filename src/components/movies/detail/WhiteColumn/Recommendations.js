@@ -16,13 +16,16 @@ class Recommendations extends Component {
   }
 
   render(){
-    let recommendations = this.props.recommendations.slice(0,lengthLimitRecommendations);
+    let recommendations = this.props.recommendations;
+    if(!recommendations)
+      return(<div></div>);
+    let recommendationsLimit = recommendations.slice(0,lengthLimitRecommendations);
     return (
       <div >
         <h4>Recommendations</h4>
 
         <div className="recommendations">
-          {recommendations.map(item => (
+          {recommendationsLimit.map(item => (
             <div className="recommendations_item"  key={item.id}>
               <img  src={process.env.MOVIE_IMG_URL + 'w250_and_h141_bestv2' +
               item.backdrop_path} alt={item.title} placeholder={item.title} />

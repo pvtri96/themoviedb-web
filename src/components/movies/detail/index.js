@@ -3,12 +3,16 @@ import React , { Component }from 'react';
 import PropTypes        from 'prop-types';
 import { connect } from 'react-redux';
 import { movieSelector } from '../../../redux/movies/movie';
-import stylesheet from './MovieDetail.scss';
+import header from './css/header.scss';
+import contentHeader from './css/contentHeader.scss';
+import contentWrapper from './css/contentWrapper.scss';
+import greyColumn from './css/greyColumn.scss';
+import whiteColumn from './css/whiteColumn.scss';
 
 import ContentHeader from './ContentHeader';
 import ContentWrapper from './ContentWrapper';
 import WhiteColumn from './WhiteColumn';
-import { movieActions } from '../../../redux/movies/movie';
+import GreyColumn from './GreyColumn';
 
 
 
@@ -33,29 +37,32 @@ class MovieDetailShowing extends Component
 
   render()
   {
-    let movieDetail = this.props.movieDetail;
+    let detail = this.props.detail;
 
     return (
       <div >
-        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        <div className="header" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + movieDetail.backdrop_path}) `}}>
+        <style dangerouslySetInnerHTML={{ __html: header }} />
+
+        <div className="header" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
 
+        <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
         <ContentHeader />
         {/* contentHeader */}
 
+        <style dangerouslySetInnerHTML={{ __html: contentWrapper }} />
         <ContentWrapper />
         {/* content_wrapper */}
 
-        <div className="column_wrapper" >
+        <div className="column_wrapper d-flex" >
 
+          <style dangerouslySetInnerHTML={{ __html: whiteColumn }} />
           <WhiteColumn />
           {/* white_column  */}
 
-          <div className="grey_column">
-            grey
-          </div>
+          <style dangerouslySetInnerHTML={{ __html: greyColumn }} />
+          <GreyColumn />
         </div> {/* column_wrapper */}
 
 
@@ -68,7 +75,7 @@ class MovieDetailShowing extends Component
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    movieDetail: movieSelector(state).detail,
+    detail: movieSelector(state).detail,
   };
 };
 

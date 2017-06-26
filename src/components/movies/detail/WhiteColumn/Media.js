@@ -10,7 +10,7 @@ const limitLengthBackdrops = 5;
 const limitLengthPosters = 7;
 
 
-const MediaShowing = (i, movieDetail,videos,backdrops,posters) => {
+const MediaShowing = (i, detail,videos,backdrops,posters) => {
   const videosLimit = videos.slice(0, limitLengthVideos);
   const backdropsLimit = backdrops.slice(0,limitLengthBackdrops);
   const postersLimit = posters.slice(0,limitLengthPosters);
@@ -28,12 +28,12 @@ const MediaShowing = (i, movieDetail,videos,backdrops,posters) => {
 
         <div className="backdrop">
           <img src={process.env.MOVIE_IMG_URL + 'w533_and_h300_bestv2' +
-          movieDetail.backdrop_path} alt={movieDetail.title} placeholder={movieDetail.title} />
+          detail.backdrop_path} alt={detail.title} placeholder={detail.title} />
         </div>
 
         <div className="poster">
           <img src={process.env.MOVIE_IMG_URL + 'w200_and_h300_bestv2' +
-          movieDetail.poster_path} alt={movieDetail.title} placeholder={movieDetail.title} />
+          detail.poster_path} alt={detail.title} placeholder={detail.title} />
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ const MediaShowing = (i, movieDetail,videos,backdrops,posters) => {
     const backdropShowing = backdropsLimit.map(backdrop => (
       <div key={backdrop.file_path} className="backdrop">
         <img src={process.env.MOVIE_IMG_URL + 'w533_and_h300_bestv2' +
-        backdrop.file_path} alt={movieDetail.title} placeholder={movieDetail.title} />
+        backdrop.file_path} alt={detail.title} placeholder={detail.title} />
       </div>
     ));
 
@@ -73,7 +73,7 @@ const MediaShowing = (i, movieDetail,videos,backdrops,posters) => {
     const posterShowing = postersLimit.map(poster => (
       <div key={poster.file_path} className="poster">
         <img src={process.env.MOVIE_IMG_URL + 'w200_and_h300_bestv2' +
-        poster.file_path} alt={movieDetail.title} placeholder={movieDetail.title} />
+        poster.file_path} alt={detail.title} placeholder={detail.title} />
       </div>
     ));
 
@@ -123,9 +123,12 @@ class Media extends Component {
   }
 
   render(){
-    let movieDetail = this.props.movieDetail;
-    let videos = this.props.movieDetail.videos.results;
-    let images = this.props.movieDetail.images;
+    let detail = this.props.detail;
+
+    if(!detail.videos)
+      return (<div></div>);
+    let videos = this.props.detail.videos.results;
+    let images = this.props.detail.images;
     let backdrops = images.backdrops;
     let mediaIndex = this.state.mediaIndex;
     // let limitBackdrops = moviesService.getLimitBackdrops(backdrops, )
@@ -152,7 +155,8 @@ class Media extends Component {
 
 
 
-        {MediaShowing(mediaIndex, movieDetail,videos,backdrops,posters) }
+        {MediaShowing(mediaIndex, detail,videos,backdrops,posters) }
+        <br />
         <hr/>
       </div>
     );
@@ -161,7 +165,7 @@ class Media extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movieDetail: movieSelector(state).detail
+    detail: movieSelector(state).detail
 
   };
 };
