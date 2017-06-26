@@ -36,7 +36,7 @@ body {
   left: 0;
   background-color: rgba(255,255,255,0.9);
   transition: .5s ease;
-  width: 84%;
+  width: 80%;
   height: 35px;
 
   p{
@@ -71,6 +71,13 @@ body {
 }
 
 //person-detail
+.text_biogrh{
+  color: white;
+  p {
+    font-size: 18px;
+    padding-right: 18px;
+  }
+}
 .per_inf{
   background-color: white;
   .inf{
@@ -80,7 +87,19 @@ body {
 .right{
   float: right;
 }
-
+.official_site {
+  a{
+    color: #33ff77;
+  }
+  a:visit {
+    color: green;
+    text-decoration: none;
+  }
+  a:hover {
+    color: green;
+    text-decoration: none;
+  }
+}
 //modal
 .modal_biogr {
   max-width: 80%;
@@ -89,7 +108,7 @@ body {
   }
 }
 .md_readmore a{
-  color: green;
+  color: #00d573;
   a:visit {
     color: green;
   }
@@ -127,12 +146,14 @@ body {
 //know_for
 .content{
   h4{
-    padding: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .know_for_img{
-    width: 150px;
-    height: 200px;
-    border: 1px solid white;
+    width: 200px;
+    height: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
   }
   .btn_group{
@@ -146,3 +167,30 @@ body {
     padding-bottom: 5px;
   }
 }
+
+//per_movies
+.per_movies_content{
+  width: 80%;
+  .tb_movies{
+    border-collapse: separate;
+    padding: 6px 0 0 0;
+    margin-bottom: 0rem;
+    .tb_year{
+      width: 30px;
+      font-weight: bold;
+      vertical-align: top;
+    }
+    .tb_view{
+      padding-top:10px;
+      color: #ccc;
+      width: 30px;
+    }
+    .tb_view:hover{
+      color: #00b33c;
+    }
+    td{
+      padding: 8px 20px 8px 20px;
+    }
+  }
+}
+

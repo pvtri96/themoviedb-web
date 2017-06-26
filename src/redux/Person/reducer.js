@@ -6,6 +6,7 @@ export const INITIAL_STATE = {
   person: {},
   know_for:{},
   externalIds:{},
+  tagged_images:{},
   fetchStatus:''
 };
 
@@ -24,7 +25,8 @@ export default (state = INITIAL_STATE, action)=>{
       fetchStatus: `Results from ${(new Date()).toLocaleString()}`,
       person:action.payload,
       know_for: action.know_for,
-      externalIds: action.externalIds
+      externalIds: action.externalIds,
+      tagged_images: action.tagged_images,
     };
   case actionTypes.PERSON_FETCH_REJECTED:
     return {

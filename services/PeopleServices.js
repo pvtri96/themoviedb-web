@@ -32,6 +32,16 @@ class PeopleService {
     }
     return text;
   }
+  static reduceYear (text, limit) {
+    let words= text.split('-');
+    let arr=[];
+    if(words.length > limit){
+      arr = text.split('-', limit);
+      return arr.join(" ");
+    }
+    return text;
+  }
+
   static concatString (arr) {
     let str = '';
     for(let i=0; i<arr.length; i++) {
