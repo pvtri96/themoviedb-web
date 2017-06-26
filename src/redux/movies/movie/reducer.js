@@ -22,7 +22,6 @@ const Reducer = (state = INITIAL_STATE, action) => {
       detail: action.payload,
       credits: action.credits,
       reviews: action.reviews,
-      videos: action.videos,
       recommendations: action.recommendations,
       fetchStatus: `Date fetch success ${(new Date()).toLocaleTimeString()}`
     };

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {
-  Tooltip
 } from 'reactstrap';
 import Link from 'next/link';
 import FontAwesome from 'react-fontawesome';
 import stylesheet from './Movie.scss';
-import MoviesService from '../../services/movies/moviesService';
+import MoviesService from '../../services/movies';
 
 
 

@@ -9,7 +9,7 @@ import {
 
 import Movie from './Movie';
 import {  movieListSelector } from '../../redux/movies/movieList';
-import { getGenresMovie } from '../../services/movies/moviesService';
+import { getGenresMovie } from '../../services/movies';
 
 
 class MoviesList extends Component {

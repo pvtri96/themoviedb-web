@@ -38,6 +38,10 @@ export const getCrewMovie = (crew, limit) => {
   crew.map(item => {
 
     if(jobs.includes(item.job)){
+      temp.map(sub_item => {
+        if(item.id === sub_item.id)
+          sub_item.job += ', ' + item.job;
+      });
       temp.push(item);
     }
 
@@ -53,7 +57,17 @@ export const getRandomReview = (reviews) => {
   return reviews[Math.floor(Math.random() * reviews.length)];
 };
 
+export const getLimitVideos = (videos, limit) => {
+  return videos.slice(0, limit);
+}
 
+export const getLimitBackdrops = (backdrops, limit) => {
+  return backdrops.slice(0, limit);
+}
+
+export const getLimitPosters = (posters, limit) => {
+  return posters.slice(0, limit);
+}
 
 export default {
   changeTextDate,
@@ -63,6 +77,8 @@ export default {
   getCrewMovie,
   getTopBilledCast,
   getRandomReview,
-
+  getLimitVideos,
+  getLimitBackdrops,
+  getLimitPosters
 
 };
