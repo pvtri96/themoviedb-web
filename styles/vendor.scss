@@ -2,8 +2,9 @@
 @import 'bootstrap/scss/bootstrap';
 @import '../src/containers/footer.scss';
 @import '../src/containers/header.scss';
-@import '../src/components/list/tvshows.scss';
+@import '../src/components/tvshowsViews/posterCard/vendor.scss';
 @import '../src/components/details/details.scss';
+@import '../src/components/tvshowsViews/vendor.scss';
 
 .media {
   background-color: #F2F2F2;

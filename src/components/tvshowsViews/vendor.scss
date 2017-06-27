@@ -1,0 +1,26 @@
+.list {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px 50px 0 !important;
+}
+
+.dropdown {
+  margin-left: auto;
+  padding-right: 60px;
+}
+
+.dropdown-menu {
+  left: auto;
+  right: 60px;
+  padding: 0;
+
+  .dropdown-item {
+    &:active {
+      background-color: white;
+      color: black;
+    }
+  }
+}
+.bar {
+  margin-top: 50px;
+}

@@ -5,7 +5,7 @@ import Master from '../src/containers/Master';
 // import ListMovies from '../src/components/list/ListMovies';
 import {getStore} from '../src/redux';
 import withRedux from 'next-redux-wrapper';
-import TVShows from '../src/components/list/ListTVShows';
+import TVShows from '../src/components/tvshowsViews/list';
 
 const Index = () => {
   return (

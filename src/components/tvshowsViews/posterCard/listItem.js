@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import SubString  from '../../service/subString';
+import SubString  from '../../../service/subString';
 
 const TVShows = (props) => {
   let tvshow = props.tvshow;
