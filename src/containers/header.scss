@@ -4,13 +4,14 @@
 }
 
 .logo {
-  color: $logo-color !important;
-  font-size: $font-size-large;
-  font-weight: 600;
+  img {
+    height: 90px;
+  }
 }
 
 .dropdown{
-  padding-left: 20px;
+  padding-left: 0;
+  padding-right: 10px;
 }
 
 .dropdown-content {
@@ -27,9 +28,8 @@
       position: absolute;
       .nav-link {
         padding: 5px 0;
-        min-width: 130px;
-        font-size: 1em;
-        text-align: center;
+        min-width: 90px;
+        font-size: 0.8em;
       }
     }
   }
@@ -48,7 +48,7 @@ a {
 
 .nav-link {
   padding: 0;
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: 600;
 }
 
@@ -76,4 +76,13 @@ a {
 .search-box {
   border: none;
   font-style: oblique;
+}
+
+.header {
+  background-color: $navbar-bg;
+  height: 170px;
+}
+
+.navigation {
+  width: 1000px;
 }

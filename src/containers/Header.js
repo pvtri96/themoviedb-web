@@ -27,10 +27,10 @@ class Header extends Component {
 
   render () {
     return (
-      <div className="fixed-top">
-        <Navbar color="red" light toggleable inverse={true}>
+      <div className="header fixed-top">
+        <Navbar className="navigation container" color="red" light toggleable inverse={true}>
           <NavbarToggler right onClick={this.toggle} />
-          <Link href="/"><NavbarBrand className="logo">Reactstrap Navbar</NavbarBrand></Link>
+          <Link href="/"><NavbarBrand className="logo"><img src="../../static/image/themoviedb-logo.png"></img></NavbarBrand></Link>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="" navbar>
               <NavItem>
