@@ -24,6 +24,7 @@ class MoviesList extends Component {
   }
 
 
+
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -35,6 +36,7 @@ class MoviesList extends Component {
   render() {
     return (
       <div >
+
         <Row style={{ marginBottom: '20px'}}>
           <Col>
             <Dropdown style={{float: 'right'}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>

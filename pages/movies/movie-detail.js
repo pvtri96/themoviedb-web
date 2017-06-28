@@ -6,6 +6,7 @@ import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
 import { movieActions } from '../../src/redux/movies/movie';
 import PropTypes from 'prop-types';
+import Spinner from '../../src/components/Spinner';
 
 let isReload = true;
 class Index extends Component {
@@ -17,9 +18,18 @@ class Index extends Component {
       await store.dispatch(movieActions.fetchMovieDetail(query.id));
       isReload = false;
     }
-
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  componentWillMount() {
+    setTimeout(() => this.setState({ isLoading: false }), 2000);
+  }
 
   componentDidMount() {
     console.log(isReload);
@@ -31,6 +41,13 @@ class Index extends Component {
   }
 
   render(){
+    if(this.state.isLoading) {
+      return (
+        <Master>
+          <Spinner />
+        </Master>
+      );
+    }
     return (
       <Master>
         <div>

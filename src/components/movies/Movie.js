@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import {
 } from 'reactstrap';
 import Link from 'next/link';
-import FontAwesome from 'react-fontawesome';
 import stylesheet from './Movie.scss';
 import MoviesService from '../../services/movies';
+import FontAwesome from 'react-fontawesome';
 
 
 
 const lengthTitle = 5;
 const lengthOverview = 25;
+
+
 
 
 class Movie extends Component  {
@@ -18,9 +20,12 @@ class Movie extends Component  {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      tooltipOpen: false
+      tooltipOpen: false,
     };
+
   }
+
+
 
   toggle() {
     this.setState({
@@ -54,11 +59,11 @@ class Movie extends Component  {
         <div className="content-movie">
           <div className="img">
             <Link href={`/movies/movie-detail?id=${movie.id}`}>
-              <a>
-                <img src={process.env.MOVIE_IMG_URL + 'w185_and_h278_bestv2' +
+              <a >
+                <img  src={process.env.MOVIE_IMG_URL + 'w185_and_h278_bestv2' +
                 movie.poster_path} alt={movie.title} placeholder={movie.title} />
 
-                <div  className="meta">
+                <div className="meta">
                   <span onMouseOver={this.toggle} onMouseLeave={this.toggle}>
                     <FontAwesome
                       name="heartbeat"
@@ -75,11 +80,9 @@ class Movie extends Component  {
           <div className="content">
             <div className="info" >
               <div className="title">
-                <Link href={`/movies/movie-detail?id=${movie.id}`}>
-                  <a className="link_title">
-                    {MoviesService.reduceWordsText(movie.title,lengthTitle)}
-                  </a>
-                </Link>
+                <a href={`/movies/movie-detail?id=${movie.id}`} className="link_title">
+                  {MoviesService.reduceWordsText(movie.title,lengthTitle)}
+                </a>
 
                 <span style={{float:'right'}}>
                   {movie.vote_average.toFixed(1)} 	{' '}
