@@ -67,12 +67,13 @@ class MoviesList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("movie List");
   console.log(state);
   return {
     list : movieListSelector(state).list,
     genres: movieListSelector(state).genres
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
 

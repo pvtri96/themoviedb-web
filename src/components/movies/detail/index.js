@@ -1,9 +1,6 @@
 import React , { Component }from 'react';
 
 import PropTypes        from 'prop-types';
-import { connect } from 'react-redux';
-import { movieSelector } from '../../../redux/movies/movie';
-import header from './css/header.scss';
 import contentHeader from './css/contentHeader.scss';
 import contentWrapper from './css/contentWrapper.scss';
 import greyColumn from './css/greyColumn.scss';
@@ -27,25 +24,12 @@ import GreyColumn from './GreyColumn';
 
 class MovieDetailShowing extends Component
 {
-  constructor(props)
-  {
-    super(props);
-
-  }
-
-
 
   render()
   {
-    let detail = this.props.detail;
-
     return (
       <div >
-        <style dangerouslySetInnerHTML={{ __html: header }} />
 
-        <div className="header" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
-
-        </div>
 
         <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
         <ContentHeader />
@@ -72,16 +56,6 @@ class MovieDetailShowing extends Component
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    detail: movieSelector(state).detail,
-  };
-};
 
 
-MovieDetailShowing.propTypes = {
-  movieDetail: PropTypes.object
-};
-
-export default connect(mapStateToProps, undefined)(MovieDetailShowing);
+export default MovieDetailShowing;

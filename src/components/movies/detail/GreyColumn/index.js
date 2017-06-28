@@ -3,7 +3,7 @@ import Fontawesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 import { movieSelector } from '../../../../redux/movies/movie';
 import moviesService from '../../../../services/movies';
-
+import { movieListSelector } from '../../../../redux/movies/movieList';
 
 const getTypeReleaseDates = i => {
   switch(i) {
@@ -32,9 +32,24 @@ const limitLengthTextHomepage = 40;
 class Index extends Component {
 
 
+  constructor(props) {
+    super(props);
+  }
+
+  // componentWillMount (){
+  //   this.setState({
+  //     genres: this.props.genres
+  //   });
+  // }
+
+
   render() {
     let detail = this.props.detail;
     let releaseDates = this.props.releaseDates;
+    // let genres = this.state.genres;
+    // console.log(genres);
+    if(!detail || !releaseDates)
+      return (<div></div>);
     return (
       <div className="grey_column">
         <div className="d-flex ">
@@ -107,16 +122,32 @@ class Index extends Component {
             {moviesService.reducerLengthText(detail.homepage, limitLengthTextHomepage)}
           </a>
         </div> {/* Revenue */}
+
+        <div className="genres">
+
+        </div>
       </div>
     );
   }
 
-};
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // return a boolean value
+  //   console.log("next state");
+  //   console.log(nextState);
+  //   return true;
+  // }
+
+  // componentDidUpdate(prevProps, prevState){
+  //   console.log("prev state");
+  //   console.log(prevState);
+  // }
+
+}
 
 const mapStateToProps = state => {
   return {
     detail: movieSelector(state).detail,
-    releaseDates: movieSelector(state).releaseDates
+    releaseDates: movieSelector(state).releaseDates,
 
   };
 };
