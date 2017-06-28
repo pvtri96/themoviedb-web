@@ -8,29 +8,25 @@ import { movieActions } from '../../src/redux/movies/movie';
 import PropTypes from 'prop-types';
 
 let isReload = true;
-
 class Index extends Component {
 
   static async getInitialProps({ isServer, store, query }) {
-    isReload = true;
-    if(!isServer) {
-      let genres = store.getState().movies.genres;
-      await store.dispatch(movieActions.fetchMovieDetail(query.id,genres));
+    // isReload = true;
+    if(!isServer)
+    {
+      await store.dispatch(movieActions.fetchMovieDetail(query.id));
       isReload = false;
+    }
 
-    } // chua reload , luc moi vao thi de genres cua movie list
   }
 
 
   componentDidMount() {
     console.log(isReload);
 
-    // khi F5 render lai thi isReload = true
-    // get movide detail reload
-
     if(isReload)
     {
-      this.props.fetchMovieDetailReload(this.props.url.query.id);
+      this.props.fetchMovieDetail(this.props.url.query.id);
     }
   }
 
@@ -53,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieDetailReload : (id) => dispatch(movieActions.fetchMovieDetailReload(id))
+    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id))
   };
 };
 

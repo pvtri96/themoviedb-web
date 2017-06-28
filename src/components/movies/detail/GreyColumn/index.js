@@ -3,7 +3,6 @@ import Fontawesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 import { movieSelector } from '../../../../redux/movies/movie';
 import moviesService from '../../../../services/movies';
-import { movieListSelector } from '../../../../redux/movies/movieList';
 
 const getTypeReleaseDates = i => {
   switch(i) {
@@ -46,10 +45,10 @@ class Index extends Component {
   render() {
     let detail = this.props.detail;
     let releaseDates = this.props.releaseDates;
-    // let genres = this.state.genres;
-    // console.log(genres);
-    if(!detail || !releaseDates)
+    let keywords = this.props.keywords;
+    if(!detail || !releaseDates || !keywords )
       return (<div></div>);
+
     return (
       <div className="grey_column">
         <div className="d-flex ">
@@ -113,34 +112,51 @@ class Index extends Component {
 
         <div className="title">Revenue </div>
         <div className="content">
-          ${moviesService.setTextMoney(detail.revenue) }
+          {detail.revenue ?
+            `$ ${moviesService.setTextMoney(detail.revenue)}`  :
+            "-"
+          }
         </div> {/* Revenue */}
 
         <div className="title">Homepage </div>
         <div className="content">
-          <a href={detail.homepage} target="_blank">
-            {moviesService.reducerLengthText(detail.homepage, limitLengthTextHomepage)}
-          </a>
-        </div> {/* Revenue */}
+          {detail.homepage ?
+            <a href={detail.homepage} target="_blank">
+              {moviesService.reducerLengthText(detail.homepage, limitLengthTextHomepage)}
+            </a> :
+            "-"
+          }
+        </div> {/* Homepage */}
 
-        <div className="genres">
 
+        <div className="title">Genres </div>
+        <div className="content">
+          {detail.genres.map(genre => (
+            <div className="genre_item" key={genre.id}>
+              {genre.name}
+            </div>
+          ))}
+        </div> {/* Genres */}
+
+        <div className="title">Keywords </div>
+        <div className="content">
+          {keywords.map(keyword => (
+            <div className="keyword_item" key={keyword.id}>
+              {keyword.name}
+            </div>
+          ))}
+        </div> {/* Keywords */}
+
+        <div className="title">
+          <br />
+          <hr />
         </div>
+
+
+
       </div>
     );
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // return a boolean value
-  //   console.log("next state");
-  //   console.log(nextState);
-  //   return true;
-  // }
-
-  // componentDidUpdate(prevProps, prevState){
-  //   console.log("prev state");
-  //   console.log(prevState);
-  // }
 
 }
 
@@ -148,7 +164,8 @@ const mapStateToProps = state => {
   return {
     detail: movieSelector(state).detail,
     releaseDates: movieSelector(state).releaseDates,
-
+    genres: movieSelector(state).genres,
+    keywords: movieSelector(state).keywords
   };
 };
 

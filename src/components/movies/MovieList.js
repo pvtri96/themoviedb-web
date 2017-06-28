@@ -56,7 +56,7 @@ class MoviesList extends Component {
         <Row >
           {this.props.list.map(movie => (
             <Col md="6" xs="12" key={movie.id}>
-              <Movie movie={movie} genres={getGenresMovie(movie.genre_ids, this.props.genres)} detail={this.props.detail}/>
+              <Movie movie={movie} genres={getGenresMovie(movie.genre_ids, this.props.genres)} />
             </Col>
           ))
           }
