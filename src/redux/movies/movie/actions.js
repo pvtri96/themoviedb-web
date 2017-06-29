@@ -3,7 +3,7 @@ import axios from 'axios'  ;
 import actionCreators from './actionCreators';
 
 
-export const fetchMovieDetail = (id) => async (dispatch) => {
+export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
   try {
     const detail = await axios.get(process.env.API_URL + 'movie/' + id, {
@@ -57,7 +57,7 @@ export const fetchMovieDetail = (id) => async (dispatch) => {
     })
       .then(resp => resp.data.keywords);
     return dispatch(actionCreators.movieDetailFetchFullfilled(detail, credits,
-      reviews, recommendations, releaseDates, keywords));
+      reviews, recommendations, releaseDates, keywords, isServer));
 
 
   } catch(error) {

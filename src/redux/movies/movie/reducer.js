@@ -25,7 +25,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
       recommendations: action.recommendations,
       releaseDates: action.releaseDates,
       keywords: action.keywords,
-      fetchStatus: `Date fetch success ${(new Date()).toLocaleTimeString()}`
+      fetchStatus: `Date fetch success isServer: ${action.isServer} ${(new Date()).toLocaleTimeString()}`
     };
 
   case actionTypes.MOVIE_DETAIL_FETCH_REJECTED :

@@ -12,12 +12,18 @@ let isReload = true;
 class Index extends Component {
 
   static async getInitialProps({ isServer, store, query }) {
-    // isReload = true;
-    if(!isServer)
-    {
-      await store.dispatch(movieActions.fetchMovieDetail(query.id));
+    // isReload = false;
+    if(!isServer){
       isReload = false;
     }
+
+    if(isServer)
+    {
+      await store.dispatch(movieActions.fetchMovieDetail(query.id, true));
+      console.log("isServer ");
+
+    }
+
   }
 
   constructor(props) {
@@ -28,15 +34,16 @@ class Index extends Component {
   }
 
   componentWillMount() {
-    setTimeout(() => this.setState({ isLoading: false }), 2000);
+
   }
 
   componentDidMount() {
     console.log(isReload);
-
-    if(isReload)
+    setTimeout(() => this.setState({ isLoading: false }), 2000);
+    if(!isReload)
     {
-      this.props.fetchMovieDetail(this.props.url.query.id);
+      console.log("Did mount");
+      this.props.fetchMovieDetail(this.props.url.query.id, false);
     }
   }
 
