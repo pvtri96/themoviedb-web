@@ -4,16 +4,16 @@ export const movieDetailFetchRequested = () => ({
   type: actionTypes.MOVIE_DETAIL_FETCH_REQUESTED
 });
 
-export const movieDetailFetchFullfilled = (detail, credits, reviews,
-  recommendations, releaseDates, keywords, isServer) => ({
+export const movieDetailFetchFullfilled = (detail, crew, cast, reviews,
+  recommendations, releaseDates, keywords) => ({
   type: actionTypes.MOVIE_DETAIL_FETCH_FULLFILLED,
   payload: detail,
-  credits,
+  crew,
+  cast,
   reviews,
   recommendations,
   releaseDates,
   keywords,
-  isServer
 });
 
 

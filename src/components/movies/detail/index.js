@@ -12,16 +12,6 @@ import WhiteColumn from './WhiteColumn';
 import GreyColumn from './GreyColumn';
 
 
-
-// <div>
-//   <div className="rating">
-//     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-//   </div>
-// </div>
-
-
-
-
 class MovieDetailShowing extends Component
 {
 
@@ -29,7 +19,6 @@ class MovieDetailShowing extends Component
   {
     return (
       <div >
-
 
         <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
         <ContentHeader />

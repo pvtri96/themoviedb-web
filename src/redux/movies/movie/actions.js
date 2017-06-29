@@ -2,8 +2,27 @@ import axios from 'axios'  ;
 
 import actionCreators from './actionCreators';
 
+export const fetchMovieSR = (id) => async (dispatch) => {
+  dispatch(actionCreators.movieDetailFetchRequested());
+  try {
+    const detail = await axios.get(process.env.API_URL + 'movie/' + id, {
+      params: {
+        api_key: process.env.API_KEY,
+        append_to_response: "videos,images"
+      }
+    })
+      .then(resp => resp.data);
+      //get detail
 
-export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
+
+    return dispatch(actionCreators.movieDetailFetchFullfilled(detail));
+
+  } catch(error) {
+    return dispatch(actionCreators.movieDetailFetchRejected(error));
+  }
+}
+
+export const fetchMovieDetail = (id) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
   try {
     const detail = await axios.get(process.env.API_URL + 'movie/' + id, {
@@ -22,6 +41,10 @@ export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
     })
       .then(resp => resp.data);
       // get credits
+
+    const crew = credits.crew;
+
+    const cast = credits.cast;
 
     const reviews = await axios.get(process.env.API_URL + 'movie/' + id + '/reviews', {
       params: {
@@ -56,9 +79,8 @@ export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
       }
     })
       .then(resp => resp.data.keywords);
-      console.log(isServer);
-    return dispatch(actionCreators.movieDetailFetchFullfilled(detail, credits,
-      reviews, recommendations, releaseDates, keywords, isServer));
+    return dispatch(actionCreators.movieDetailFetchFullfilled(detail, crew, cast,
+      reviews, recommendations, releaseDates, keywords));
 
 
   } catch(error) {
@@ -72,4 +94,5 @@ export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
 
 export default {
   fetchMovieDetail,
+  fetchMovieSR
 };

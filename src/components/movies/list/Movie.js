@@ -3,9 +3,9 @@ import {
 } from 'reactstrap';
 import Link from 'next/link';
 import stylesheet from './Movie.scss';
-import MoviesService from '../../services/movies';
+import moviesService from '../../../services/movies';
 import FontAwesome from 'react-fontawesome';
-
+import Genres from './Genres';
 
 
 const lengthTitle = 5;
@@ -14,7 +14,7 @@ const lengthOverview = 25;
 
 
 
-class Movie extends Component  {
+class Index extends Component  {
   constructor(props) {
     super(props);
 
@@ -25,8 +25,6 @@ class Movie extends Component  {
 
   }
 
-
-
   toggle() {
     this.setState({
       tooltipOpen: !this.state.tooltipOpen
@@ -35,9 +33,8 @@ class Movie extends Component  {
 
   render() {
     let movie = this.props.movie;
-    let genres = this.props.genres;
-    return (
 
+    return (
       <div>
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
@@ -80,9 +77,9 @@ class Movie extends Component  {
           <div className="content">
             <div className="info" >
               <div className="title">
-                <Link prefetch href={`/movies/movie-detail?id=${movie.id}`}>
+                <Link href={`/movies/movie-detail?id=${movie.id}`}>
                   <a className="link_title">
-                    {MoviesService.reduceWordsText(movie.title,lengthTitle)}
+                    {moviesService.reduceWordsText(movie.title,lengthTitle)}
                   </a>
                 </Link>
 
@@ -99,14 +96,12 @@ class Movie extends Component  {
                   name="calendar"
                 /> 	&nbsp;
                 {new Date(movie.release_date).getFullYear()}
+                <Genres genre_ids={movie.genre_ids} />
 
-                <span className="genres">
-                  <i>{MoviesService.reducerLengthText(genres, 35)}</i>
-                </span>
               </div>
 
               <div className="overview">
-                {MoviesService.reduceWordsText(movie.overview,lengthOverview)}
+                {moviesService.reduceWordsText(movie.overview,lengthOverview)}
               </div>
             </div>
 
@@ -126,4 +121,6 @@ class Movie extends Component  {
   }
 }
 
-export default Movie;
+
+
+export default Index;

@@ -13,10 +13,10 @@ class TopBilledCast extends Component {
   }
 
   render() {
-    let credits = this.props.credits;
-    if( !credits )
+    let cast = this.props.cast;
+    if( !cast )
       return (<div></div>);
-    let topBilledCast = moviesService.getTopBilledCast(credits.cast, limitLengthTopBilledCast);
+    let topBilledCast = moviesService.getTopBilledCast(cast, limitLengthTopBilledCast);
 
     return (
       <div>
@@ -50,7 +50,7 @@ class TopBilledCast extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    credits: movieSelector(state).credits
+    cast: movieSelector(state).cast
 
   };
 };

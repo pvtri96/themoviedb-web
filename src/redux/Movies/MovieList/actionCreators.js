@@ -7,7 +7,7 @@ export const moviesFetchRequested = () => ({
 export const moviesFetchFullfilled = (movies, genres) => ({
   type: actionTypes.MOVIES_FETCH_FULLFILLED,
   payload: movies,
-  genres: genres
+  genres,
 });
 
 export const moviesFetchRejected = (err) => ({
@@ -15,8 +15,6 @@ export const moviesFetchRejected = (err) => ({
   payload: err,
   error: true
 });
-
-
 
 
 export default {

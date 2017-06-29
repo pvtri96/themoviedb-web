@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import FontAwesome      from 'react-fontawesome';
 import {Row , Col} from 'reactstrap';
-import { movieSelector } from '../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/movie';
 import { connect } from 'react-redux';
-import moviesService from '../../../services/movies';
+import moviesService from '../../../../services/movies';
+import Crew from './Crew';
 
 
-const limitLengthCrew = 6;
 
 class ContentHeader extends Component {
   constructor(props) {
@@ -17,12 +17,7 @@ class ContentHeader extends Component {
   render() {
     let detail = this.props.detail;
     // console.log(this.props.credits);
-    let credits = this.props.credits;
-    if(!credits)
-      return (
-        <div></div>
-      );
-    let crew = moviesService.getCrewMovie(credits.crew, limitLengthCrew);
+
 
     return (
       <div>
@@ -89,20 +84,8 @@ class ContentHeader extends Component {
                 {detail.overview}
               </div>
               <br />
-              <h4>Featured Crew</h4>
-              <Row >
-                {crew.map(item=> (
-                  <Col className="crew" md="4" key={item.credit_id}>
-                    <h5>
-                      {item.name}
-                    </h5>
-                    <div>
-                      {item.job}
-                    </div>
 
-                  </Col>
-                ))}
-              </Row>
+              <Crew />
             </div>
           </div>
         </div>
@@ -115,7 +98,6 @@ class ContentHeader extends Component {
 const mapStateToProps = (state) => {
   return {
     detail: movieSelector(state).detail,
-    credits: movieSelector(state).credits,
   };
 };
 

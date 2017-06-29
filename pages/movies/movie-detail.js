@@ -8,19 +8,10 @@ import { movieActions } from '../../src/redux/movies/movie';
 import PropTypes from 'prop-types';
 import Spinner from '../../src/components/Spinner';
 
-let isReload = true;
 class Index extends Component {
 
-  static async getInitialProps({ isServer, store, query }) {
-    if(isServer){
-      await store.dispatch(movieActions.fetchMovieDetail(query.id, true));
-    }
-    return {
-      isServer,
-    };
-
-
-
+  static async getInitialProps({  store, query }) {
+    await store.dispatch(movieActions.fetchMovieSR(query.id));
   }
 
   constructor(props) {
@@ -31,19 +22,11 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.isServer);
-
-    if(!this.props.isServer)
-    {
-      console.log("Did mount");
-      this.props.fetchMovieDetail(this.props.url.query.id, false);
-    }
-
-    setTimeout(() => this.setState({ isLoading: false }), 2000);
+    this.props.fetchMovieDetail(this.props.url.query.id);
+    setTimeout(() => this.setState({ isLoading: false }), 500);
   }
 
   render(){
-    isReload = !isReload;
     if(this.state.isLoading) {
       return (
         <Master>
@@ -67,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieDetail : (id, isServer) => dispatch(movieActions.fetchMovieDetail(id,isServer))
+    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id))
   };
 };
 

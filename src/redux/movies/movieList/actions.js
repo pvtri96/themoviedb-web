@@ -1,6 +1,23 @@
 import axios from 'axios';
 import actionCreators from './actionCreators';
 
+
+export const fetMoviesSR = (filter = 'popular') => async (dispatch) => {
+  dispatch(actionCreators.moviesFetchRequested());
+  try {
+    const movies = await axios.get(process.env.API_URL + 'movie/' + filter , {
+      params: {
+        api_key: process.env.API_KEY
+      }
+    })
+      .then(resp => resp.data.results);
+
+    return dispatch(actionCreators.moviesFetchFullfilled(movies));
+  } catch (error) {
+    return dispatch(actionCreators.moviesFetchRejected(error));
+  }
+};
+
 export const fetchMovies = (filter = 'popular') => async (dispatch) => {
   dispatch(actionCreators.moviesFetchRequested());
   try {
@@ -25,5 +42,6 @@ export const fetchMovies = (filter = 'popular') => async (dispatch) => {
 
 
 export default {
-  fetchMovies
+  fetchMovies,
+  fetMoviesSR,
 };

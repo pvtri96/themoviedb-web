@@ -1,4 +1,4 @@
-import MovieList from '../../src/components/movies/MovieList';
+import MovieList from '../../src/components/movies/list';
 import Master from '../../src/containers/Master';
 import React , {Component} from 'react';
 import { movieListActions } from '../../src/redux/movies/movieList';
@@ -8,8 +8,14 @@ import Spinner from '../../src/components/Spinner';
 
 class Index extends Component {
 
-  static async getInitialProps ({ store }) {
-    await store.dispatch(movieListActions.fetchMovies());
+  static async getInitialProps ({ store, isServer  }) {
+    if(isServer){
+      await store.dispatch(movieListActions.fetMoviesSR());
+    }
+
+    return {
+      isServer
+    };
   }
 
   constructor(props) {
@@ -19,6 +25,13 @@ class Index extends Component {
     };
   }
 
+  // didmount chi chay 1 lan nen khi click vao movies se chi render tren server
+
+  componentDidMount() {
+    this.props.fetchMovies();
+    setTimeout(() => this.setState({ isLoading: false }), 500);
+
+  }
 
 
   render() {
@@ -38,15 +51,18 @@ class Index extends Component {
     );
   }
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ isLoading: false }), 1000);
-  }
+
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovies: () => dispatch(movieListActions.fetchMovies())
+  };
+};
 
 Index.propTypes = {
 
 };
 
-export default withRedux(getStore)(Index);
+export default withRedux(getStore, undefined, mapDispatchToProps)(Index);
 

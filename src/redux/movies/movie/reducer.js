@@ -20,12 +20,13 @@ const Reducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       detail: action.payload,
-      credits: action.credits,
+      crew: action.crew,
+      cast: action.cast,
       reviews: action.reviews,
       recommendations: action.recommendations,
       releaseDates: action.releaseDates,
       keywords: action.keywords,
-      fetchStatus: `Date fetch success isServer: ${action.isServer} ${(new Date()).toLocaleTimeString()}`
+      fetchStatus: `Date fetch success ${(new Date()).toLocaleTimeString()}`
     };
 
   case actionTypes.MOVIE_DETAIL_FETCH_REJECTED :

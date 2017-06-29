@@ -125,7 +125,7 @@ class Media extends Component {
   render(){
     let detail = this.props.detail;
 
-    if(!detail.videos)
+    if(!detail)
       return (<div></div>);
     let videos = this.props.detail.videos.results;
     let images = this.props.detail.images;
