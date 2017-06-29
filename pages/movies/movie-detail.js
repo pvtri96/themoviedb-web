@@ -12,17 +12,14 @@ let isReload = true;
 class Index extends Component {
 
   static async getInitialProps({ isServer, store, query }) {
-    // isReload = false;
-    if(!isServer){
-      isReload = false;
-    }
-
-    if(isServer)
-    {
+    if(isServer){
       await store.dispatch(movieActions.fetchMovieDetail(query.id, true));
-      console.log("isServer ");
-
     }
+    return {
+      isServer,
+    };
+
+
 
   }
 
@@ -33,21 +30,20 @@ class Index extends Component {
     };
   }
 
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
-    console.log(isReload);
-    setTimeout(() => this.setState({ isLoading: false }), 2000);
-    if(!isReload)
+    console.log(this.props.isServer);
+
+    if(!this.props.isServer)
     {
       console.log("Did mount");
       this.props.fetchMovieDetail(this.props.url.query.id, false);
     }
+
+    setTimeout(() => this.setState({ isLoading: false }), 2000);
   }
 
   render(){
+    isReload = !isReload;
     if(this.state.isLoading) {
       return (
         <Master>
@@ -71,7 +67,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id))
+    fetchMovieDetail : (id, isServer) => dispatch(movieActions.fetchMovieDetail(id,isServer))
   };
 };
 

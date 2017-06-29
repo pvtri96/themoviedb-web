@@ -56,6 +56,7 @@ export const fetchMovieDetail = (id, isServer) => async (dispatch) => {
       }
     })
       .then(resp => resp.data.keywords);
+      console.log(isServer);
     return dispatch(actionCreators.movieDetailFetchFullfilled(detail, credits,
       reviews, recommendations, releaseDates, keywords, isServer));
 

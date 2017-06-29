@@ -80,9 +80,11 @@ class Movie extends Component  {
           <div className="content">
             <div className="info" >
               <div className="title">
-                <a href={`/movies/movie-detail?id=${movie.id}`} className="link_title">
-                  {MoviesService.reduceWordsText(movie.title,lengthTitle)}
-                </a>
+                <Link prefetch href={`/movies/movie-detail?id=${movie.id}`}>
+                  <a className="link_title">
+                    {MoviesService.reduceWordsText(movie.title,lengthTitle)}
+                  </a>
+                </Link>
 
                 <span style={{float:'right'}}>
                   {movie.vote_average.toFixed(1)} 	{' '}

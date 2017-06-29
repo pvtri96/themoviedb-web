@@ -37,7 +37,7 @@ class MoviesList extends Component {
     return (
       <div >
 
-        <Row style={{ marginBottom: '20px'}}>
+        {/* <Row style={{ marginBottom: '20px'}}>
           <Col>
             <Dropdown style={{float: 'right'}} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle caret>
@@ -54,7 +54,7 @@ class MoviesList extends Component {
               </DropdownMenu>
             </Dropdown>
           </Col>
-        </Row>
+        </Row> */}
         <Row >
           {this.props.list.map(movie => (
             <Col md="6" xs="12" key={movie.id}>
