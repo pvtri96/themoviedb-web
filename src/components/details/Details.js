@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { detailsSelector } from '../../redux/detail';
-import SubString  from '../../service/subString';
+import Service  from '../../service/index';
 class Details extends Component {
   constructor(props){
     super(props);
@@ -17,7 +17,7 @@ class Details extends Component {
             <div className="info details">
               <div className="title-bar d-flex">
                 <span className="title">{ tvshowDetails.original_name } </span>
-                <span className="first-air-date">({ SubString.subDateString(tvshowDetails.first_air_date,4) })</span>
+                <span className="first-air-date">({ Service.subDateString(tvshowDetails.first_air_date,4) })</span>
               </div>
               <div className="menu d-flex">
                 <div>

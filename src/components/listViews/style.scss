@@ -4,12 +4,13 @@
   padding: 20px 50px 0 !important;
 }
 
-.dropdown {
+.bar {
+  margin-top: 50px;
+  .dropdown {
   margin-left: auto;
   padding-right: 60px;
-}
-
-.dropdown-menu {
+  }
+  .dropdown-menu {
   left: auto;
   right: 60px;
   padding: 0;
@@ -18,9 +19,7 @@
     &:active {
       background-color: white;
       color: black;
+      }
     }
   }
-}
-.bar {
-  margin-top: 50px;
 }

@@ -1,9 +1,11 @@
 import actionTypes from './actionTypes';
 
-export const tvshowsFetchRequested = () => ({ type: actionTypes.TVSHOWS_FETCH_REQUESTED });
-export const tvshowsFetchFulfilled = ( tvshows ) => ({
+export const tvshowsFetchRequested = () => ({
+  type: actionTypes.TVSHOWS_FETCH_REQUESTED
+});
+export const tvshowsFetchFulfilled = ( tvshows, genres ) => ({
   type: actionTypes.TVSHOWS_FETCH_FULFILLED,
-  payload: tvshows
+  payload: tvshows, genres
 });
 
 export const tvshowsFetchRejected = ( err ) => ({

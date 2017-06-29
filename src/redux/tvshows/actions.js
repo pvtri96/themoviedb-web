@@ -11,12 +11,18 @@ export const fetchTvShows = () => async (dispatch) => {
       }
     })
       .then(response => response.data.results);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows));
+    const genres = await axios.get(process.env.GENRES_URL + 'genre/tv/list', {
+      params: {
+        api_key: process.env.API_KEY
+      }
+    });
+    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
     return dispatch(actionCreators.tvshowsFetchRejected(err));
   }
 };
+
 export default {
   fetchTvShows
 };

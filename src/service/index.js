@@ -19,21 +19,19 @@ const subDateString = (text, limit) => {
     return text.substring(0,limit);
   return text;
 };
-const getCrewMovie = (crew, limit) => {
-  const jobs = ["Director", "Screenplay", "Characters", "Story", "Writer"];
+
+const getGenresMovie = (inititalGenres, genres) => {
   let temp = [];
-  crew.map(item => {
-
-    if(jobs.includes(item.job)){
-      temp.push(item);
-    }
-
+  genres.map(genre => {
+    if(inititalGenres.includes(genre.id))
+      temp.push(genre.name);
   });
-  return temp.slice(0, limit);
+  return temp.join(', ');
 };
+
 export default {
   subContentString,
   subTitleString,
   subDateString,
-  getCrewMovie
+  getGenresMovie
 };

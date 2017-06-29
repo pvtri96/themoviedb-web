@@ -5,11 +5,13 @@ import rootReducer from './rootReducer';
 import { USERS_INITIAL_STATE, USERS_KEY } from './users';
 import { TVSHOWS_INITIAL_STATE, TVSHOWS_KEY } from './tvshows';
 import { DETAILS_INITIAL_STATE, DETAILS_KEY } from './detail';
+import { FILTER_INITIAL_STATE, FILTER_KEY } from './filter';
 
 const INITIAL_STATE = {
   [USERS_KEY]: USERS_INITIAL_STATE,
   [TVSHOWS_KEY]: TVSHOWS_INITIAL_STATE,
-  [DETAILS_KEY]: DETAILS_INITIAL_STATE
+  [DETAILS_KEY]: DETAILS_INITIAL_STATE,
+  [FILTER_KEY]: FILTER_INITIAL_STATE
 };
 
 const middleware = applyMiddleware(thunkMiddleware);
