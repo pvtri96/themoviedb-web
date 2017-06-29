@@ -57,9 +57,7 @@ class Index extends Component {
     }
     return (
       <Master>
-        <div>
-          <MovieDetail  />
-        </div>
+        <MovieDetail  />
       </Master>
     );
   }
