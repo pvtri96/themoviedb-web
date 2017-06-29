@@ -26,7 +26,7 @@ class ContentHeader extends Component {
 
     return (
       <div>
-        <div className="header" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
+        <div className="background_under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
 

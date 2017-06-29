@@ -1,23 +1,10 @@
 @import 'variables';
 @import 'bootstrap/scss/bootstrap';
+@import '../src/containers/footer.scss';
+@import '../src/containers/header.scss';
 
-.navbar {
-  background-color: $navbar-bg;
+.body-content {
+  min-height: 100vh;
+  padding-top: 120px;
 }
 
-.logo {
-  color: $logo-color !important;
-  font-size: $large-font;
-  font-weight: 600;
-}
-
-footer {
-  background-color: $navbar-bg;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-
-  span {
-    color: white;
-  }
-}

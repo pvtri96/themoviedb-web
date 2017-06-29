@@ -6,9 +6,8 @@ import { getStore } from '../src/redux';
 import { usersActions, usersSelector } from '../src/redux/users';
 
 class Index extends Component {
-  static async getInitialProps ({ store, isServer }) {
+  static async getInitialProps ({ store }) {
     await store.dispatch(usersActions.fetchUsers());
-    return { isServer };
   }
   render() {
     return (

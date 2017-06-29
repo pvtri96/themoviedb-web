@@ -1,0 +1,60 @@
+.navbar {
+  background-color: $navbar-bg;
+  height: 120px;
+}
+
+.logo {
+  img {
+    height: 90px;
+  }
+}
+
+.dropdown{
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  padding-left: 10px;
+}
+
+.dropdown-list {
+  &:hover {
+    position: relative;
+    .dropdown-content {
+      display: block;
+      display: flex;
+      position: absolute;
+      .nav-link {
+        padding: 5px 0;
+        min-width: 90px;
+        font-size: 0.8em;
+      }
+    }
+  }
+}
+
+
+ul, li {
+  display: inline-block;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.nav-link {
+  padding: 0;
+  font-weight: 600;
+}
+
+.header {
+  background-color: $navbar-bg;
+}
+
+.navigation {
+  width: 1000px;
+}

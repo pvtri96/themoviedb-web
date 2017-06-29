@@ -24,13 +24,13 @@ const Master = (props) => (
     </Head>
     {/* End customize head tag*/}
     {/* Page body */}
-    <div>
-      <Header></Header>
-      {/* Import Local stylesheet */}
-      {/* Use some bootstrap css classes */}
-
+    <Header></Header>
+    {/* Import Local stylesheet */}
+    {/* Use some bootstrap css classes */}
+    <div className="body-content">
       {props.children}
     </div>
+    <Footer></Footer>
   </div>
 );
 

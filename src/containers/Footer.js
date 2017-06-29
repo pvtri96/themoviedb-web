@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 
 class Footer extends Component {
@@ -19,7 +20,7 @@ class Footer extends Component {
   render () {
     return (
       <footer>
-        <span className="spam">THIS IS FOOTER</span>
+        <img src="../../static/image/footer.jpg" alt=""/>
       </footer>
     );
   }
