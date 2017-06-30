@@ -2,10 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from './rootReducer';
-import { USERS_INITIAL_STATE, USERS_KEY } from './users';
-
+import { movieListINITIAL_STATE, movieListKEY} from './movies/movieList';
+import { movieINITIAL_STATE, movieKEY} from './movies/movie';
 const INITIAL_STATE = {
-  [USERS_KEY]: USERS_INITIAL_STATE
+  [movieListKEY]: movieListINITIAL_STATE,
+  [movieKEY]: movieINITIAL_STATE
 };
 
 const middleware = applyMiddleware(thunkMiddleware);

@@ -1,0 +1,47 @@
+.background_under {
+  // filter: brightness(120%) grayscale(1);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 100vh;
+  filter: opacity(30%);
+} // header
+
+
+.contentHeader {
+  // background-color: rgba(182, 182, 204, 0.70);
+  padding: 40px 0px 40px 160px;
+  position: absolute;
+  width: 90%;
+  // height: 530px;
+  top: 20%;
+
+  .info_movie {
+    margin:0px 30px;
+    width: 100%;
+  } //info_movie
+
+  .action {
+    justify-content: flex-start;
+    margin: 30px 0px;
+    .item {
+      list-style: none;
+      border: 2px solid black;
+      width: 45px;
+      height: 45px;
+      text-align: center;
+      padding: 9px;
+      border-radius: 50%;
+      margin: 0 10px;
+      flex-flow: row nowrap;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  } // action
+
+  .crew{
+    margin: 20px 0px;
+  } //crew
+} //contentHeader
