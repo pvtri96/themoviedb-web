@@ -1,16 +1,16 @@
 import React from 'react';
 import {Row, Col} from 'reactstrap';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import moviesService from '../../../../services/movies';
 
 const limitLengthCrew = 6;
 
 const Index = props => {
-  let crew = props.crew;
-  if(! crew)
+  let credits = props.credits;
+  if(! credits)
     return (<div></div>);
-  let crewMovie = moviesService.getCrewMovie(crew, limitLengthCrew);
+  let crewMovie = moviesService.getCrewMovie(credits.crew, limitLengthCrew);
   return (
     <div>
       <h4>Featured Crew</h4>
@@ -33,7 +33,7 @@ const Index = props => {
 
 const mapStateToProps = state => {
   return {
-    crew: movieSelector(state).crew
+    credits: movieSelector(state).credits
   };
 };
 

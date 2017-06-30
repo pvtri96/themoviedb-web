@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import FontAwesome      from 'react-fontawesome';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
 
@@ -14,8 +14,9 @@ class ContentHeader extends Component {
 
   render() {
     let detail = this.props.detail;
-
-
+    console.log(detail);
+    if(!detail)
+      return (<div></div>);
     return (
       <div>
         <div className="background_under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
@@ -93,6 +94,7 @@ class ContentHeader extends Component {
 }
 
 const mapStateToProps = (state) => {
+
   return {
     detail: movieSelector(state).detail,
 

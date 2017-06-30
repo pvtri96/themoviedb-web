@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import {  movieListActions } from '../../redux/movies/movieList';
 import {
   Row, Col,
 
@@ -8,8 +7,7 @@ import {
 } from 'reactstrap';
 
 import Movie from './Movie';
-import {  movieListSelector } from '../../../redux/movies/movieList';
-// import { getGenresMovie } from '../../services/movies';
+import {  movieListSelector } from '../../../redux/movies/list';
 
 
 class Index extends Component {

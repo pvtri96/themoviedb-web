@@ -2,7 +2,7 @@
 import React, { Component} from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import moviesService from '../../../../services/movies';
 
 const limitLengthTopBilledCast=5;
@@ -13,10 +13,10 @@ class TopBilledCast extends Component {
   }
 
   render() {
-    let cast = this.props.cast;
-    if( !cast )
+    let credits = this.props.credits;
+    if( !credits )
       return (<div></div>);
-    let topBilledCast = moviesService.getTopBilledCast(cast, limitLengthTopBilledCast);
+    let topBilledCast = moviesService.getTopBilledCast(credits.cast, limitLengthTopBilledCast);
 
     return (
       <div>
@@ -50,7 +50,7 @@ class TopBilledCast extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cast: movieSelector(state).cast
+    credits: movieSelector(state).credits
 
   };
 };

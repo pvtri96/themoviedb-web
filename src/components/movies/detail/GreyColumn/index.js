@@ -1,7 +1,7 @@
 import React , {Component }from 'react';
 import Fontawesome from 'react-fontawesome';
 import { connect } from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import moviesService from '../../../../services/movies';
 
 const getTypeReleaseDates = i => {
@@ -34,13 +34,6 @@ class Index extends Component {
   constructor(props) {
     super(props);
   }
-
-  // componentWillMount (){
-  //   this.setState({
-  //     genres: this.props.genres
-  //   });
-  // }
-
 
   render() {
     let detail = this.props.detail;
@@ -128,7 +121,6 @@ class Index extends Component {
           }
         </div> {/* Homepage */}
 
-
         <div className="title">Genres </div>
         <div className="content">
           {detail.genres.map(genre => (
@@ -137,6 +129,7 @@ class Index extends Component {
             </div>
           ))}
         </div> {/* Genres */}
+
 
         <div className="title">Keywords </div>
         <div className="content">
@@ -164,7 +157,6 @@ const mapStateToProps = state => {
   return {
     detail: movieSelector(state).detail,
     releaseDates: movieSelector(state).releaseDates,
-    genres: movieSelector(state).genres,
     keywords: movieSelector(state).keywords
   };
 };

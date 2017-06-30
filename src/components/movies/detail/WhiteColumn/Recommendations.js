@@ -1,11 +1,10 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import FontAwesome      from 'react-fontawesome';
 import moviesService from '../../../../services/movies';
-import Link from 'next/link';
-
+import Router from 'next/router';
 const lengthTitle = 4;
 const lengthLimitRecommendations = 5;
 
@@ -54,11 +53,14 @@ class Recommendations extends Component {
               </div>
 
               <div className="title">
-                <Link href={`/movies/movie-detail?id=${item.id}`}>
-                  <a className="link_title">
-                    {moviesService.reduceWordsText(item.title,lengthTitle)}
-                  </a>
-                </Link>
+
+                <span onClick={() => {
+                  // Router.reload(`/movies/detspanil?id=${item.id}`);
+                  Router.push(`/movies/detail?id=${item.id}`);
+
+                }} className="link_title">
+                  {moviesService.reduceWordsText(item.title,lengthTitle)}
+                </span>
 
                 <span style={{float:'right'}}>
                   {item.vote_average.toFixed(1)} 	{' '}
