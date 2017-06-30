@@ -12,19 +12,21 @@ class DiscoverMovies extends Component{
   constructor(props){
     super(props);
     this.state = {
-      year:"",
+      primary_release_year:"",
       sort_by: "popularity.desc",
       with_keywords: ''
     };
     this.yearSelectChange = this.yearSelectChange.bind(this);
     this.sortBySelectChange = this.sortBySelectChange.bind(this);
+    this.searchChange = this.searchChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   yearSelectChange(e){
     let value = e.target.value;
     this.setState({
-      year: value
+      primary_release_year: value
     }, () => {
-      this.props.fetchMovies(this.state.sort_by, this.state.year);
+      this.props.fetchMovies(this.state.sort_by, this.state.primary_release_year,this.state.with_keywords);
     });
   }
   sortBySelectChange(e){
@@ -32,21 +34,30 @@ class DiscoverMovies extends Component{
     this.setState({
       sort_by: value
     }, () => {
-      this.props.fetchMovies(this.state.sort_by, this.state.year);
+      this.props.fetchMovies(this.state.sort_by, this.state.primary_release_year,this.state.with_keywords);
     });
+  }
+  searchChange(e){
+    this.setState({
+      with_keywords: e.target.value
+    });
+  }
+  handleKeyPress (event){
+    if(event.key == 'Enter'){
+      console.log("key: "+this.state.with_keywords);
+      this.props.fetchMovies(this.state.sort_by, this.state.primary_release_year,this.state.with_keywords);
+    }
   }
   render(){
     let movies = this.props.movies;
-    //console.log(this.state.year);
-    //console.log(this.state.sort_by);
     return (
       <div>
         <div>
           <div>
             <Input type="select" name="year-select" onChange={this.yearSelectChange}>
               <option value="">None</option>
-              {StringSolve.getYear(1900).map(year =>
-                <option key={year} value={year} >{year}</option>
+              {StringSolve.getYear(1900).map(primary_release_year =>
+                <option key={primary_release_year} value={primary_release_year} >{primary_release_year}</option>
               )}
             </Input>
           </div>
@@ -58,15 +69,18 @@ class DiscoverMovies extends Component{
               <option value="release_date.asc" >Release Date Ascending</option>
             </Input>
           </div>
-
+          <div>
+            <Input placeholder="search" value={this.state.with_keywords}
+              onChange={this.searchChange} onKeyPress = {this.handleKeyPress}/>
+          </div>
         </div>
         <div>
           <div>
             <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
             <div className="list">
-              {movies.map(movie =>
+              {movies.length > 0 ? movies.map(movie =>
                 <Movie movie={movie} key={movie.id} />
-              )}
+              ): "No result"}
             </div>
           </div>
         </div>
@@ -84,8 +98,8 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-    fetchMovies: (sort_by,year) => {
-      dispatch(moviesActions.fetchMovies(sort_by,year));
+    fetchMovies: (sort_by,primary_release_year,with_keywords) => {
+      dispatch(moviesActions.fetchMovies(sort_by,primary_release_year,with_keywords));
     }
   };
 };
