@@ -12,11 +12,7 @@ class Detail extends Component{
   render(){
     return (
       <Master>
-        <div>
-          <div>
-            <PersonDetail />
-          </div>
-        </div>
+        <PersonDetail />
       </Master>
     );
   }

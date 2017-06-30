@@ -27,12 +27,11 @@ class PersonInf extends Component {
     }
     return (
       <Col xs = "3" className = "inf">
-        <style dangerouslySetInnerHTML = {{ __html: stylesheet }} />
-        <br />
-        <h4>Pesonal Inf </h4>
+        <style dangerouslySetInnerHTML = {{ __html: stylesheet }} /><br />
+        <h4>Pesonal Inf </h4><br />
         <strong>Gender</strong><br/>
         {(person.gender ==2)?"Male":"FeMale"}
-        <br/>
+        <br/><br />
         <strong>Birthday </strong>
         <p>{person.birthday}</p>
         <strong>Place of birth</strong>

@@ -1,8 +1,3 @@
-import axios from 'axios';
-
-const apiSite = process.env.API_SITE;
-const apiKey = process.env.API_KEY;
-
 const MAX_LENGTH = 100;
 
 class PeopleService {
@@ -18,7 +13,6 @@ class PeopleService {
           parts.push(words[i]);
       }
     }
-
     return parts.join(' ');
   }
 
@@ -50,26 +44,34 @@ class PeopleService {
       else
         str += arr[i] + ', ';
     }
-
     return str;
   }
-  static getPersonDetail (id) {
-    return axios.get(apiSite + 'person/' + id, {
-      params: {
-        api_key: apiKey,
+  //remove movies null year
+  static removeMovies(array) {
+    let result;
+    for(let i=0; i< array.length; i++){
+      if( array.year != null){
+        result.push(array[i]);
       }
+    }
+    return result;
+  }
+  //javascript function: sort array by year
+  static sortByKey(array, key) {
+    return array.sort(function(a, b) {
+      var x = a[key]; var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
   }
-
-  static getPersonBySearch (page = 1, query = '') {
-    return axios.get(apiSite + 'search/person', {
-      params: {
-        api_key: apiKey,
-        query: query,
-        page: page,
-        include_adult: false
+  //split array
+  static splitArray(array, key){
+    let arr1=[];
+    for(let i = 0; i< array.length; i++){
+      if(array[i].department == key){
+        arr1.push(array[i]);
       }
-    });
+    }
+    return arr1;
   }
 }
 

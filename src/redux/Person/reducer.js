@@ -7,6 +7,7 @@ export const INITIAL_STATE = {
   know_for:{},
   externalIds:{},
   tagged_images:{},
+  tv_credits:{},
   fetchStatus:''
 };
 
@@ -27,6 +28,7 @@ export default (state = INITIAL_STATE, action)=>{
       know_for: action.know_for,
       externalIds: action.externalIds,
       tagged_images: action.tagged_images,
+      tv_credits: action.tv_credits,
     };
   case actionTypes.PERSON_FETCH_REJECTED:
     return {

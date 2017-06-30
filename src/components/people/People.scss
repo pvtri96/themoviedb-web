@@ -1,3 +1,4 @@
+@import 'variables';
 body {
   background-color: #e6e6ff;
   font-family: 'Source Sans Pro', sans-serif;
@@ -36,7 +37,7 @@ body {
   left: 0;
   background-color: rgba(255,255,255,0.9);
   transition: .5s ease;
-  width: 80%;
+  width: 98%;
   height: 35px;
 
   p{
@@ -69,7 +70,6 @@ body {
     width:100%;
   }
 }
-
 //person-detail
 .text_biogrh{
   color: white;
@@ -82,6 +82,7 @@ body {
   background-color: white;
   .inf{
     background-color: #e6e6ff;
+    margin-left: -16px;
   }
 }
 .right{
@@ -100,15 +101,20 @@ body {
     text-decoration: none;
   }
 }
+//top header
+.topheader{
+  background: rgba(0,0,0,0.75);
+  margin: 0;
+}
 //modal
 .modal_biogr {
-  max-width: 80%;
+  max-width: 60%;
   .md_header{
-    background-color: #33ff77;
+    background-color: $logo-color;
   }
 }
 .md_readmore a{
-  color: #00d573;
+  color: $logo-color;
   a:visit {
     color: green;
   }
@@ -116,14 +122,51 @@ body {
     color: green;
   }
 }
-.per_img{
-  width:280px;
-  height:400px;
+//person image
+.bg-image{
+  position: relative;
+  overflow: visible;
   border: 0.5px solid white;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  margin-left: -18px;
+  margin-right: 40px;
+}
+
+.bg-image{
+    position: relative;
+}
+.per_img{
+display: block;
+width:280px;
+height:400px;
+}
+.zoom_image{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.bg-image:hover .zoom_image{
   opacity: 1;
 }
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+//sub navbar
 .sub_nav{
   background-color: white;
   width:100%;
@@ -132,6 +175,7 @@ body {
   padding-bottom: 1px;
   padding-top: 1px;
   font-size: 30px;
+  background-color:
   h5{
     color: grey;
   }
@@ -149,10 +193,11 @@ body {
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-right: 30px;
   }
   .know_for_img{
-    width: 200px;
-    height: 250px;
+    width: 180px;
+    height: 230px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
   }
@@ -167,29 +212,64 @@ body {
     padding-bottom: 5px;
   }
 }
-
+//sub_navbar
+.sub_navbar_wrapper{
+  width: 100%;
+  display: block;
+  .sub_navbar{
+    padding-left: 15px;
+    font-size: 20px;
+    color: grey;
+    display: flex;
+    .sub_navbar_tab{
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      margin: 5px 50px 5px 5px;;
+    }
+    .sub_navbar_tab:hover{
+      color: green;
+      border-bottom: 3px solid green;
+      margin-bottom: 0px;;
+    }
+  }
+}
 //per_movies
-.per_movies_content{
-  width: 80%;
-  .tb_movies{
-    border-collapse: separate;
-    padding: 6px 0 0 0;
-    margin-bottom: 0rem;
-    .tb_year{
-      width: 30px;
-      font-weight: bold;
-      vertical-align: top;
-    }
-    .tb_view{
-      padding-top:10px;
-      color: #ccc;
-      width: 30px;
-    }
-    .tb_view:hover{
-      color: #00b33c;
-    }
-    td{
-      padding: 8px 20px 8px 20px;
+.per_movies{
+  padding-left: 20px;
+  .per_movies_content{
+    width: 80%;
+    margin-left: 76px;
+    .tb_movies{
+      border:0;
+      padding: 0;
+      border-collapse: separate;
+      padding: 6px 0 0 0;
+      margin-bottom: 0rem;
+      tr{
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+      }
+      td{
+        padding:0;
+      }
+      .tb_year{
+        width: 30px;
+        font-weight: bold;
+        vertical-align: top;
+      }
+      .tb_view{
+        padding-top:10px;
+        color: #ccc;
+        width: 30px;
+      }
+      .tb_view:hover{
+        color: #00b33c;
+      }
+      td{
+        padding: 8px 20px 8px 20px;
+      }
     }
   }
 }

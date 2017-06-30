@@ -17,7 +17,7 @@ const Person = (props) =>{
       <Card className = "card">
         <div className = "item" title = {person.name}>
           <Link href={`/person-detail?id=${person.id}`}>
-            <a><CardImg top className = "image" height = "350px"
+            <a><CardImg top className = "image" height = "330px"
               src = {process.env.IMAGE + person.profile_path} alt = "Can't show the image"/></a>
           </Link>
           <CardBlock className = "meta">
