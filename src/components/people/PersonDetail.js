@@ -15,7 +15,7 @@ class PersonDetail extends Component{
   render(){
     //style of background
     let tagged_images = this.props.tagged_images;
-    let Background = `https://image.tmdb.org/t/p/w1440_and_h405_bestv2/`
+    let Background = process.env.BACKGROUND_IMAGE
                       + tagged_images.results[0].media.backdrop_path;
     let bg_style = {
       width: "100%",
@@ -37,7 +37,6 @@ class PersonDetail extends Component{
           <PersonContent />
         </div>
       </div>
-
     );
   }
 }

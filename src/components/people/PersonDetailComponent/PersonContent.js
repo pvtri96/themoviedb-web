@@ -47,7 +47,7 @@ class PersonContent extends Component {
             <Col key = {cast.id}>
               <CardImg top className = "know_for_img" src={process.env.IMAGE + cast.poster_path}
                 alt = {cast.title} />
-              <p >{cast.original_title}</p>
+              <p className="know_for_title">{cast.original_title}</p>
             </Col>
           )}
         </Row>

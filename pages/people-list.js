@@ -12,9 +12,7 @@ class ListPeople extends Component{
   render(){
     return (
       <Master>
-        <div>
-          <People />
-        </div>
+        <People />
       </Master>
     );
   }
