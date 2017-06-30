@@ -1,8 +1,16 @@
 import axios from 'axios';
 import actionCreators from './actionCreators';
 
+export const fetchCurrentMovie = (current) => (dispatch) => {
+  dispatch(actionCreators.moviesFetchRequested());
+  try {
+    return dispatch(actionCreators.moviesFetchFullfilled(undefined, undefined, current));
+  } catch (error) {
+    return dispatch(actionCreators.moviesFetchRejected(error));
+  }
+};
 
-export const fetMoviesSR = (filter = 'popular') => async (dispatch) => {
+export const fetchMoviesSR = (filter = 'popular') => async (dispatch) => {
   dispatch(actionCreators.moviesFetchRequested());
   try {
     const movies = await axios.get(process.env.API_URL + 'movie/' + filter , {
@@ -43,5 +51,6 @@ export const fetchMovies = (filter = 'popular') => async (dispatch) => {
 
 export default {
   fetchMovies,
-  fetMoviesSR,
+  fetchMoviesSR,
+  fetchCurrentMovie
 };

@@ -4,18 +4,13 @@ import React , {Component} from 'react';
 import { movieListActions } from '../../src/redux/movies/movieList';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
-import Spinner from '../../src/components/Spinner';
+import Loading from '../../src/components/Loading';
 
 class Index extends Component {
 
   static async getInitialProps ({ store, isServer  }) {
-    if(isServer){
-      await store.dispatch(movieListActions.fetMoviesSR());
-    }
+    await store.dispatch(movieListActions.fetchMoviesSR());
 
-    return {
-      isServer
-    };
   }
 
   constructor(props) {
@@ -28,9 +23,9 @@ class Index extends Component {
   // didmount chi chay 1 lan nen khi click vao movies se chi render tren server
 
   componentDidMount() {
-    this.props.fetchMovies();
-    setTimeout(() => this.setState({ isLoading: false }), 500);
 
+    setTimeout(() => this.setState({ isLoading: false }), 500);
+    this.props.fetchMovies();
   }
 
 
@@ -38,7 +33,7 @@ class Index extends Component {
     if(this.state.isLoading) {
       return (
         <Master>
-          <Spinner />
+          <Loading />
         </Master>
       );
     }

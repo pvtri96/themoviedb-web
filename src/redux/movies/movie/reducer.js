@@ -19,7 +19,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
   case actionTypes.MOVIE_DETAIL_FETCH_FULLFILLED :
     return {
       ...state,
-      detail: action.payload,
+      detail: action.detail,
       crew: action.crew,
       cast: action.cast,
       reviews: action.reviews,

@@ -34,15 +34,15 @@ class Index extends Component {
 
 
   render() {
-    let movieList = this.props.list;
-    if(!movieList )
+    let list = this.props.list;
+    if(!list )
     {
       return (<div></div>);
     }
     return (
       <div >
         <Row >
-          {movieList.map(movie => (
+          {list.map(movie => (
             <Col md="6" xs="12" key={movie.id}>
               <Movie movie={movie} />
             </Col>

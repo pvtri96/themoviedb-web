@@ -3,6 +3,7 @@ import actionTypes from './actionTypes';
 export const INITIAL_STATE = {
   list: [],
   genres: [],
+  current: {},
   fetchStatus :''
 };
 
@@ -31,6 +32,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
       ...state,
       list: action.payload,
       genres: action.genres,
+      current: action.current,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 

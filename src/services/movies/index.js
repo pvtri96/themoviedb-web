@@ -8,7 +8,7 @@ export const reduceWordsText = (text,limit) => {
   let arr = [];
   if( words.length > limit) {
     arr = text.split(" ", limit);
-    arr.push(" ...");
+    arr.push("...");
     return arr.join(" ");
   }
 
@@ -17,7 +17,7 @@ export const reduceWordsText = (text,limit) => {
 
 export const reducerLengthText = (text, limit) => {
   if(text.length > limit)
-    return text.substring(0, limit) + " ...";
+    return text.substring(0, limit) + "...";
 
   return text;
 

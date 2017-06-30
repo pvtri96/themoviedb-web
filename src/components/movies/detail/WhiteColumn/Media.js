@@ -125,10 +125,10 @@ class Media extends Component {
   render(){
     let detail = this.props.detail;
 
-    if(!detail)
+    if(!detail || !detail.videos)
       return (<div></div>);
-    let videos = this.props.detail.videos.results;
-    let images = this.props.detail.images;
+    let videos = detail.videos.results;
+    let images = detail.images;
     let backdrops = images.backdrops;
     let mediaIndex = this.state.mediaIndex;
     // let limitBackdrops = moviesService.getLimitBackdrops(backdrops, )

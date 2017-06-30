@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import FontAwesome      from 'react-fontawesome';
-import {Row , Col} from 'reactstrap';
 import { movieSelector } from '../../../../redux/movies/movie';
 import { connect } from 'react-redux';
-import moviesService from '../../../../services/movies';
 import Crew from './Crew';
 
 
@@ -16,7 +14,6 @@ class ContentHeader extends Component {
 
   render() {
     let detail = this.props.detail;
-    // console.log(this.props.credits);
 
 
     return (
@@ -98,6 +95,7 @@ class ContentHeader extends Component {
 const mapStateToProps = (state) => {
   return {
     detail: movieSelector(state).detail,
+
   };
 };
 

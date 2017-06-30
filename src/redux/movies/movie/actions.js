@@ -2,6 +2,17 @@ import axios from 'axios'  ;
 
 import actionCreators from './actionCreators';
 
+export const fetchMovieNonSR = (detail) => async (dispatch) => {
+  dispatch(actionCreators.movieDetailFetchRequested());
+  try {
+
+
+    return dispatch(actionCreators.movieDetailFetchFullfilled(detail));
+
+  } catch(error) {
+    return dispatch(actionCreators.movieDetailFetchRejected(error));
+  }
+};
 export const fetchMovieSR = (id) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
   try {
@@ -20,7 +31,9 @@ export const fetchMovieSR = (id) => async (dispatch) => {
   } catch(error) {
     return dispatch(actionCreators.movieDetailFetchRejected(error));
   }
-}
+};
+
+
 
 export const fetchMovieDetail = (id) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
@@ -94,5 +107,6 @@ export const fetchMovieDetail = (id) => async (dispatch) => {
 
 export default {
   fetchMovieDetail,
-  fetchMovieSR
+  fetchMovieSR,
+  fetchMovieNonSR
 };

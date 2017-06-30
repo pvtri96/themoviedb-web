@@ -6,12 +6,22 @@ import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
 import { movieActions } from '../../src/redux/movies/movie';
 import PropTypes from 'prop-types';
-import Spinner from '../../src/components/Spinner';
+import Loading from '../../src/components/Loading';
 
 class Index extends Component {
 
-  static async getInitialProps({  store, query }) {
-    await store.dispatch(movieActions.fetchMovieSR(query.id));
+  static async getInitialProps({ isServer,  store, query }) {
+    // window.scrollTo(0,0);
+    if(!isServer)
+    {
+      await store.dispatch(movieActions.fetchMovieNonSR(store.getState().movies.current));
+    }
+    if(isServer) {
+      await store.dispatch(movieActions.fetchMovieSR(query.id));
+    }
+    return {
+      isServer
+    };
   }
 
   constructor(props) {
@@ -22,15 +32,17 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchMovieDetail(this.props.url.query.id);
+    window.scrollTo(0,0);
+    console.log(this.props.isServer);
     setTimeout(() => this.setState({ isLoading: false }), 500);
+    this.props.fetchMovieDetail(this.props.url.query.id);
   }
 
   render(){
     if(this.state.isLoading) {
       return (
         <Master>
-          <Spinner />
+          <Loading />
         </Master>
       );
     }

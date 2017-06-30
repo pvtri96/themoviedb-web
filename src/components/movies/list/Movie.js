@@ -6,7 +6,9 @@ import stylesheet from './Movie.scss';
 import moviesService from '../../../services/movies';
 import FontAwesome from 'react-fontawesome';
 import Genres from './Genres';
-
+import { movieListActions } from '../../../redux/movies/movieList';
+import { connect } from 'react-redux';
+import Router from 'next/router';
 
 const lengthTitle = 5;
 const lengthOverview = 25;
@@ -55,21 +57,20 @@ class Index extends Component  {
 
         <div className="content-movie">
           <div className="img">
-            <Link href={`/movies/movie-detail?id=${movie.id}`}>
-              <a >
-                <img  src={process.env.MOVIE_IMG_URL + 'w185_and_h278_bestv2' +
-                movie.poster_path} alt={movie.title} placeholder={movie.title} />
+            <img onClick={() => {
+              this.props.fetchCurrentMovie(movie);
+              Router.push(`/movies/movie-detail?id=${movie.id}`);
+            }} src={process.env.MOVIE_IMG_URL + 'w185_and_h278_bestv2' +
+            movie.poster_path} alt={movie.title} placeholder={movie.title} />
 
-                <div className="meta">
-                  <span onMouseOver={this.toggle} onMouseLeave={this.toggle}>
-                    <FontAwesome
-                      name="heartbeat"
-                      style={{ fontSize: '25px', color: '#c0392b'}}
-                    />
-                  </span>
-                </div>
-              </a>
-            </Link>
+            <div className="meta">
+              <span onMouseOver={this.toggle} onMouseLeave={this.toggle}>
+                <FontAwesome
+                  name="heartbeat"
+                  style={{ fontSize: '25px', color: '#c0392b'}}
+                />
+              </span>
+            </div>
 
 
           </div>
@@ -77,11 +78,11 @@ class Index extends Component  {
           <div className="content">
             <div className="info" >
               <div className="title">
-                <Link href={`/movies/movie-detail?id=${movie.id}`}>
-                  <a className="link_title">
-                    {moviesService.reduceWordsText(movie.title,lengthTitle)}
-                  </a>
-                </Link>
+
+                <span onClick={() => {
+                  this.props.fetchCurrentMovie(movie);
+                  Router.push(`/movies/movie-detail?id=${movie.id}`);
+                }} className="link_title">{moviesService.reduceWordsText(movie.title,lengthTitle)}</span>
 
                 <span style={{float:'right'}}>
                   {movie.vote_average.toFixed(1)} 	{' '}
@@ -107,12 +108,11 @@ class Index extends Component  {
 
 
 
-            <div className="more_info">
-              <Link href={`/movies/movie-detail?id=${movie.id}`}>
-                <a >
-                  More info
-                </a>
-              </Link>
+            <div className="more_info" onClick={() => {
+              this.props.fetchCurrentMovie(movie);
+              Router.push(`/movies/movie-detail?id=${movie.id}`);
+            }}>
+              More info
             </div>
           </div>
         </div>
@@ -121,6 +121,12 @@ class Index extends Component  {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCurrentMovie: (movie, callback) => {
+      dispatch(movieListActions.fetchCurrentMovie(movie), callback);
+    }
+  };
+};
 
-
-export default Index;
+export default connect(undefined, mapDispatchToProps)(Index);
