@@ -20,18 +20,18 @@ const subDateString = (text, limit) => {
   return text;
 };
 
-const getGenresMovie = (inititalGenres, genres) => {
-  let temp = [];
+const getGenres = (initialState, genres) => {
+  let arr = [];
   genres.map(genre => {
-    if(inititalGenres.includes(genre.id))
-      temp.push(genre.name);
+    if(initialState.includes(genre.id))
+      arr.push(genre.name);
   });
-  return temp.join(', ');
+  return arr.join(', ');
 };
 
 export default {
   subContentString,
   subTitleString,
   subDateString,
-  getGenresMovie
+  getGenres
 };

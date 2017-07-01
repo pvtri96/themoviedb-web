@@ -9,13 +9,12 @@ export const fetchTvShows = () => async (dispatch) => {
       params: {
         api_key: process.env.API_KEY
       }
-    })
-      .then(response => response.data.results);
+    }).then(response => response.data.results);
     const genres = await axios.get(process.env.GENRES_URL + 'genre/tv/list', {
       params: {
         api_key: process.env.API_KEY
       }
-    });
+    }).then(response => response.data.genres);
     return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
