@@ -13,26 +13,72 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      popoverOpen: false
     };
   }
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      popoverOpen: !this.state.popoverOpen
     });
   }
 
   render () {
     return (
-      <div>
-        <Navbar color="red" light toggleable inverse={true}>
+      <div className="header fixed-top">
+        <Navbar className="navigation container" color="red" light toggleable inverse={true}>
           <NavbarToggler right onClick={this.toggle} />
-          <Link href="/"><NavbarBrand className="logo">Reactstrap Navbar</NavbarBrand></Link>
+          <Link href="/"><NavbarBrand className="logo"><img src="../../static/image/themoviedb-logo.png"></img></NavbarBrand></Link>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="" navbar>
               <NavItem>
-                <Link href="people.js"><NavLink>Home</NavLink></Link>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>Discover</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Movies</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>TV Shows</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/movies"><NavLink>Movies</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Up Coming</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Now Playing</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>TV Shows</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>On TV</NavLink></Link></li>
+                      <li><Link href="/"><NavLink>Airing Today</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
+              </NavItem>
+              <NavItem>
+                <ul className="dropdown">
+                  <li className="dropdown-list">
+                    <Link className="dropdown-title" href="/"><NavLink>People</NavLink></Link>
+                    <ul className="dropdown-content">
+                      <li><Link href="/"><NavLink>Popular People</NavLink></Link></li>
+                    </ul>
+                  </li>
+                </ul>
               </NavItem>
             </Nav>
           </Collapse>

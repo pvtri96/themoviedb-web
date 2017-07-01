@@ -21,7 +21,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-fontawesome": "^1.6.1",
-    "react-random": "^1.1.2",
+    "react-markdown": "^2.5.0",
     "react-redux": "^5.0.5",
     "react-transition-group": "^1.1.3",
     "reactstrap": "^4.6.2",
