@@ -10,12 +10,9 @@ import Loading from '../../src/components/Loading';
 
 class Index extends Component {
 
-  static async getInitialProps({ isServer,  store, query }) {
-    // window.scrollTo(0,0);
+  static async getInitialProps({  store, query }) {
+
     await store.dispatch(movieActions.fetchMovieDetail((query.id)));
-    return {
-      isServer
-    }
   }
 
   constructor(props) {
@@ -29,11 +26,6 @@ class Index extends Component {
     window.scrollTo(0,0);
     setTimeout(() => this.setState({ isLoading: false }), 500);
 
-    // fetch data from API
-    // if(!this.props.isServer)
-    // {
-    //   this.props.fetchMovieDetail(this.props.url.query.id);
-    // }
     this.props.fetchCredits(this.props.url.query.id);
     this.props.fetchReviews(this.props.url.query.id);
     this.props.fetchReleaseDates(this.props.url.query.id);

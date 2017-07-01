@@ -55,12 +55,21 @@ class Recommendations extends Component {
               <div className="title">
 
                 <span onClick={() => {
-                  // Router.reload(`/movies/detspanil?id=${item.id}`);
-                  Router.push(`/movies/detail?id=${item.id}`);
+                  // Since that's a new page, it'll unload the current page,
+                  // load the new one and call getInitialProps
+                  // even though we asked to do shallow routing.
+
+                  Router.push(`/movies/detail?id=${item.id}`,
+                    `/movies/detail?id=${item.id}`,
+                    { shallow: true });
+                  // window.location.reload();
+                  window.location.href=window.location.href;
 
                 }} className="link_title">
                   {moviesService.reduceWordsText(item.title,lengthTitle)}
                 </span>
+
+
 
                 <span style={{float:'right'}}>
                   {item.vote_average.toFixed(1)} 	{' '}
