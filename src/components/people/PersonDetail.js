@@ -13,25 +13,13 @@ class PersonDetail extends Component{
   }
 
   render(){
-    //style of background
-    let tagged_images = this.props.tagged_images;
-    let Background = process.env.BACKGROUND_IMAGE
-                      + tagged_images.results[0].media.backdrop_path;
-    let bg_style = {
-      width: "100%",
-      height: "400px",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "top",
-      backgroundImage: `url(${Background})`
-    };
+
     //<Random value=https://image.tmdb.org/t/p/w1440_and_h405_bestv2`
     //+ tagged_images.results[0].media.backdrop_path}' tag='img' />
     return (
       <div className="background">
         <style dangerouslySetInnerHTML = {{ __html: stylesheet }} />
-        <div style = {bg_style} >
-          <TopHeader />
-        </div>
+        <TopHeader />
         <div className = "d-flex per_inf container">
           <PersonInf />
           <PersonContent />

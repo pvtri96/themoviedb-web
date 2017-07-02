@@ -45,9 +45,11 @@ class PersonContent extends Component {
         <Row className="per_movies">
           { know_sort_cast_des.slice(0,size).map(cast=>
             <Col key = {cast.id}>
-              <CardImg top className = "know_for_img" src={process.env.IMAGE + cast.poster_path}
-                alt = {cast.title} />
-              <p className="know_for_title">{cast.original_title}</p>
+              <a href="#">
+                <CardImg top className = "know_for_img" src={process.env.IMAGE + cast.poster_path}
+                  alt = {cast.title} />
+                <p className="know_for_title">{cast.original_title}</p>
+              </a>
             </Col>
           )}
         </Row>

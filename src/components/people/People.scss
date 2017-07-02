@@ -129,8 +129,9 @@ body {
   border: 0.5px solid white;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  margin-left: -18px;
+  margin-left: -22px;
   margin-right: 40px;
+  padding-bottom: 2px;
 }
 
 .bg-image{
@@ -138,7 +139,7 @@ body {
 }
 .per_img{
 display: block;
-width:280px;
+width:278px;
 height:400px;
 }
 .zoom_image{
@@ -240,6 +241,10 @@ height:400px;
 //per_movies
 .per_movies{
   padding-left: 20px;
+  a:hover{
+    text-decoration: none;
+    opacity: 0.9;
+  }
   .per_movies_content{
     width: 80%;
     margin-left: 76px;

@@ -1,7 +1,7 @@
 // "2017-04-19"
 export const changeTextDate = (date) => {
   return date.split("-").reverse().join("/");
-}
+};
 
 export const reduceWordsText = (text,limit) => {
   let words = text.split(" ");

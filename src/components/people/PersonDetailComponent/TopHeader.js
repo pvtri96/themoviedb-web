@@ -11,13 +11,21 @@ class TopHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
-      modal: false
+      modalReadMore: false,
+      modalZoomImage: false
     };
-    this.toggle = this.toggle.bind(this);
+    this.toggleReadMore = this.toggleReadMore.bind(this);
+    this.toggleZoomImage = this.toggleZoomImage.bind(this);
+
   }
-  toggle() {
+  toggleReadMore() {
     this.setState({
-      modal: !this.state.modal
+      modalReadMore: !this.state.modalReadMore
+    });
+  }
+  toggleZoomImage() {
+    this.setState({
+      modalZoomImage: !this.state.modalZoomImage
     });
   }
 
@@ -55,9 +63,9 @@ class TopHeader extends Component {
     if(PeopleServices.reduceText(biography).length > 305) {
       read_more = (
         <span>
-          <a href = "#" onClick = {this.toggle} className = "read_more">Read more </a>
-          <Modal isOpen = {this.state.modal} toggle = {this.toggle} className = "modal_biogr" >
-            <ModalHeader className = "md_header" toggle = {this.toggle}>Biograpphy</ModalHeader>
+          <a href = "#" onClick = {this.toggleReadMore} className = "read_more">Read more </a>
+          <Modal isOpen = {this.state.modalReadMore} toggle = {this.toggleReadMore} className = "modal_biogr" >
+            <ModalHeader className = "md_header" toggle = {this.toggleReadMore}>Biograpphy</ModalHeader>
             <ModalBody >
               {biography.split('\n').map((item, index) => {
                 return <span key = {index}>{item}<br/> </span>;
@@ -67,32 +75,61 @@ class TopHeader extends Component {
         </span>
       );
     }
-
+    //render zoom image
+    let zoomImage;
+    zoomImage = (
+      <span>
+        <a href = "#" onClick = {this.toggleZoomImage} >
+          <FontAwesome style = {{color:'white'}} name = 'search-plus'/>{' '}Expand
+        </a>
+        <Modal isOpen = {this.state.modalZoomImage} toggle = {this.toggleZoomImage} className = "modal_biogr" >
+          <ModalHeader toggle = {this.toggleZoomImage}>Show zoom image</ModalHeader>
+          <ModalBody >
+            aa
+          </ModalBody>
+        </Modal>
+      </span>
+    );
+    //style of background
+    let tagged_images = this.props.tagged_images;
+    let Background = process.env.BACKGROUND_IMAGE
+                      + tagged_images.results[0].media.backdrop_path;
+    let bg_style = {
+      width: "100%",
+      height: "400px",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "top",
+      backgroundImage: `url(${Background})`
+    };
     return (
       <div className="topheader ">
         <style dangerouslySetInnerHTML = {{ __html: stylesheet }} />
-        <div className="container m-auto d-flex">
+        <div style = {bg_style} >
+          <div className="container m-auto d-flex">
 
-          <div className="bg-image">
-            <CardImg top className = "per_img" src = {process.env.IMAGE + person.profile_path}
-              alt = {person.name}  />
-            <div className="zoom_image">
-              <h3 className="text"><FontAwesome style = {{color:'white'}} name = 'search-plus'/>{' '}Expand</h3>
+            <div className="bg-image">
+              <CardImg top className = "per_img" src = {process.env.IMAGE + person.profile_path}
+                alt = {person.name}  />
+              <div className="zoom_image">
+                <h3 className="text">
+                  {zoomImage}
+                </h3>
+              </div>
             </div>
-          </div>
 
-          <div className = "text_biogrh">
-            <h2>{person.name} {' '}
-              {facebok}
-              {twitter}
-              {instagram}
-            </h2>
-            <h4>Biorgaphy</h4>
-            <p >
-              {reduceBiography.split('\n').map((item, index) => {
-                return <span key = {index}>{item}<br/> </span>;
-              })}</p>
-            {read_more}
+            <div className = "text_biogrh">
+              <h2>{person.name} {' '}
+                {facebok}
+                {twitter}
+                {instagram}
+              </h2>
+              <h4>Biorgaphy</h4>
+              <p >
+                {reduceBiography.split('\n').map((item, index) => {
+                  return <span key = {index}>{item}<br/> </span>;
+                })}</p>
+              {read_more}
+            </div>
           </div>
         </div>
       </div>
