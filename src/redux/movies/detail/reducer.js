@@ -10,7 +10,6 @@ export const KEY = 'movie';
 export const selector = state => state[KEY];
 
 const Reducer = (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch(action.type) {
     // movie detail
   case actionTypes.MOVIE_DETAIL_FETCH_REQUESTED :

@@ -26,7 +26,7 @@ class TopBilledCast extends Component {
             <div key={person.id} className="person">
               <img width="138" height="175"  src={process.env.MOVIE_IMG_URL + 'w138_and_h175_bestv2' + person.profile_path} alt={person.name} title={person.name}/>
               <div className="character">
-                <Link href="#">
+                <Link >
                   <a>{person.name}</a>
                 </Link>
                 <br/>
@@ -38,7 +38,7 @@ class TopBilledCast extends Component {
           ))}
         </div> { /* people */}
 
-        <Link href="#">
+        <Link >
           <a className="link"><h5>Full Cast & Crew</h5></a>
         </Link>
         <br/>

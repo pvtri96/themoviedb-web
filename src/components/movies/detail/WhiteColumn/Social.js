@@ -46,7 +46,7 @@ class Social extends Component {
                 </div>
               </div>
             </div>
-            <Link href="#">
+            <Link >
               <a className="link"><h5>Read All Reviews</h5></a>
             </Link>
             <br/>
