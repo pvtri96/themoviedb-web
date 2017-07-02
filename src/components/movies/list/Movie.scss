@@ -1,0 +1,112 @@
+.content-movie {
+  margin: 20px 0px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+  &:hover {
+    box-shadow: 3px 3px 5px #aaa;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+
+  .img {
+    position: relative;
+    width: 35%;
+    .meta {
+      height: 40px;
+      width: 100%;
+      padding: 10px;
+      line-height: 50%;
+      position: absolute;
+      bottom: 0;
+      display: none;
+
+
+    }
+
+
+    &:hover {
+      cursor: pointer
+    }
+    &:hover .meta {
+      background-color: rgba(255,255,255,0.8);
+      display: block;
+    }
+  }
+
+}
+
+.content {
+  width: 65%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+
+  .info {
+    padding: 16px;
+    background-color: white;
+    height: 80%;
+
+    .title {
+      height: 15%;
+      font-family: 'Vidaloka', serif;
+      .link_title {
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          color: #3498db;
+        }
+      }
+    }
+
+    .release_day {
+      font-size: 14px;
+      color: #666;
+      .genres {
+        float: right;
+      }
+    }
+
+
+
+    .overview {
+      height: 60%;
+      margin: 20px 0px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #7f8c8d;
+    }
+  }
+
+  .more_info {
+    background-color: white;
+    height: 20%;
+    border-top: 1px solid #ddd;
+    line-height: 150%;
+    padding: 16px;
+    cursor: pointer;
+    &:hover {
+      color: #3498db;
+    }
+  }
+}
+
+.tooltipHeartbeat {
+  margin-bottom: 10px;
+  background-color: rgba(44, 62, 80, 0.90);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  width:30%;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 56%;
+  left: -8.7%;
+}
+.sort_down {
+  color: #2c3e50;
+  position: absolute;
+  top: 78%;
+  left: 48%;
+
+}
+
