@@ -1,4 +1,8 @@
 // "2017-04-19"
+import moduleName from 'react-dom';
+
+
+
 export const changeTextDate = (date) => {
   return date.split("-").reverse().join("/");
 }
@@ -84,6 +88,10 @@ export const setTextMoney = m => {
 };
 
 
+
+
+
+
 export default {
   changeTextDate,
   reduceWordsText,
@@ -97,5 +105,4 @@ export default {
   getLimitPosters,
   setMinutesToHours,
   setTextMoney,
-
 };
