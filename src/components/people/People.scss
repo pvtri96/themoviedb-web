@@ -106,7 +106,7 @@ body {
   background: rgba(0,0,0,0.75);
   margin: 0;
 }
-//modal
+//modal_read more
 .modal_biogr {
   max-width: 60%;
   .md_header{
@@ -120,6 +120,33 @@ body {
   }
   a:hover {
     color: green;
+  }
+}
+//modal expand
+.expand_image_nav{
+  .expand_image{
+  width: 381px;
+  height: 572px;
+  padding-right: 15px;
+  }
+  .expand_infor{
+    .expand_close{
+      margin-bottom: 150px;
+    }
+    .expand_content{
+      padding-left: 15px;
+      padding-right: 15px;
+      .expand_text{
+         padding-bottom: 2px;
+        font-size: 13px;
+        a{
+          font-size: 15px;
+          :hover{
+            text-decoration: 1px;;
+          }
+        }
+      }
+    }
   }
 }
 //person image
@@ -187,7 +214,30 @@ height:400px;
     color: green;
   }
 }
-//know_for
+
+//sub_navbar
+.sub_navbar_wrapper{
+  width: 100%;
+  display: block;
+  .sub_navbar{
+    padding-left: 15px;
+    font-size: 20px;
+    color: grey;
+    display: flex;
+    .sub_navbar_tab{
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      margin: 5px 50px 5px 5px;;
+    }
+    .sub_navbar_tab:hover{
+      color: green;
+      border-bottom: 3px solid green;
+      margin-bottom: 0px;;
+    }
+  }
+}
+//per_movies
 .content{
   h4{
     padding-left: 5px;
@@ -213,67 +263,57 @@ height:400px;
   }
   .know_for_title{
     font-size: 14px;
-  }
-}
-//sub_navbar
-.sub_navbar_wrapper{
-  width: 100%;
-  display: block;
-  .sub_navbar{
-    padding-left: 15px;
-    font-size: 20px;
-    color: grey;
-    display: flex;
-    .sub_navbar_tab{
-      box-sizing: border-box;
-      display: inline-flex;
-      align-items: center;
-      margin: 5px 50px 5px 5px;;
-    }
-    .sub_navbar_tab:hover{
-      color: green;
-      border-bottom: 3px solid green;
-      margin-bottom: 0px;;
-    }
+    padding-bottom: 10px;
   }
 }
 //per_movies
 .per_movies{
   padding-left: 20px;
-  .per_movies_content{
-    width: 80%;
-    margin-left: 76px;
-    .tb_movies{
-      border:0;
-      padding: 0;
-      border-collapse: separate;
-      padding: 6px 0 0 0;
-      margin-bottom: 0rem;
-      tr{
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-      }
-      td{
-        padding:0;
-      }
-      .tb_year{
-        width: 30px;
-        font-weight: bold;
-        vertical-align: top;
-      }
-      .tb_view{
-        padding-top:10px;
-        color: #ccc;
-        width: 30px;
-      }
-      .tb_view:hover{
-        color: #00b33c;
-      }
-      td{
-        padding: 8px 20px 8px 20px;
+  .per_movies_div {
+    padding-bottom: 20px;
+    .know_for_img :hover{
+      opacity: 0.8;
+    }
+    a{
+      :hover{
+        text-decoration: none;
       }
     }
   }
 }
-
+//Tv_Show and movie
+.per_movies_content{
+  width: 80%;
+  margin-left: 76px;
+  .tb_movies{
+    border:0;
+    padding: 0;
+    border-collapse: separate;
+    padding: 6px 0 0 0;
+    margin-bottom: 0rem;
+    tr{
+      display: table-row;
+      vertical-align: inherit;
+      border-color: inherit;
+    }
+    td{
+      padding:0;
+    }
+    .tb_year{
+      width: 30px;
+      font-weight: bold;
+      vertical-align: top;
+    }
+    .tb_view{
+      padding-top:10px;
+      color: #ccc;
+      width: 30px;
+    }
+    .tb_view:hover{
+      color: #00b33c;
+    }
+    td{
+      padding: 8px 20px 8px 20px;
+    }
+  }
+}
