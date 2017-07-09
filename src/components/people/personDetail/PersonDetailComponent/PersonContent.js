@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import stylesheet from '../../People.scss';
 import { personSelector } from '../../../../redux/people/person';
-import Movies from '../PersonDetailComponent/Movies';
-import TVShows from '../PersonDetailComponent/TVShows';
+import Movies from '../PersonDetailComponent/MovieShow/Movies';
+import TVShows from '../../personDetail/PersonDetailComponent/TVShow/TVShows';
 import PeopleServices from '../../../../services/people/PeopleServices';
 
 class PersonContent extends Component {

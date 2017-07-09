@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import {Row, Table} from 'reactstrap';
-import PeopleServices from '../../../../services/people/PeopleServices';
-import PopoverItem from './PopoverItem';
+import PeopleServices from '../../../../../services/people/PeopleServices';
+import PopoverItem from '../PopoverItem';
 
-const renderAsCrew = (valueJob, valueCharacter) => {
-  if(valueJob !=null){
+const renderAsCrew = ( valueCharacter, valueEpisode) => {
+  if(valueEpisode != null){
     return (
-      <span> ... <i>{valueJob}</i></span>
+      <span> - (<i>{valueEpisode} episode</i>)</span>
     );
   }
-  // if(valueEpisode != null){
-  //   return (
-  //     <span> - (<i>{valueEpisode} episode</i>)</span>
-  //   );
-  // }
-  if(valueCharacter !=null){
+  if(valueCharacter != null || valueCharacter != "" ){
     return (
       <span> as <i>{valueCharacter}</i></span>
     );
@@ -46,12 +41,14 @@ class RenderCrew extends Component {
               <Table className="tb_movies" key={item.credit_id} >
                 <tbody>
                   <tr >
-                    <th scope = "row" className = "tb_year">{PeopleServices.reduceYear(String(item.release_date), 1)}</th>
+                    <th scope = "row" className = "tb_year">
+                      {item.first_air_date && PeopleServices.reduceYear(String(item.first_air_date), 1)}
+                    </th>
                     <td className = "tb_view" >
                       <PopoverItem id={item.credit_id} />
                     </td>
-                    <td className = "tb_movie"><b>{item.title}</b>
-                      {renderAsCrew(item.job, item.character )}
+                    <td className = "tb_movie"><b>{item.name}</b>
+                      {renderAsCrew(item.character, item.episode_count )}
                     </td>
                   </tr>
                 </tbody>

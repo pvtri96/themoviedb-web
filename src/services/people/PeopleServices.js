@@ -73,10 +73,17 @@ class PeopleService {
     }
     return arr1;
   }
-  static changeNullDate(array){
+  static changeNullDateMovies(array){
     for(let i=1; i<array.length; i++) {
       if(array[i].release_date == null)
         array[i].release_date = "1900-01-01";
+    }
+    return array;
+  }
+  static changeNullDateTV(array){
+    for(let i=1; i<array.length; i++) {
+      if(array[i].first_air_date == null)
+        array[i].first_air_date = "1900-01-01";
     }
     return array;
   }
