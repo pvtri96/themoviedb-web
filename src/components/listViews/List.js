@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BackdropCard, PosterCard } from '../listViews';
 import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows';
 import { filterConstant, filterSelector } from '../../redux/filter';
-import Filter from './Filter';
+import Filter from './filter/Filter';
 
 class ListMovies extends Component {
   constructor(props){

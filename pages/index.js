@@ -17,3 +17,16 @@ Index.propTypes = {
 };
 
 export default withRedux(getStore)(Index);
+// =======
+// import Movies from './movies';
+
+// const Index = () => {
+//   return (
+//     <div>
+//       <Movies />
+//     </div>
+//   );
+// };
+
+// export default Index;
+// >>>>>>> origin/master

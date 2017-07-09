@@ -2,18 +2,21 @@ import React from 'react';
 import Link from 'next/link';
 import Service  from '../../../service/index';
 import Genres from '../../genres/Genres';
-
+import ImageOverlay from '../ImageOverlay';
+import MainStyle from '../style.scss';
+import style from '../posterCard/style.scss';
 const TVShows = (props) => {
   let tvshow = props.tvshow;
   return (
+
     <div className="list-item poster-card">
+      <style dangerouslySetInnerHTML={{ __html: MainStyle }} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
       <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>
         <div className="item d-flex mb-5">
           <div className="image">
             <img className="item-poster" alt={ tvshow.original_name } src={ process.env.IMAGE_URL+tvshow.poster_path } />
-            <div className="overlay">
-              <div className="overlay-content">Hello world</div>
-            </div>
+            <ImageOverlay />
           </div>
           <div className="item-info">
             <div className="item-title d-flex">
@@ -21,7 +24,7 @@ const TVShows = (props) => {
                 <span className="title">{ Service.subTitleString(tvshow.original_name,25) }</span>
               </a>
               <div className="vote-average">
-                <span>{ tvshow.vote_average }</span>
+                <span>{ tvshow.vote_average.toFixed(1) }</span>
                 <i className=" pl-1 fa fa-star" aria-hidden="true"></i>
               </div>
             </div>

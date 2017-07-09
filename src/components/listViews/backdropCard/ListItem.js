@@ -1,15 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
 import Service  from '../../../service/index';
+import ImageOverlay from '../ImageOverlay';
+import MainStyle from '../style.scss';
+import style from '../posterCard/style.scss';
+import Genres from '../../genres/Genres';
 
 const TVShows = (props) => {
   let tvshow = props.tvshow;
   return (
     <div className="list-item backdrop-card" >
+      <style dangerouslySetInnerHTML={{ __html: MainStyle }} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
       <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>
         <div className="item mb-4">
           <div className="image">
             <img className="item-poster" alt={ tvshow.original_name } src={ process.env.IMAGE_URL+tvshow.backdrop_path } />
+            <ImageOverlay />
           </div>
           <div>
             <div className="item-info">
@@ -23,12 +30,12 @@ const TVShows = (props) => {
                 </div>
               </div>
               <div className="item-a d-flex">
-                <div>
-                  {tvshow.id}
-                </div>
-                <div className="relate-year ml-auto">
-                  <span className="pr-1" style={{fontSize:'0.8em'}}>{ Service.subDateString(tvshow.first_air_date,4) }</span>
-                  <i className="fa fa-calendar" aria-hidden="true"></i>
+                <div className="relate-year d-flex">
+                  <Genres genre_ids = {tvshow.genre_ids}/>
+                  <span>
+                    <i className="fa fa-calendar" aria-hidden="true"></i>
+                    <span className="pl-1">{ Service.subDateString(tvshow.first_air_date,4) }</span>
+                  </span>
                 </div>
               </div>
             </div>
