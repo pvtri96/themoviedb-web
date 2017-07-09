@@ -1,23 +1,22 @@
 @import 'variables';
-.list-item {
-  &.backdrop-card {
+.fa-calendar {
+  font-size: 13px;
+}
+.item-info {
+  padding: 5px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
 
-    img {
-      width: $cardWidth;
-    }
-
-    .fa-calendar {
-      font-size: 13px;
-    }
-    .item-info {
-      padding: 5px 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      background-color: white;
-    }
-
-    .title, .vote-average {
-      font-size: 1.1em;
-    }
+.title, .vote-average {
+  font-size: 1.1em;
+}
+.item {
+  &.desc {
+    justify-content: space-between;
+  }
+  &.backdrop {
+    width: $cardWidth;
   }
 }
 

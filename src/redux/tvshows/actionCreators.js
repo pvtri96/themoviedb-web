@@ -1,21 +1,21 @@
 import actionTypes from './actionTypes';
 
-export const tvshowsFetchRequested = () => ({
-  type: actionTypes.TVSHOWS_FETCH_REQUESTED
+export const dataFetchRequested = () => ({
+  type: actionTypes.DATA_FETCH_REQUESTED
 });
-export const tvshowsFetchFulfilled = ( tvshows, genres ) => ({
-  type: actionTypes.TVSHOWS_FETCH_FULFILLED,
-  payload: tvshows, genres
+export const dataFetchFulfilled = ( data, genres ) => ({
+  type: actionTypes.DATA_FETCH_FULFILLED,
+  payload: data, genres
 });
 
-export const tvshowsFetchRejected = ( err ) => ({
-  type: actionTypes.TVSHOWS_FETCH_REJECTED,
+export const dataFetchRejected = ( err ) => ({
+  type: actionTypes.DATA_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 export default {
-  tvshowsFetchRequested,
-  tvshowsFetchFulfilled,
-  tvshowsFetchRejected
+  dataFetchRequested,
+  dataFetchFulfilled,
+  dataFetchRejected
 };

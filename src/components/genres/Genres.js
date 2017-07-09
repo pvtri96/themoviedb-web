@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Service from '../../service';
-import { tvshowsSelector } from '../../redux/tvshows';
+import { dataSelector } from '../../redux/tvshows';
 
 const Index = props => {
   if(!props.genres)
@@ -17,7 +17,7 @@ const Index = props => {
 
 const mapStateToProps = state => {
   return  {
-    genres: tvshowsSelector(state).genres
+    genres: dataSelector(state).genres
   };
 };
 

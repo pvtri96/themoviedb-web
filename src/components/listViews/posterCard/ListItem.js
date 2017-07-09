@@ -4,7 +4,7 @@ import Service  from '../../../service/index';
 import Genres from '../../genres/Genres';
 import ImageOverlay from '../ImageOverlay';
 import MainStyle from '../style.scss';
-import style from '../posterCard/style.scss';
+import style from './style.scss';
 const TVShows = (props) => {
   let tvshow = props.tvshow;
   return (

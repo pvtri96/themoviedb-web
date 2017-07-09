@@ -1,22 +1,22 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { BackdropCard, PosterCard } from '../listViews';
-import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows';
+import { dataActions, dataSelector } from '../../redux/tvshows';
 import { filterConstant, filterSelector } from '../../redux/filter';
-import Filter from './filter/Filter';
+import Filter from '../filter/Filter';
 
 class ListMovies extends Component {
   constructor(props){
     super(props);
-    this.fetchTvShows =  this.fetchTvShows.bind(this);
+    this.fetchData =  this.fetchData.bind(this);
   }
 
   componentDidMount() {
-    this.fetchTvShows();
+    this.fetchData();
   }
 
-  fetchTvShows () {
-    this.props.fetchTvShows();
+  fetchData () {
+    this.props.fetchData();
   }
 
   renderItemView (tvshow) {
@@ -34,8 +34,8 @@ class ListMovies extends Component {
       <div className="container">
         <Filter/>
         <div className="list d-flex">
-          {this.props.tvshows.map( tvshow => {
-            return this.renderItemView( tvshow );
+          {this.props.datas.map( data => {
+            return this.renderItemView( data );
           })}
         </div>
       </div>
@@ -44,14 +44,14 @@ class ListMovies extends Component {
 }
 
 const mapStateToProps = state => ({
-  tvshows: tvshowsSelector(state).list,
+  datas: dataSelector(state).list,
   filter: filterSelector(state).viewType
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTvShows: () => {
-      dispatch(tvshowsActions.fetchTvShows());
+    fetchData: () => {
+      dispatch(dataActions.fetchData());
     }
   };
 };

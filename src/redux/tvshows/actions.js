@@ -2,10 +2,10 @@ import axios from 'axios';
 import actionCreators from './actionCreators';
 
 
-export const fetchTvShows = () => async (dispatch) => {
-  dispatch(actionCreators.tvshowsFetchRequested());
+export const fetchData = () => async (dispatch) => {
+  dispatch(actionCreators.dataFetchRequested());
   try {
-    const tvshows = await axios.get(process.env.TV_SHOW_URL + 'popular', {
+    const data = await axios.get(process.env.TV_SHOW_URL + 'popular', {
       params: {
         api_key: process.env.API_KEY
       }
@@ -15,13 +15,13 @@ export const fetchTvShows = () => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     }).then(response => response.data.genres);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
+    return dispatch(actionCreators.dataFetchFulfilled(data,genres));
   }
   catch (err) {
-    return dispatch(actionCreators.tvshowsFetchRejected(err));
+    return dispatch(actionCreators.dataFetchRejected(err));
   }
 };
 
 export default {
-  fetchTvShows
+  fetchData
 };

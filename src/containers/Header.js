@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,Form, FormGroup, Input } from 'reactstrap';
 import Link from 'next/link';
+import style from './header.scss';
 // import stylesheet from './movie/Main.scss';
 //
 /**
@@ -28,6 +29,7 @@ class Header extends Component {
   render () {
     return (
       <div className="header fixed-top">
+        <style dangerouslySetInnerHTML={{ __html: style }} />
         <Navbar className="navigation container" color="red" light toggleable inverse={true}>
           <NavbarToggler right onClick={this.toggle} />
           <Link href="/"><NavbarBrand className="logo"><img src="../../static/image/themoviedb-logo.png"></img></NavbarBrand></Link>
