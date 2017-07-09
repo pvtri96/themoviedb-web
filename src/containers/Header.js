@@ -62,7 +62,7 @@ class Header extends Component {
               <NavItem>
                 <ul className="dropdown">
                   <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/"><NavLink>TV Shows</NavLink></Link>
+                    <Link className="dropdown-title" href="/index"><NavLink>TV Shows</NavLink></Link>
                     <ul className="dropdown-content">
                       <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
                       <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>

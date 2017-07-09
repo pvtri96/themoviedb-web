@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { BackdropCard, PosterCard } from '../listViews';
-import { dataActions, dataSelector } from '../../redux/tvshows';
+import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows';
 import { filterConstant, filterSelector } from '../../redux/filter';
 import Filter from '../filter/Filter';
 
@@ -44,14 +44,14 @@ class ListMovies extends Component {
 }
 
 const mapStateToProps = state => ({
-  datas: dataSelector(state).list,
+  datas: tvshowsSelector(state).list,
   filter: filterSelector(state).viewType
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => {
-      dispatch(dataActions.fetchData());
+      dispatch(tvshowsActions.fetchTVshow());
     }
   };
 };
