@@ -21,29 +21,6 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
-// More understanable example
-// export const fetchUsers = () => {
-//   return async (dispatch) => {
-//     // To do here
-//   };
-// };
-
-// Use promise
-// export const fetchUsers = () => (dispatch) => {
-//   //console.log(dispatch);
-//   //Dispath user fetch
-//   dispatch(usersFetchRequested());
-
-//   return axios
-//     .get(API_URL)
-//     // Get response data
-//     .then(response => response.data)
-//     // Dispatch users data
-//     .then(users => dispatch(usersFetchFulfilled(users)))
-//     // Error catcher
-//     .catch(err => dispatch(usersFetchRejected(err)));
-// };
-
 export default {
   fetchUsers
 };

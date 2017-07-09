@@ -1,12 +1,20 @@
 import React from 'react';
-import Movies from './movies';
+import Master from '../src/containers/Master';
+import {getStore} from '../src/redux';
+import withRedux from 'next-redux-wrapper';
+import List from '../src/components/listViews/List';
 
 const Index = () => {
   return (
-    <div>
-      <Movies />
-    </div>
+    <Master>
+      <List></List>
+    </Master>
   );
 };
 
-export default Index;
+Index.propTypes = {
+
+};
+
+export default withRedux(getStore)(Index);
+
