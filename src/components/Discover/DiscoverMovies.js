@@ -7,6 +7,7 @@ import {
   Input
 } from 'reactstrap';
 import StringSolve from '../../../service/StringSolve';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class DiscoverMovies extends Component{
   constructor(props){
@@ -52,8 +53,8 @@ class DiscoverMovies extends Component{
     let movies = this.props.movies;
     return (
       <div>
-        <div>
-          <div>
+        <div className="d-flex justify-content-between filtering">
+          <div className="year_select filter_element">
             <Input type="select" name="year-select" onChange={this.yearSelectChange}>
               <option value="">None</option>
               {StringSolve.getYear(1900).map(primary_release_year =>
@@ -61,7 +62,7 @@ class DiscoverMovies extends Component{
               )}
             </Input>
           </div>
-          <div>
+          <div className="sort_by_select filter_element">
             <Input type="select" name="sort-by-select" onChange={this.sortBySelectChange}>
               <option value="popularity.desc">Popularity Descending</option>
               <option value="popularity.asc" >Popularity Ascending</option>
@@ -69,7 +70,7 @@ class DiscoverMovies extends Component{
               <option value="release_date.asc" >Release Date Ascending</option>
             </Input>
           </div>
-          <div>
+          <div className="search filter_element">
             <Input placeholder="search" value={this.state.with_keywords}
               onChange={this.searchChange} onKeyPress = {this.handleKeyPress}/>
           </div>
