@@ -2,8 +2,8 @@
 import React, { Component} from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
-import moviesService from '../../../../services/movies';
+import { movieSelector } from '../../../redux/movies/movie';
+import moviesService from '../../../service';
 
 const limitLengthTopBilledCast=5;
 

@@ -1,9 +1,9 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
+import { movieSelector } from '../../../redux/movies/movie';
 import FontAwesome      from 'react-fontawesome';
-import moviesService from '../../../../services/movies';
+import moviesService from '../../../service';
 import Link from 'next/link';
 
 const lengthTitle = 4;

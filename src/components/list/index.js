@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 import Movie from './Movie';
-import {  movieListSelector } from '../../../redux/movies/movieList';
+import {  movieListSelector } from '../../redux/movies/movieList';
 // import { getGenresMovie } from '../../services/movies';
 
 

@@ -1,9 +1,9 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { BackdropCard, PosterCard } from '../listViews';
-import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows';
+import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows/list';
 import { filterConstant, filterSelector } from '../../redux/filter';
-import Filter from '../filter/Filter';
+import Filter from '../listViews/filter/Filter';
 
 class ListMovies extends Component {
   constructor(props){

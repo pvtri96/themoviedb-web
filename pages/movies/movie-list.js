@@ -1,4 +1,4 @@
-import MovieList from '../../src/components/movies/list';
+import MovieList from '../../src/components/list';
 import Master from '../../src/containers/Master';
 import React , {Component} from 'react';
 import { movieListActions } from '../../src/redux/movies/movieList';
