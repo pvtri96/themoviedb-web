@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { movieSelector } from '../../../../redux/movies/detail';
+import { movieSelector } from '../../../redux/movies/detail';
 import moviesService from '../../../service';
 
 class Social extends Component {
