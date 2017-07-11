@@ -4,24 +4,15 @@ import MovieDetail from '../../src/components/detail';
 import Master from '../../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
-import { movieActions } from '../../src/redux/movies/movie';
+import { movieActions } from '../../src/redux/movies/detail';
 import PropTypes from 'prop-types';
 import Loading from '../../src/components/Loading';
 
 class Index extends Component {
 
-  static async getInitialProps({ isServer,  store, query }) {
-    // window.scrollTo(0,0);
-    if(!isServer)
-    {
-      await store.dispatch(movieActions.fetchMovieNonSR(store.getState().movies.current));
-    }
-    if(isServer) {
-      await store.dispatch(movieActions.fetchMovieSR(query.id));
-    }
-    return {
-      isServer
-    };
+  static async getInitialProps({  store, query }) {
+
+    await store.dispatch(movieActions.fetchMovieDetail((query.id)));
   }
 
   constructor(props) {
@@ -33,9 +24,13 @@ class Index extends Component {
 
   componentDidMount() {
     window.scrollTo(0,0);
-    console.log(this.props.isServer);
     setTimeout(() => this.setState({ isLoading: false }), 500);
-    this.props.fetchMovieDetail(this.props.url.query.id);
+
+    this.props.fetchCredits(this.props.url.query.id);
+    this.props.fetchReviews(this.props.url.query.id);
+    this.props.fetchReleaseDates(this.props.url.query.id);
+    this.props.fetchRecommendations(this.props.url.query.id);
+    this.props.fetchKeywords(this.props.url.query.id);
   }
 
   render(){
@@ -62,7 +57,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id))
+    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id)),
+    fetchCredits : (id) => dispatch(movieActions.fetchCredits(id)),
+    fetchRecommendations : (id) => dispatch(movieActions.fetchRecommendations(id)),
+    fetchReviews : (id) => dispatch(movieActions.fetchReviews(id)),
+    fetchReleaseDates : (id) => dispatch(movieActions.fetchReleaseDates(id)),
+    fetchKeywords : (id) => dispatch(movieActions.fetchKeywords(id)),
   };
 };
 

@@ -1,10 +1,10 @@
 import React , { Component }from 'react';
 
 import PropTypes        from 'prop-types';
-import contentHeader from './css/contentHeader.scss';
-import contentWrapper from './css/contentWrapper.scss';
-import greyColumn from './css/greyColumn.scss';
-import whiteColumn from './css/whiteColumn.scss';
+import contentHeader from './style/contentHeader.scss';
+import contentWrapper from './style/contentWrapper.scss';
+import greyColumn from './style/greyColumn.scss';
+import whiteColumn from './style/whiteColumn.scss';
 
 import ContentHeader from './ContentHeader';
 import ContentWrapper from './ContentWrapper';

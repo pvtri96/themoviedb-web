@@ -2,21 +2,19 @@ import React from 'react';
 import Link from 'next/link';
 
 
-
-
 const ContentWrapper = props => {
 
   return (
     <div className="content_wrapper">
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Discussions
           </a>
         </Link>
       </div>
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Reviews
           </a>
@@ -25,7 +23,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Videos
           </a>
@@ -34,7 +32,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Images
           </a>
@@ -43,7 +41,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Changes
           </a>
@@ -52,7 +50,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Report
           </a>
@@ -61,7 +59,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Share
           </a>
@@ -70,7 +68,7 @@ const ContentWrapper = props => {
       </div>
 
       <div className="shortcut_bar">
-        <Link href="#" >
+        <Link  >
           <a>
             Edit
           </a>

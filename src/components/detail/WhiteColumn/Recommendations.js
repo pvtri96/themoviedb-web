@@ -1,8 +1,9 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import FontAwesome      from 'react-fontawesome';
+import Router from 'next/router';
 import moviesService from '../../../service';
 import Link from 'next/link';
 
@@ -54,11 +55,23 @@ class Recommendations extends Component {
               </div>
 
               <div className="title">
-                <Link href={`/movies/movie-detail?id=${item.id}`}>
-                  <a className="link_title">
-                    {moviesService.reduceWordsText(item.title,lengthTitle)}
-                  </a>
-                </Link>
+
+                <span onClick={() => {
+                  // Since that's a new page, it'll unload the current page,
+                  // load the new one and call getInitialProps
+                  // even though we asked to do shallow routing.
+
+                  Router.push(`/movies/detail?id=${item.id}`,
+                    `/movies/detail?id=${item.id}`,
+                    { shallow: true });
+                  // window.location.reload();
+                  window.location.href=window.location.href;
+
+                }} className="link_title">
+                  {moviesService.reduceWordsText(item.title,lengthTitle)}
+                </span>
+
+
 
                 <span style={{float:'right'}}>
                   {item.vote_average.toFixed(1)} 	{' '}

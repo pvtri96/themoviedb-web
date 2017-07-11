@@ -1,15 +1,15 @@
 import MovieList from '../../src/components/list';
 import Master from '../../src/containers/Master';
 import React , {Component} from 'react';
-import { movieListActions } from '../../src/redux/movies/movieList';
+import { movieListActions } from '../../src/redux/movies/list';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
 import Loading from '../../src/components/Loading';
 
 class Index extends Component {
 
-  static async getInitialProps ({ store, isServer  }) {
-    await store.dispatch(movieListActions.fetchMoviesSR());
+  static async getInitialProps ({ store }) {
+    await store.dispatch(movieListActions.fetchMovies());
 
   }
 
@@ -24,8 +24,8 @@ class Index extends Component {
 
   componentDidMount() {
 
-    setTimeout(() => this.setState({ isLoading: false }), 500);
-    this.props.fetchMovies();
+    setTimeout(() => this.setState({ isLoading: false }), 100);
+    this.props.fetchGenres();
   }
 
 
@@ -51,7 +51,7 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovies: () => dispatch(movieListActions.fetchMovies())
+    fetchGenres: () => dispatch(movieListActions.fetchGenres()),
   };
 };
 
