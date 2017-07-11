@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/detail';
+import { movieSelector } from '../../../redux/movies/detail';
 import Link from 'next/link';
 
 const limitLengthVideos = 5;

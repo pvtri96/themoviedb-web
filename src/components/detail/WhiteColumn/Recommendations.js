@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/detail';
+import { movieSelector } from '../../../redux/movies/detail';
 import FontAwesome      from 'react-fontawesome';
 import Router from 'next/router';
 import moviesService from '../../../service';

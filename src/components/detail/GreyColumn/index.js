@@ -1,7 +1,7 @@
 import React , {Component }from 'react';
 import Fontawesome from 'react-fontawesome';
 import { connect } from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/detail';
+import { movieSelector } from '../../../redux/movies/detail';
 import moviesService from '../../../service';
 
 const getTypeReleaseDates = i => {

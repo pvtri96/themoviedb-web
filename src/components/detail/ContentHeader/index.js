@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import FontAwesome      from 'react-fontawesome';
-import { movieSelector } from '../../../../redux/movies/detail';
+import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
 // import moviesService from '../../../../services/movies';
