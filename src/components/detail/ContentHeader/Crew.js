@@ -1,8 +1,8 @@
 import React from 'react';
 import {Row, Col} from 'reactstrap';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../../redux/movies/movie';
-import moviesService from '../../../../services/movies';
+import { movieSelector } from '../../../redux/movies/movie';
+import moviesService from '../../../service';
 
 const limitLengthCrew = 6;
 

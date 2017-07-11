@@ -12,7 +12,7 @@ const TVShows = (props) => {
     <div className="list-item poster-card">
       <style dangerouslySetInnerHTML={{ __html: MainStyle }} />
       <style dangerouslySetInnerHTML={{ __html: style }} />
-      <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>
+      <Link href=''>
         <div className="item d-flex mb-5">
           <div className="image">
             <img className="item-poster" alt={ tvshow.original_name } src={ process.env.IMAGE_URL+tvshow.poster_path } />
@@ -48,4 +48,4 @@ const TVShows = (props) => {
 };
 
 export default TVShows;
-
+// <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>

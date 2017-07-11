@@ -3,10 +3,10 @@ import {
 } from 'reactstrap';
 import Link from 'next/link';
 import stylesheet from './Movie.scss';
-import moviesService from '../../../services/movies';
+import moviesService from '../../service';
 import FontAwesome from 'react-fontawesome';
 import Genres from './Genres';
-import { movieListActions } from '../../../redux/movies/movieList';
+import { movieListActions } from '../../redux/movies/movieList';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 

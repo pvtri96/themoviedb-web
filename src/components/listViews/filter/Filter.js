@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { filterActionCreators, filterConstant} from '../../redux/filter';
+import { filterActionCreators, filterConstant} from '../../../redux/filter';
 
 class Filter extends Component {
   constructor(props) {

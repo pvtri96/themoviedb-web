@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Service from '../../service';
-import { tvshowsSelector } from '../../redux/tvshows';
+import { tvshowsSelector } from '../../redux/tvshows/list';
 
 const Index = props => {
   if(!props.genres)

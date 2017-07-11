@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { movieSelector } from '../../../../redux/movies/movie';
-import moviesService from '../../../../services/movies';
+import { movieSelector } from '../../../redux/movies/movie';
+import moviesService from '../../../service';
 
 class Social extends Component {
   constructor(props) {

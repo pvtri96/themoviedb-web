@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../../src/containers/Master';
-import ListTVShows from '../../src/components/list/ListTVShows';
+// import ListTVShows from '../../src/components/list/ListTVShows';
 import {getStore} from '../../src/redux';
 import withRedux from 'next-redux-wrapper';
+import List from '../../src/components/listViews/List';
+
 
 const Index = () => {
   return (
     <Master>
-      <ListTVShows></ListTVShows>
+      <List></List>
     </Master>
   );
 };
