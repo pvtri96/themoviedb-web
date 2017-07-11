@@ -18,7 +18,7 @@ class MovieDetailShowing extends Component
   render()
   {
     return (
-      <div >
+      <div style={{width: "100%"}}>
 
         <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
         <ContentHeader />
