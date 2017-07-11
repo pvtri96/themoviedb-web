@@ -3,8 +3,6 @@ import FontAwesome      from 'react-fontawesome';
 import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
-// import moviesService from '../../../../services/movies';
-// import * as Vibrant from 'node-vibrant';
 import {
   Modal , Input, option,
 } from 'reactstrap';
@@ -24,7 +22,7 @@ class ContentHeader extends Component {
   toggle() {
     this.setState({
       modal: !this.state.modal
-    })
+    });
   }
 
 
@@ -37,16 +35,16 @@ class ContentHeader extends Component {
       return (<div></div>);
 
     return (
-      <div >
+      <div>
 
 
-        <div className="background_under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
+        <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
 
 
-        <div className="content_header d-flex">
-          <div className="img_movie" >
+        <div className="content-header d-flex">
+          <div className="img-movie" >
             <img  src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
             detail.poster_path} alt={detail.title} placeholder={detail.title}
             crossOrigin="anonymous"/>
@@ -59,7 +57,7 @@ class ContentHeader extends Component {
             </div>
 
             {/* modal */}
-            <Modal dialogClassName="movie_modal" isOpen={this.state.modal} toggle={this.toggle} style={{ overflow: 'scroll'}}>
+            <Modal dialogClassName="movie-modal" isOpen={this.state.modal} toggle={this.toggle} >
               <div className="d-flex justify-content-around">
                 <div className="mr-auto" style={{}}>
                   <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
@@ -69,7 +67,7 @@ class ContentHeader extends Component {
 
 
 
-                <div className="info_poster" >
+                <div className="info-poster" >
                   <div className="header_modal">
                     <h5  onClick={this.toggle}>
                       <FontAwesome
@@ -88,7 +86,7 @@ class ContentHeader extends Component {
                   </div>
 
                   <hr />
-                  <div className="info_img">
+                  <div className="info-img">
                     <h6>Primary ?</h6>
                     <FontAwesome
                       name="times-circle"
@@ -119,7 +117,7 @@ class ContentHeader extends Component {
 
                   <hr/>
 
-                  <div className="d-flex justify-content-between info_footer">
+                  <div className="d-flex justify-content-between info-footer">
                     <div>
                       <FontAwesome name="arrow-circle-left"
                         style={{ fontSize: '25px'}}
@@ -137,7 +135,7 @@ class ContentHeader extends Component {
 
           </div>
 
-          <div className="info_movie">
+          <div className="info-movie">
             <h1>{detail.original_title} ({new Date(detail.release_date).getFullYear()})</h1>
 
             <div className="action d-flex">
