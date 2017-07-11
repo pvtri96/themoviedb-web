@@ -2,9 +2,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from './rootReducer';
+
+
 import { movieListINITIAL_STATE, movieListKEY} from './movies/list';
 import { movieINITIAL_STATE, movieKEY} from './movies/detail';
+import { TVSHOWS_INITIAL_STATE, TVSHOWS_KEY } from './tvshows/list';
+import { FILTER_INITIAL_STATE, FILTER_KEY } from './filter';
+
 const INITIAL_STATE = {
+  [TVSHOWS_KEY]: TVSHOWS_INITIAL_STATE,
+  [FILTER_KEY]: FILTER_INITIAL_STATE,
   [movieListKEY]: movieListINITIAL_STATE,
   [movieKEY]: movieINITIAL_STATE
 };

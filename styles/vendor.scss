@@ -1,12 +1,12 @@
 @import 'variables';
 @import 'bootstrap/scss/bootstrap';
 @import '../src/containers/footer.scss';
-@import '../src/containers/header.scss';
+@import '../src/components/listViews/style.scss';
 
-
-
-.body-content {
+.media {
+  background-color: #F2F2F2;
+  min-width: 1000px;
+  margin: auto;
   min-height: 100vh;
-  padding-top: 120px;
+  padding-top: 170px;
 }
-

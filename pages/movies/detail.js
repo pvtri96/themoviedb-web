@@ -1,6 +1,6 @@
 
 import React ,{ Component }from 'react';
-import MovieDetail from '../../src/components/movies/detail';
+import MovieDetail from '../../src/components/detail';
 import Master from '../../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';

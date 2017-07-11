@@ -1,0 +1,57 @@
+@import 'variables';
+.list-item {
+  &.poster-card {
+    .item {
+      width: $cardWidth;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      .view-more {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-top: solid 1px #E6E6E6;
+        margin: 0;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    img {
+      &.item-poster {
+        height: $imagePosterHeigh;
+        width: $imagePosterWidth;
+      }
+    }
+
+    .item-info {
+      position: relative;
+      width: 300px;
+      background-color: white;
+      padding: 15px 20px;
+    }
+
+    .item-title {
+      justify-content: space-between;
+    }
+
+    .overview,.relate-year {
+      font-size: 0.9em;
+    }
+
+    .title {
+      font-size: 1.2em;
+    }
+    .relate-year {
+      justify-content: space-between;
+      color: #666;
+    }
+    .overview {
+      padding-top: 20px;
+      color: #666;
+      line-height: 1.2em  ;
+    }
+  }
+}
+
