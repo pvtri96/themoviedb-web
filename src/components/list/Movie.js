@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {
 } from 'reactstrap';
-import Link from 'next/link';
 import stylesheet from './Movie.scss';
 import moviesService from '../../service';
 import FontAwesome from 'react-fontawesome';
 import Genres from './Genres';
-import { movieListActions } from '../../redux/movies/movieList';
+import { movieListActions } from '../../redux/movies/list';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 
@@ -59,7 +58,7 @@ class Index extends Component  {
           <div className="img">
             <img onClick={() => {
               this.props.fetchCurrentMovie(movie);
-              Router.push(`/movies/movie-detail?id=${movie.id}`);
+              Router.push(`/movies/detail?id=${movie.id}`);
             }} src={process.env.MOVIE_IMG_URL + 'w185_and_h278_bestv2' +
             movie.poster_path} alt={movie.title} placeholder={movie.title} />
 
@@ -81,7 +80,7 @@ class Index extends Component  {
 
                 <span onClick={() => {
                   this.props.fetchCurrentMovie(movie);
-                  Router.push(`/movies/movie-detail?id=${movie.id}`);
+                  Router.push(`/movies/detail?id=${movie.id}`);
                 }} className="link_title">{moviesService.reduceWordsText(movie.title,lengthTitle)}</span>
 
                 <span style={{float:'right'}}>
@@ -110,7 +109,7 @@ class Index extends Component  {
 
             <div className="more_info" onClick={() => {
               this.props.fetchCurrentMovie(movie);
-              Router.push(`/movies/movie-detail?id=${movie.id}`);
+              Router.push(`/movies/detail?id=${movie.id}`);
             }}>
               More info
             </div>
@@ -123,8 +122,8 @@ class Index extends Component  {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCurrentMovie: (movie, callback) => {
-      dispatch(movieListActions.fetchCurrentMovie(movie), callback);
+    fetchCurrentMovie: (movie) => {
+      dispatch(movieListActions.fetchCurrentMovie(movie));
     }
   };
 };

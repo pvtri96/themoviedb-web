@@ -1,3 +1,6 @@
+import moduleName from 'react-dom';
+
+
 const subContentString = (text, limit) => {
   let arr = [];
   if (text.split(" ").length > limit ) {

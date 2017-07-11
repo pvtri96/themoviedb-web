@@ -1,6 +1,6 @@
 import React from 'react';
 import moviesService from '../../service';
-import { movieListSelector } from '../../redux/movies/movieList';
+import { movieListSelector } from '../../redux/movies/list';
 import { connect } from 'react-redux';
 
 

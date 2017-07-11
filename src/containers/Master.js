@@ -19,6 +19,8 @@ const Master = (props) => (
       <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet"/>
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity=""
         crossOrigin="anonymous"/>
+      <script src="../../static/rgbaster.min.js"></script>
+      <script src="../../static/do-it.js"></script>
       {/* Import Global stylesheet */}
       <title>The Movie DB</title>
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i&amp;subset=vietnamese" rel="stylesheet"/>
@@ -35,7 +37,10 @@ const Master = (props) => (
       </div>
     </div>
     <Footer></Footer>
+
   </div>
+
+
 );
 
 export default Master;

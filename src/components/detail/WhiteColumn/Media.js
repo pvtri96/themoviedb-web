@@ -1,9 +1,8 @@
 
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import { movieSelector } from '../../../redux/movies/movie';
+import { movieSelector } from '../../../../redux/movies/detail';
 import Link from 'next/link';
-// import moviesService from '../../../../services/movies';
 
 const limitLengthVideos = 5;
 const limitLengthBackdrops = 5;
