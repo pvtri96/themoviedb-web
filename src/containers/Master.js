@@ -16,15 +16,9 @@ const Master = (props) => (
     <Head>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <style dangerouslySetInnerHTML={{ __html: vendorsheet }} />
-      <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet"/>
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity=""
-        crossOrigin="anonymous"/>
-      <script src="../../static/rgbaster.min.js"></script>
-      <script src="../../static/do-it.js"></script>
-      {/* Import Global stylesheet */}
-      <title>The Movie DB</title>
-      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i&amp;subset=vietnamese" rel="stylesheet"/>
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous"/>
+      <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet"/>
+      <title>The Movie DB</title>
     </Head>
     {/* End customize head tag*/}
     {/* Page body */}
@@ -36,7 +30,8 @@ const Master = (props) => (
         {props.children}
       </div>
     </div>
-    <Footer></Footer>
+    <Footer>
+    </Footer>
 
   </div>
 
