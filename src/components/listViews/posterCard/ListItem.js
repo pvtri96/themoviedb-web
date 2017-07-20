@@ -5,8 +5,8 @@ import Genres from '../../genres/Genres';
 import ImageOverlay from '../ImageOverlay';
 import MainStyle from '../style.scss';
 import style from './style.scss';
-const TVShows = (props) => {
-  let tvshow = props.tvshow;
+const Index = (props) => {
+  let data = props.data;
   return (
 
     <div className="list-item poster-card">
@@ -15,27 +15,27 @@ const TVShows = (props) => {
       <Link href=''>
         <div className="item d-flex mb-5">
           <div className="image">
-            <img className="item-poster" alt={ tvshow.original_name } src={ process.env.IMAGE_URL+tvshow.poster_path } />
+            <img className="item-poster" alt={ data.original_name } src={ process.env.IMAGE_URL+data.poster_path } />
             <ImageOverlay />
           </div>
           <div className="item-info">
             <div className="item-title d-flex">
-              <a href={`/tv-show/tvshow-details?id=${tvshow.id}`}>
-                <span className="title">{ Service.subTitleString(tvshow.original_name,25) }</span>
+              <a href=''>
+                <span className="title">{ Service.subTitleString(data.original_name,25) }</span>
               </a>
               <div className="vote-average">
-                <span>{ tvshow.vote_average.toFixed(1) }</span>
+                <span>{ data.vote_average.toFixed(1) }</span>
                 <i className=" pl-1 fa fa-star" aria-hidden="true"></i>
               </div>
             </div>
             <div className="relate-year d-flex">
               <span>
                 <i className="fa fa-calendar" aria-hidden="true"></i>
-                <span className="pl-1">{ Service.subDateString(tvshow.first_air_date,4) }</span>
+                <span className="pl-1">{ Service.subDateString(data.first_air_date,4) }</span>
               </span>
-              <Genres genre_ids = {tvshow.genre_ids}/>
+              <Genres genre_ids = {data.genre_ids}/>
             </div>
-            <div className="overview">{ Service.subContentString(tvshow.overview,25) }</div>
+            <div className="overview">{ Service.subContentString(data.overview,25) }</div>
 
             <p className="view-more d-flex p-3">
               <a href=""> More Info </a>
@@ -47,5 +47,5 @@ const TVShows = (props) => {
   );
 };
 
-export default TVShows;
+export default Index;
 // <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>

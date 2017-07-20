@@ -5,7 +5,7 @@ import { tvshowsActions, tvshowsSelector } from '../../redux/tvshows/list';
 import { filterConstant, filterSelector } from '../../redux/filter';
 import Filter from '../listViews/filter/Filter';
 
-class ListMovies extends Component {
+class Index extends Component {
   constructor(props){
     super(props);
     this.fetchData =  this.fetchData.bind(this);
@@ -19,12 +19,12 @@ class ListMovies extends Component {
     this.props.fetchData();
   }
 
-  renderItemView (tvshow) {
+  renderItemView (data) {
     switch (this.props.filter){
     case filterConstant.BACKDROP_CARD:
-      return <BackdropCard tvshow = {tvshow} key = {tvshow.id}/>;
+      return <BackdropCard data = {data} key = {data.id}/>;
     case filterConstant.POSTER_CARD:
-      return <PosterCard tvshow = {tvshow} key = {tvshow.id}/>;
+      return <PosterCard data = {data} key = {data.id}/>;
     }
   }
 
@@ -56,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect( mapStateToProps , mapDispatchToProps )( ListMovies );
+export default connect( mapStateToProps , mapDispatchToProps )( Index );

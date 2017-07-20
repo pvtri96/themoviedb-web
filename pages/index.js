@@ -7,7 +7,6 @@ import List from '../src/components/listViews/List';
 const Index = () => {
   return (
     <Master>
-      <List></List>
     </Master>
   );
 };
