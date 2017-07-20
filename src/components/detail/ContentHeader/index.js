@@ -4,18 +4,21 @@ import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
 import {
-  Modal , Input, option, Row , Col , ModalHeader, ModalBody, ModalFooter, Button
+  Modal , Input, option
 } from 'reactstrap';
 
+import Services from '../../../service';
 
 class ContentHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      posterId : 0
     };
 
     this.toggle = this.toggle.bind(this);
+    this.setPosterId = this.setPosterId.bind(this);
   }
 
   toggle() {
@@ -24,85 +27,38 @@ class ContentHeader extends Component {
     });
   }
 
-  // <Modal dialogClassName="movie-modal" isOpen={this.state.modal} toggle={this.toggle} >
-  //             <Row className=" ">
-  //               <Col md="6" >
-  //                 <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
-  //                 detail.poster_path} alt={detail.title} placeholder={detail.title}
-  //                 crossOrigin="anonymous"/>
-  //               </Col>
-
-  //               <Col md="6" >
-  //                 <div className="header_modal">
-  //                   <h5  onClick={this.toggle}>
-  //                     <FontAwesome
-  //                       name="times"
-  //                       style={{cursor: 'pointer'}}
-  //                     />
-  //                   </h5>
-
-  //                   <div className="d-flex justify-content-between">
-  //                     <h6>Info</h6>
-
-  //                     <FontAwesome
-  //                       name="lock"
-  //                     />
-  //                   </div>
-  //                 </div>
-
-  //                 <hr />
-  //                 <div className="info-img">
-  //                   <h6>Primary ?</h6>
-  //                   <FontAwesome
-  //                     name="times-circle"
-  //                   />
-  //                   <br/><br/>
-
-  //                   <h6>Added by</h6>
-  //                   <div> Tran Van Thuc</div>
-  //                   <br/><br/>
-
-  //                   <h6>Size</h6>
-  //                   <div>
-  //                     2000x3000 {' '}
-  //                     <FontAwesome
-  //                       name="check-circle"
-  //                     />
-  //                   </div>
-  //                   <br/><br/>
-
-  //                   <h6>Language</h6>
-  //                   <Input type="select" disabled name="select" id="exampleSelect">
-  //                     <option>Englist</option>
-
-  //                   </Input>
-
-  //                   <br/>
-  //                 </div>
-
-  //                 <hr/>
-
-  //                 <div className="d-flex justify-content-between info-footer">
-  //                   <div>
-  //                     <FontAwesome name="arrow-circle-left"
-  //                       style={{ fontSize: '25px'}}
-  //                     />
-  //                   </div>
-  //                   <div>
-  //                     <FontAwesome name="arrow-circle-right"
-  //                       style={{ fontSize: '25px'}}
-  //                     />
-  //                   </div>
-  //                 </div>
-  //               </Col>
-  //             </Row>
-  //           </Modal>
-
+  setPosterId(temp, max, min = 0) {
+    if(temp) {
+      if(this.state.posterId == max-1) {
+        this.setState({
+          posterId: 0
+        });
+      }
+      else {
+        this.setState({
+          posterId: this.state.posterId + 1
+        });
+      }
+    }
+    else {
+      if(this.state.posterId == min) {
+        this.setState({
+          posterId: max-1
+        });
+      }
+      else {
+        this.setState({
+          posterId: this.state.posterId - 1
+        });
+      }
+    }
+  }
 
   render() {
     let detail = this.props.detail;
+    let posters = detail.images.posters;
+    let poster = Services.getElementWithIndex(posters, this.state.posterId);
 
-    console.log(detail);
     if(!detail)
       return (<div></div>);
 
@@ -113,9 +69,6 @@ class ContentHeader extends Component {
         <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
-
-
-
 
         <div className="content-header d-flex">
           <div className="img-movie" >
@@ -136,12 +89,12 @@ class ContentHeader extends Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <div className="d-flex">
                 <div>
-                  <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
-                  detail.poster_path} alt={detail.title} placeholder={detail.title}
+                  <img width="359" height="538" src={process.env.MOVIE_IMG_URL + 'w640' +
+                  poster.file_path}
                   crossOrigin="anonymous"/>
                 </div> {/* left modal */}
 
-
+                {/* content-modal */}
                 <div className="content-modal">
                   <div className="header-modal">
                     <div style={{textAlign: 'right'}} onClick={this.toggle}>
@@ -180,7 +133,7 @@ class ContentHeader extends Component {
 
                     <div className="title">Size</div>
                     <div>
-                      2000x3000 {' '}
+                      {poster.width}x{poster.height} {' '}
                       <FontAwesome
                         name="check-circle"
                       />
@@ -201,12 +154,12 @@ class ContentHeader extends Component {
                   <hr/>
                   <br/>
                   <div className="d-flex justify-content-between info-footer">
-                    <div>
+                    <div onClick={() => this.setPosterId(false,posters.length)}>
                       <FontAwesome className="icon" name="arrow-circle-left"
                         style={{ fontSize: '25px'}}
                       />
                     </div>
-                    <div>
+                    <div onClick={() => this.setPosterId(true,posters.length)}>
                       <FontAwesome className="icon" name="arrow-circle-right"
                         style={{ fontSize: '25px'}}
                       />

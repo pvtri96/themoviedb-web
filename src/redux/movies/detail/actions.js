@@ -124,8 +124,6 @@ export const fetchKeywords = (id) => async (dispatch) => {
 
 
 
-
-
 export default {
   fetchMovieDetail,
   fetchCurrentMovie,

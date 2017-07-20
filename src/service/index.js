@@ -1,4 +1,3 @@
-import moduleName from 'react-dom';
 
 
 const subContentString = (text, limit) => {
@@ -116,6 +115,10 @@ export const setTextMoney = m => {
   return result;
 };
 
+export const getElementWithIndex = (arr, index) => {
+  return arr.slice(index, index+1)[0];
+};
+
 export default {
   subContentString,
   subTitleString,
@@ -133,4 +136,6 @@ export default {
   getLimitPosters,
   setMinutesToHours,
   setTextMoney,
+  getElementWithIndex,
+
 };
