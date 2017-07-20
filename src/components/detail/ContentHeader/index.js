@@ -3,12 +3,9 @@ import FontAwesome      from 'react-fontawesome';
 import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
-// import moviesService from '../../../../services/movies';
-// import * as Vibrant from 'node-vibrant';
 import {
-  Modal , Input, option,
+  Modal , Input, option, Row , Col , ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
-
 
 
 class ContentHeader extends Component {
@@ -24,9 +21,82 @@ class ContentHeader extends Component {
   toggle() {
     this.setState({
       modal: !this.state.modal
-    })
+    });
   }
 
+  // <Modal dialogClassName="movie-modal" isOpen={this.state.modal} toggle={this.toggle} >
+  //             <Row className=" ">
+  //               <Col md="6" >
+  //                 <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
+  //                 detail.poster_path} alt={detail.title} placeholder={detail.title}
+  //                 crossOrigin="anonymous"/>
+  //               </Col>
+
+  //               <Col md="6" >
+  //                 <div className="header_modal">
+  //                   <h5  onClick={this.toggle}>
+  //                     <FontAwesome
+  //                       name="times"
+  //                       style={{cursor: 'pointer'}}
+  //                     />
+  //                   </h5>
+
+  //                   <div className="d-flex justify-content-between">
+  //                     <h6>Info</h6>
+
+  //                     <FontAwesome
+  //                       name="lock"
+  //                     />
+  //                   </div>
+  //                 </div>
+
+  //                 <hr />
+  //                 <div className="info-img">
+  //                   <h6>Primary ?</h6>
+  //                   <FontAwesome
+  //                     name="times-circle"
+  //                   />
+  //                   <br/><br/>
+
+  //                   <h6>Added by</h6>
+  //                   <div> Tran Van Thuc</div>
+  //                   <br/><br/>
+
+  //                   <h6>Size</h6>
+  //                   <div>
+  //                     2000x3000 {' '}
+  //                     <FontAwesome
+  //                       name="check-circle"
+  //                     />
+  //                   </div>
+  //                   <br/><br/>
+
+  //                   <h6>Language</h6>
+  //                   <Input type="select" disabled name="select" id="exampleSelect">
+  //                     <option>Englist</option>
+
+  //                   </Input>
+
+  //                   <br/>
+  //                 </div>
+
+  //                 <hr/>
+
+  //                 <div className="d-flex justify-content-between info-footer">
+  //                   <div>
+  //                     <FontAwesome name="arrow-circle-left"
+  //                       style={{ fontSize: '25px'}}
+  //                     />
+  //                   </div>
+  //                   <div>
+  //                     <FontAwesome name="arrow-circle-right"
+  //                       style={{ fontSize: '25px'}}
+  //                     />
+  //                   </div>
+  //                 </div>
+  //               </Col>
+  //             </Row>
+  //           </Modal>
 
 
   render() {
@@ -37,19 +107,23 @@ class ContentHeader extends Component {
       return (<div></div>);
 
     return (
-      <div >
+      <div>
 
 
-        <div className="background_under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
+        <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
 
 
-        <div className="content_header d-flex">
-          <div className="img_movie" >
+
+
+        <div className="content-header d-flex">
+          <div className="img-movie" >
             <img  src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
             detail.poster_path} alt={detail.title} placeholder={detail.title}
             crossOrigin="anonymous"/>
+
+
 
             <div className="zoom" onClick={this.toggle}>
               <FontAwesome
@@ -59,85 +133,93 @@ class ContentHeader extends Component {
             </div>
 
             {/* modal */}
-            <Modal dialogClassName="movie_modal" isOpen={this.state.modal} toggle={this.toggle} style={{ overflow: 'scroll'}}>
-              <div className="d-flex justify-content-around">
-                <div className="mr-auto" style={{}}>
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <div className="d-flex">
+                <div>
                   <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
                   detail.poster_path} alt={detail.title} placeholder={detail.title}
                   crossOrigin="anonymous"/>
-                </div>
+                </div> {/* left modal */}
 
 
-
-                <div className="info_poster" >
-                  <div className="header_modal">
-                    <h5  onClick={this.toggle}>
+                <div className="content-modal">
+                  <div className="header-modal">
+                    <div style={{textAlign: 'right'}} onClick={this.toggle}>
                       <FontAwesome
+                        className="icon"
                         name="times"
-                        style={{cursor: 'pointer'}}
                       />
-                    </h5>
+                    </div>
+
+                    <br/>
 
                     <div className="d-flex justify-content-between">
-                      <h6>Info</h6>
+                      <div className="title">Info</div>
 
                       <FontAwesome
+                        className="icon"
                         name="lock"
                       />
                     </div>
-                  </div>
 
-                  <hr />
-                  <div className="info_img">
-                    <h6>Primary ?</h6>
-                    <FontAwesome
-                      name="times-circle"
-                    />
-                    <br/><br/>
+                    <hr/>
+                  </div> {/* header modal */}
 
-                    <h6>Added by</h6>
-                    <label> Tran Van Thuc</label>
-                    <br/><br/>
+                  <div className="info-img">
+                    <div className="title">Primary ?</div>
+                    <div>
+                      <FontAwesome
+                        name="times-circle"
+                      />
+                    </div>
+                    <br/>
 
-                    <h6>Size</h6>
-                    <label>
+                    <div className="title">Added by</div>
+                    <div> Tran Van Thuc</div>
+                    <br/>
+
+                    <div className="title">Size</div>
+                    <div>
                       2000x3000 {' '}
                       <FontAwesome
                         name="check-circle"
                       />
-                    </label>
-                    <br/><br/>
+                    </div>
+                    <br/>
 
-                    <h6>Language</h6>
-                    <Input type="select" disabled name="select" id="exampleSelect">
-                      <option>Englist</option>
+                    <div className="title">Language</div>
+                    <div style={{marginTop: '5px'}}>
+                      <Input type="select" disabled name="select" id="exampleSelect">
+                        <option>English</option>
 
-                    </Input>
+                      </Input>
+                    </div>
 
                     <br/>
                   </div>
 
                   <hr/>
-
-                  <div className="d-flex justify-content-between info_footer">
+                  <br/>
+                  <div className="d-flex justify-content-between info-footer">
                     <div>
-                      <FontAwesome name="arrow-circle-left"
+                      <FontAwesome className="icon" name="arrow-circle-left"
                         style={{ fontSize: '25px'}}
                       />
                     </div>
                     <div>
-                      <FontAwesome name="arrow-circle-right"
+                      <FontAwesome className="icon" name="arrow-circle-right"
                         style={{ fontSize: '25px'}}
                       />
                     </div>
                   </div>
-                </div>
-              </div>
+
+                </div> {/* right modal */}
+              </div> {/* d-flex */}
             </Modal>
 
           </div>
 
-          <div className="info_movie">
+          <div className="info-movie">
             <h1>{detail.original_title} ({new Date(detail.release_date).getFullYear()})</h1>
 
             <div className="action d-flex">
