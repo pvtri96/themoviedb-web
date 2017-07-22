@@ -38,9 +38,7 @@ class TopBilledCast extends Component {
           ))}
         </div> { /* people */}
 
-        <Link href="">
-          <a className="link"><h5>Full Cast & Crew</h5></a>
-        </Link>
+        <a className="link"><h5>Full Cast & Crew</h5></a>
         <br/>
         <hr/>
       </div>

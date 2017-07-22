@@ -5,7 +5,6 @@ import { movieSelector } from '../../../redux/movies/detail';
 import FontAwesome      from 'react-fontawesome';
 import Router from 'next/router';
 import moviesService from '../../../service';
-import Link from 'next/link';
 
 const lengthTitle = 4;
 const lengthLimitRecommendations = 5;
@@ -28,7 +27,18 @@ class Recommendations extends Component {
         <div className="recommendations">
           {recommendationsLimit.map(item => (
             <div className="recommendations_item"  key={item.id}>
-              <img  src={process.env.MOVIE_IMG_URL + 'w250_and_h141_bestv2' +
+              <img onClick={() => {
+                // Since that's a new page, it'll unload the current page,
+                // load the new one and call getInitialProps
+                // even though we asked to do shallow routing.
+
+                Router.push(`/movies/detail?id=${item.id}`,
+                  `/movies/detail?id=${item.id}`,
+                  { shallow: true });
+                // window.location.reload();
+                window.location.href=window.location.href;
+
+              }} src={process.env.MOVIE_IMG_URL + 'w250_and_h141_bestv2' +
               item.backdrop_path} alt={item.title} placeholder={item.title} />
 
               <div className="meta" >

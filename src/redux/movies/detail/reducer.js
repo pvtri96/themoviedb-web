@@ -129,6 +129,46 @@ const Reducer = (state = INITIAL_STATE, action) => {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
+    // images
+  case actionTypes.IMAGES_FETCH_REQUESTED :
+    return {
+      ...state,
+      fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
+    };
+
+  case actionTypes.IMAGES_FETCH_FULLFILLED :
+    return {
+      ...state,
+      images: action.payload,
+      fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
+    };
+
+  case actionTypes.IMAGES_FETCH_REJECTED :
+    return {
+      ...state,
+      fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
+    };
+
+
+    // videos
+  case actionTypes.VIDEOS_FETCH_REQUESTED :
+    return {
+      ...state,
+      fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
+    };
+
+  case actionTypes.VIDEOS_FETCH_FULLFILLED :
+    return {
+      ...state,
+      videos: action.payload,
+      fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
+    };
+
+  case actionTypes.VIDEOS_FETCH_REJECTED :
+    return {
+      ...state,
+      fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
+    };
 
 
   default :

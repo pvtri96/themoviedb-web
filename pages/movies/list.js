@@ -24,7 +24,7 @@ class Index extends Component {
 
   componentDidMount() {
 
-    setTimeout(() => this.setState({ isLoading: false }), 100);
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
     this.props.fetchGenres();
   }
 
@@ -40,7 +40,7 @@ class Index extends Component {
     return (
       <Master>
         <div className="container">
-          <MovieList />
+          <MovieList  />
         </div>
       </Master>
     );

@@ -20,17 +20,20 @@ class Index extends Component {
     this.state = {
       isLoading: true
     };
+    this.id = this.props.url.query.id;
   }
 
   componentDidMount() {
     window.scrollTo(0,0);
-    setTimeout(() => this.setState({ isLoading: false }), 500);
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
 
-    this.props.fetchCredits(this.props.url.query.id);
-    this.props.fetchReviews(this.props.url.query.id);
-    this.props.fetchReleaseDates(this.props.url.query.id);
-    this.props.fetchRecommendations(this.props.url.query.id);
-    this.props.fetchKeywords(this.props.url.query.id);
+    this.props.fetchCredits(this.id);
+    this.props.fetchReviews(this.id);
+    this.props.fetchReleaseDates(this.id);
+    this.props.fetchKeywords(this.id);
+    this.props.fetchImages(this.id);
+    this.props.fetchVideos(this.id);
+    this.props.fetchRecommendations(this.id);
   }
 
   render(){
@@ -62,6 +65,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchRecommendations : (id) => dispatch(movieActions.fetchRecommendations(id)),
     fetchReviews : (id) => dispatch(movieActions.fetchReviews(id)),
     fetchReleaseDates : (id) => dispatch(movieActions.fetchReleaseDates(id)),
+    fetchImages : (id) => dispatch(movieActions.fetchImages(id)),
+    fetchVideos : (id) => dispatch(movieActions.fetchVideos(id)),
     fetchKeywords : (id) => dispatch(movieActions.fetchKeywords(id)),
   };
 };
