@@ -4,6 +4,7 @@ import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
 import ModalView from './ModalView';
+import {  movieListSelector } from '../../../redux/movies/list';
 
 
 class ContentHeader extends Component {
@@ -25,7 +26,12 @@ class ContentHeader extends Component {
 
 
   render() {
-    let detail = this.props.detail;
+    let detail;
+    if(this.props.isServer)
+      detail = this.props.detail;
+    else
+      detail = this.props.current;
+
     let images = this.props.images;
 
     if(!detail || !images)
@@ -125,6 +131,7 @@ class ContentHeader extends Component {
 const mapStateToProps = (state) => {
 
   return {
+    current: movieListSelector(state).current,
     detail: movieSelector(state).detail,
     images: movieSelector(state).images,
 

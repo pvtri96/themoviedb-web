@@ -94,6 +94,7 @@ export const keywordsFetchRejected = (err) => ({
   payload: err,
   error: true
 });
+
 // images
 export const imagesFetchRequested = () => ({
   type: actionTypes.IMAGES_FETCH_REQUESTED

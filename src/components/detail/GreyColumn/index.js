@@ -39,7 +39,9 @@ class Index extends Component {
     let detail = this.props.detail;
     let releaseDates = this.props.releaseDates;
     let keywords = this.props.keywords;
-    if(!detail || !releaseDates || !keywords )
+    console.log("Grey column");
+    console.log(detail);
+    if(!detail|| Object.getOwnPropertyNames(detail).length == 0 || !releaseDates || !keywords )
       return (<div></div>);
 
     return (

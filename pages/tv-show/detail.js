@@ -1,21 +1,18 @@
 
 import React ,{ Component }from 'react';
-import MovieDetail from '../../src/components/detail';
+import TvShowDetail from '../../src/components/detail';
 import Master from '../../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
-import { movieActions } from '../../src/redux/movies/detail';
+import { movieActions } from '../../src/redux/tvshows/detail';
 import PropTypes from 'prop-types';
 import Loading from '../../src/components/Loading';
 
-
 class Index extends Component {
 
-  static async getInitialProps({ isServer, store, query }) {
+  static async getInitialProps({  store, query }) {
 
-    if(isServer)
-      await store.dispatch(movieActions.fetchMovieDetail((query.id)));
-    return { isServer };
+    await store.dispatch(movieActions.fetchTvShowDetail((query.id)));
   }
 
   constructor(props) {
@@ -26,6 +23,19 @@ class Index extends Component {
     this.id = this.props.url.query.id;
   }
 
+  componentDidMount() {
+    window.scrollTo(0,0);
+    setTimeout(() => this.setState({ isLoading: false }), 1000);
+
+    // this.props.fetchCredits(this.id);
+    // this.props.fetchReviews(this.id);
+    // this.props.fetchReleaseDates(this.id);
+    // this.props.fetchKeywords(this.id);
+    // this.props.fetchImages(this.id);
+    // this.props.fetchVideos(this.id);
+    // this.props.fetchRecommendations(this.id);
+  }
+
   render(){
     if(this.state.isLoading) {
       return (
@@ -34,27 +44,11 @@ class Index extends Component {
         </Master>
       );
     }
-
     return (
       <Master>
-        <MovieDetail isServer={this.props.isServer} />
+        <MovieDetail  />
       </Master>
     );
-  }
-
-  componentDidMount() {
-
-    window.scrollTo(0,0);
-    setTimeout(() => this.setState({ isLoading: false }), 1000);
-
-    this.props.fetchMovieDetail(this.id);
-    this.props.fetchCredits(this.id);
-    this.props.fetchReviews(this.id);
-    this.props.fetchReleaseDates(this.id);
-    this.props.fetchKeywords(this.id);
-    this.props.fetchImages(this.id);
-    this.props.fetchVideos(this.id);
-    this.props.fetchRecommendations(this.id);
   }
 }
 

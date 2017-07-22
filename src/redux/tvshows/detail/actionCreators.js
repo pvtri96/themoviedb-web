@@ -80,6 +80,37 @@ export const keywordsFetchRejected = (err) => ({
   error: true
 });
 
+// images
+export const imagesFetchRequested = () => ({
+  type: actionTypes.IMAGES_FETCH_REQUESTED
+});
+
+export const imagesFetchFullfilled = (payload) => ({
+  type: actionTypes.IMAGES_FETCH_FULLFILLED,
+  payload
+});
+
+export const imagesFetchRejected = (err) => ({
+  type: actionTypes.IMAGES_FETCH_REJECTED,
+  payload: err,
+  error: true
+});
+// videos
+export const videosFetchRequested = () => ({
+  type: actionTypes.VIDEOS_FETCH_REQUESTED
+});
+
+export const videosFetchFullfilled = (payload) => ({
+  type: actionTypes.VIDEOS_FETCH_FULLFILLED,
+  payload
+});
+
+export const videosFetchRejected = (err) => ({
+  type: actionTypes.VIDEOS_FETCH_REJECTED,
+  payload: err,
+  error: true
+});
+
 export default {
   tvshowDetailFetchRequested,
   tvshowDetailFetchFullfiled,
@@ -100,5 +131,13 @@ export default {
   keywordsFetchRequested,
   keywordsFetchFullfilled,
   keywordsFetchRejected,
+
+  imagesFetchRequested,
+  imagesFetchFullfilled,
+  imagesFetchRejected,
+
+  videosFetchRequested,
+  videosFetchFullfilled,
+  videosFetchRejected,
 
 };

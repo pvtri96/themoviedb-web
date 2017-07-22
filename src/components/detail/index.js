@@ -12,8 +12,11 @@ import WhiteColumn from './WhiteColumn';
 import GreyColumn from './GreyColumn';
 
 
-class MovieDetailShowing extends Component
+class DetailShowing extends Component
 {
+  constructor (props) {
+    super(props);
+  }
 
   render()
   {
@@ -21,7 +24,7 @@ class MovieDetailShowing extends Component
       <div style={{width: "100%"}}>
 
         <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
-        <ContentHeader />
+        <ContentHeader isServer={this.props.isServer} />
         {/* contentHeader */}
 
         <style dangerouslySetInnerHTML={{ __html: contentWrapper }} />
@@ -31,11 +34,11 @@ class MovieDetailShowing extends Component
         <div className="column_wrapper d-flex" >
 
           <style dangerouslySetInnerHTML={{ __html: whiteColumn }} />
-          <WhiteColumn />
+          <WhiteColumn filter={this.props.filter}/>
           {/* white_column  */}
 
           <style dangerouslySetInnerHTML={{ __html: greyColumn }} />
-          <GreyColumn />
+          <GreyColumn filter={this.props.filter}/>
         </div> {/* column_wrapper */}
 
 
@@ -47,4 +50,4 @@ class MovieDetailShowing extends Component
 
 
 
-export default MovieDetailShowing;
+export default DetailShowing;

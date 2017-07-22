@@ -2,17 +2,6 @@ import axios from 'axios'  ;
 
 import actionCreators from './actionCreators';
 
-
-// fetch current movie transfered from movie list
-export const fetchCurrentMovie = (detail) => (dispatch) => {
-  dispatch(actionCreators.movieDetailFetchRequested());
-  try {
-    return dispatch(actionCreators.movieDetailFetchFullfilled(detail));
-  } catch(error) {
-    return dispatch(actionCreators.movieDetailFetchRejected(error));
-  }
-};
-
 // fetch movie detail from API
 export const fetchMovieDetail = (id) => async (dispatch) => {
   dispatch(actionCreators.movieDetailFetchRequested());
@@ -20,7 +9,6 @@ export const fetchMovieDetail = (id) => async (dispatch) => {
     const detail = await axios.get(process.env.API_URL + 'movie/' + id, {
       params: {
         api_key: process.env.API_KEY,
-        // append_to_response: "videos,images"
       }
     })
       .then(resp => resp.data);
@@ -158,7 +146,6 @@ export const fetchVideos = (id) => async (dispatch) => {
 
 export default {
   fetchMovieDetail,
-  fetchCurrentMovie,
   fetchCredits,
   fetchReviews,
   fetchRecommendations,
