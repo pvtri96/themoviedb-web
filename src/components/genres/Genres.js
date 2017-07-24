@@ -16,6 +16,7 @@ const Index = props => {
 };
 
 const mapStateToProps = state => {
+
   return  {
     genres: tvshowsSelector(state).genres
   };
