@@ -30,7 +30,7 @@ const Index = (props) => {
           <div className="item-info">
             <div className="item-title d-flex">
               <a href=''>
-                <span className="title">{ Service.subTitleString(dataTitle,25) }</span>
+                <span className="title">{ Service.subTitleString(dataTitle,20) }</span>
               </a>
               <div className="vote-average">
                 <span>{ data.vote_average.toFixed(1) }</span>

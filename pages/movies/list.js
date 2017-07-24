@@ -1,4 +1,3 @@
-import MovieList from '../../src/components/list';
 import List from '../../src/components/listViews/ListMovies';
 import Master from '../../src/containers/Master';
 import React , {Component} from 'react';

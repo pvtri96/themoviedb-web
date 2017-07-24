@@ -24,8 +24,7 @@ const Master = (props) => (
     {/* Page body */}
     <div>
       <Header></Header>
-      {/* Import Local stylesheet */}
-      {/* Use some bootstrap css classes */}
+      {/* Import Local stylesc css classes */}
       <div className="media">
         {props.children}
       </div>
