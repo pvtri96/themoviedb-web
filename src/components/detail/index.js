@@ -27,19 +27,7 @@ class DetailShowing extends Component
         <ContentHeader isServer={this.props.isServer} />
         {/* contentHeader */}
 
-        <style dangerouslySetInnerHTML={{ __html: contentWrapper }} />
-        <ContentWrapper />
-        {/* content_wrapper */}
 
-        <div className="column_wrapper d-flex" >
-
-          <style dangerouslySetInnerHTML={{ __html: whiteColumn }} />
-          <WhiteColumn filter={this.props.filter}/>
-          {/* white_column  */}
-
-          <style dangerouslySetInnerHTML={{ __html: greyColumn }} />
-          <GreyColumn filter={this.props.filter}/>
-        </div> {/* column_wrapper */}
 
 
 

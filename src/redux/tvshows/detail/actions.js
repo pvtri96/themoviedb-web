@@ -10,12 +10,11 @@ export const fetchTvshowDetail = (id) => async (dispatch) => {
     const detail = await axios.get(process.env.API_URL + 'tv/' + id, {
       params: {
         api_key: process.env.API_KEY,
-        append_to_response: "videos,images"
       }
     })
       .then(resp => resp.data);
       //get detail
-    return dispatch(actionCreators.tvshowDetailFetchFullfilled(detail));
+    return dispatch(actionCreators.tvshowDetailFetchFullfiled(detail));
   } catch(error) {
     return dispatch(actionCreators.tvshowDetailFetchRejected(error));
   }
@@ -73,6 +72,7 @@ export const fetchKeywords = (id) => async (dispatch) => {
     return dispatch(actionCreators.keywordsFetchRejected(error));
   }
 };
+
 
 // fetch images from API
 export const fetchImages = (id) => async (dispatch) => {

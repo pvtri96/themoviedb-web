@@ -4,7 +4,7 @@ import TvShowDetail from '../../src/components/detail';
 import Master from '../../src/containers/Master';
 import withRedux from 'next-redux-wrapper';
 import { getStore } from '../../src/redux';
-import { movieActions } from '../../src/redux/tvshows/detail';
+import { tvshowActions } from '../../src/redux/tvshows/detail';
 import PropTypes from 'prop-types';
 import Loading from '../../src/components/Loading';
 
@@ -12,7 +12,7 @@ class Index extends Component {
 
   static async getInitialProps({  store, query }) {
 
-    await store.dispatch(movieActions.fetchTvShowDetail((query.id)));
+    await store.dispatch(tvshowActions.fetchTvshowDetail((query.id)));
   }
 
   constructor(props) {
@@ -26,14 +26,11 @@ class Index extends Component {
   componentDidMount() {
     window.scrollTo(0,0);
     setTimeout(() => this.setState({ isLoading: false }), 1000);
-
-    // this.props.fetchCredits(this.id);
-    // this.props.fetchReviews(this.id);
-    // this.props.fetchReleaseDates(this.id);
-    // this.props.fetchKeywords(this.id);
-    // this.props.fetchImages(this.id);
-    // this.props.fetchVideos(this.id);
-    // this.props.fetchRecommendations(this.id);
+    this.props.fetchCredits(this.id);
+    this.props.fetchKeywords(this.id);
+    this.props.fetchImages(this.id);
+    this.props.fetchVideos(this.id);
+    this.props.fetchRecommendations(this.id);
   }
 
   render(){
@@ -46,28 +43,27 @@ class Index extends Component {
     }
     return (
       <Master>
-        <MovieDetail  />
+        <TvShowDetail />
       </Master>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log("detail tvshow");
   console.log(state);
   return {};
 };
 
-
+// tvshow not support get reviews
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovieDetail : (id) => dispatch(movieActions.fetchMovieDetail(id)),
-    fetchCredits : (id) => dispatch(movieActions.fetchCredits(id)),
-    fetchRecommendations : (id) => dispatch(movieActions.fetchRecommendations(id)),
-    fetchReviews : (id) => dispatch(movieActions.fetchReviews(id)),
-    fetchReleaseDates : (id) => dispatch(movieActions.fetchReleaseDates(id)),
-    fetchImages : (id) => dispatch(movieActions.fetchImages(id)),
-    fetchVideos : (id) => dispatch(movieActions.fetchVideos(id)),
-    fetchKeywords : (id) => dispatch(movieActions.fetchKeywords(id)),
+    fetchTvshowDetail : (id) => dispatch(tvshowActions.fetchTvshowDetail(id)),
+    fetchCredits : (id) => dispatch(tvshowActions.fetchCredits(id)),
+    fetchRecommendations : (id) => dispatch(tvshowActions.fetchRecommendations(id)),
+    fetchImages : (id) => dispatch(tvshowActions.fetchImages(id)),
+    fetchVideos : (id) => dispatch(tvshowActions.fetchVideos(id)),
+    fetchKeywords : (id) => dispatch(tvshowActions.fetchKeywords(id)),
   };
 };
 

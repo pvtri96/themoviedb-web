@@ -32,6 +32,8 @@ class ContentHeader extends Component {
     else
       detail = this.props.current;
 
+    console.log(detail.backdrop_path);
+
     let images = this.props.images;
 
     if(!detail || !images)
