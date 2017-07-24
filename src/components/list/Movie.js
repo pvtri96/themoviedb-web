@@ -13,8 +13,6 @@ const lengthTitle = 5;
 const lengthOverview = 25;
 
 
-
-
 class Index extends Component  {
   constructor(props) {
     super(props);

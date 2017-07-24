@@ -1,18 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
-import Master from '../../src/containers/Master';
+import Master from '../../../src/containers/Master';
 // import ListTVShows from '../../src/components/list/ListTVShows';
-import {getStore} from '../../src/redux';
+import {getStore} from '../../../src/redux';
 import withRedux from 'next-redux-wrapper';
-import List from '../../src/components/listViews/List';
-
-
+import List from '../../../src/components/listViews/List';
+import {tvshowsActionsTypes} from '../../../src/redux/tvshows/list';
 const Index = () => {
   return (
-    <Master >
-      <List sub="tvshows"></List>
+    <Master>
+      <List subMenu= {tvshowsActionsTypes.TOP_RATED} ></List>
     </Master>
   );
 };
