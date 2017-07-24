@@ -1,9 +1,15 @@
 export const TVSHOWS_FETCH_REQUESTED = 'TVSHOWS_FETCH_REQUESTED';
 export const TVSHOWS_FETCH_FULFILLED = 'TVSHOWS_FETCH_FULFILLED';
 export const TVSHOWS_FETCH_REJECTED = 'TVSHOWS_FETCH_REJECTED';
+export const POPULAR = 'popular';
+export const TOP_RATED = 'top_rated';
+export const ON_THE_AIR = 'on_the_air';
 
 export default {
   TVSHOWS_FETCH_REQUESTED,
   TVSHOWS_FETCH_FULFILLED,
   TVSHOWS_FETCH_REJECTED,
+  POPULAR,
+  TOP_RATED,
+  ON_THE_AIR
 };

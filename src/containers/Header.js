@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,Form, FormGroup, Input } from 'reactstrap';
 import Link from 'next/link';
 import style from './header.scss';
+import { menuActions } from '../redux/menu';
+import { connect } from 'react-redux';
+import Router from 'next/router';
 // import stylesheet from './movie/Main.scss';
 //
 /**
@@ -27,6 +30,26 @@ class Header extends Component {
   }
 
   render () {
+    let menu = {
+      movies:{
+        title: "movies",
+        submenu: {
+          popular: "popular",
+          toprated: "top-rated",
+          upcoming: "upcoming",
+          nowplaying: "now-playing"
+        }
+      },
+      tvshows: {
+        title: "tv-show",
+        submenu: {
+          popular: "popular",
+          toprated: "top-rated",
+          ontv: "on-tv",
+          airingtoday: "airing-today"
+        }
+      }
+    };
     return (
       <div className="header fixed-top">
         <style dangerouslySetInnerHTML={{ __html: style }} />
@@ -38,7 +61,7 @@ class Header extends Component {
               <NavItem>
                 <ul className="dropdown">
                   <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/"><NavLink>Discover</NavLink></Link>
+                    <Link  href="/"><NavLink>Discover</NavLink></Link>
                     <ul className="dropdown-content">
                       <li><Link href="/"><NavLink>Movies</NavLink></Link></li>
                       <li><Link href="/"><NavLink>TV Shows</NavLink></Link></li>
@@ -49,7 +72,12 @@ class Header extends Component {
               <NavItem>
                 <ul className="dropdown">
                   <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/movies"><NavLink>Movies</NavLink></Link>
+                    <div onClick={() =>{
+                      this.props.fetchMenu(menu.movies.title);
+                      Router.push('/movies');
+                    }}>
+                      <NavLink>Movies</NavLink>
+                    </div>
                     <ul className="dropdown-content">
                       <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
                       <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
@@ -62,26 +90,34 @@ class Header extends Component {
               <NavItem>
                 <ul className="dropdown">
                   <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/tv-show"><NavLink>TV Shows</NavLink></Link>
+                    <div onClick={() =>{
+                      this.props.fetchMenu(menu.tvshows.title);
+                      Router.push('/tv-show');
+                    }}>
+                      <NavLink>TV Shows</NavLink>
+                    </div>
                     <ul className="dropdown-content">
-                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>On TV</NavLink></Link></li>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.tvshows.title);
+                        this.props.fetchSubMenu(menu.tvshows.submenu.popular);
+                        Router.push('/tv-show');
+                      }}>
+                        <NavLink>Popular</NavLink>
+                      </div>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.tvshows.title);
+                        this.props.fetchSubMenu(menu.tvshows.submenu.toprated);
+                        Router.push('/tv-show/top-rated');
+                      }}>
+                        <NavLink>Top Rated</NavLink>
+                      </div>
+                      <li><Link href="/tv-show/on-the-air"><NavLink>On TV</NavLink></Link></li>
                       <li><Link href="/"><NavLink>Airing Today</NavLink></Link></li>
                     </ul>
                   </li>
                 </ul>
               </NavItem>
-              <NavItem>
-                <ul className="dropdown">
-                  <li className="dropdown-list">
-                    <Link className="dropdown-title" href="/"><NavLink>People</NavLink></Link>
-                    <ul className="dropdown-content">
-                      <li><Link href="/"><NavLink>Popular People</NavLink></Link></li>
-                    </ul>
-                  </li>
-                </ul>
-              </NavItem>
+
             </Nav>
           </Collapse>
         </Navbar>
@@ -98,4 +134,27 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMenu: (menu) => {
+      dispatch(menuActions.fetchMenu(menu));
+    },
+    fetchSubMenu: (submenu) => {
+      dispatch(menuActions.fetchSubMenu(submenu));
+    }
+  };
+};
+
+export default connect(undefined, mapDispatchToProps)(Header);
+
+// <NavItem>
+//                 <ul className="dropdown">
+//                   <li className="dropdown-list">
+//                     <Link href="/"><NavLink>People</NavLink></Link>
+//                     <ul className="dropdown-conctent">
+//                       <li><Link href="/"><NavLink>Popular People</NavLink></Link></li>
+//                     </ul>
+//                   </li>
+//                 </ul>
+//               </NavItem>

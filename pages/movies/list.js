@@ -1,4 +1,4 @@
-import MovieList from '../../src/components/list';
+import List from '../../src/components/listViews/ListMovies';
 import Master from '../../src/containers/Master';
 import React , {Component} from 'react';
 import { movieListActions } from '../../src/redux/movies/list';
@@ -34,19 +34,10 @@ class Index extends Component {
     }
     return (
       <Master>
-        <div className="container">
-          <MovieList  />
-        </div>
+        <List />
       </Master>
     );
   }
-
-  componentDidMount() {
-
-    setTimeout(() => this.setState({ isLoading: false }), 1000);
-    this.props.fetchGenres();
-  }
-
 }
 
 const mapDispatchToProps = dispatch => {
