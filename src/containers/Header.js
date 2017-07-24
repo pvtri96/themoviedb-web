@@ -64,9 +64,9 @@ class Header extends Component {
                   <li className="dropdown-list">
                     <Link className="dropdown-title" href="/tv-show"><NavLink>TV Shows</NavLink></Link>
                     <ul className="dropdown-content">
-                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>On TV</NavLink></Link></li>
+                      <li><Link href="/tv-show"><NavLink>Popular</NavLink></Link></li>
+                      <li><Link href="/tv-show/top-rated"><NavLink>Top Rated</NavLink></Link></li>
+                      <li><Link href="/tv-show/on-the-air"><NavLink>On TV</NavLink></Link></li>
                       <li><Link href="/"><NavLink>Airing Today</NavLink></Link></li>
                     </ul>
                   </li>

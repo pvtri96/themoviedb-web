@@ -7,21 +7,30 @@ import MainStyle from '../style.scss';
 import style from './style.scss';
 const Index = (props) => {
   let data = props.data;
+  let dataTitle = props.dataTitle;
+  let dataDate = props.dataDate;
+  if (props.sub == "movies") {
+    dataTitle =  data.original_title ;
+    dataDate = data.release_date;
+  }
+  else {
+    dataTitle = data.original_name;
+    dataDate = data.first_air_date;
+  }
   return (
-
     <div className="list-item poster-card">
       <style dangerouslySetInnerHTML={{ __html: MainStyle }} />
       <style dangerouslySetInnerHTML={{ __html: style }} />
       <Link href=''>
         <div className="item d-flex mb-5">
           <div className="image">
-            <img className="item-poster" alt={ data.original_name } src={ process.env.IMAGE_URL+data.poster_path } />
+            <img className="item-poster" alt={ dataTitle } src={ process.env.IMAGE_URL+data.poster_path } />
             <ImageOverlay />
           </div>
           <div className="item-info">
             <div className="item-title d-flex">
               <a href=''>
-                <span className="title">{ Service.subTitleString(data.original_name,25) }</span>
+                <span className="title">{ Service.subTitleString(dataTitle,25) }</span>
               </a>
               <div className="vote-average">
                 <span>{ data.vote_average.toFixed(1) }</span>
@@ -31,7 +40,7 @@ const Index = (props) => {
             <div className="relate-year d-flex">
               <span>
                 <i className="fa fa-calendar" aria-hidden="true"></i>
-                <span className="pl-1">{ Service.subDateString(data.first_air_date,4) }</span>
+                <span className="pl-1">{ Service.subDateString(dataDate,4) }</span>
               </span>
               <Genres genre_ids = {data.genre_ids}/>
             </div>
@@ -42,6 +51,7 @@ const Index = (props) => {
             </p>
           </div>
         </div>
+
       </Link>
     </div>
   );
@@ -49,3 +59,7 @@ const Index = (props) => {
 
 export default Index;
 // <Link href={`/tv-show/tvshow-details?id=${tvshow.id}`}>
+
+
+
+
