@@ -7,11 +7,14 @@ import { getStore } from '../../src/redux';
 import { tvshowActions } from '../../src/redux/tvshows/detail';
 import PropTypes from 'prop-types';
 import Loading from '../../src/components/Loading';
+import { menuActions } from '../../src/redux/menu';
+import { tvshowSelector} from '../../src/redux/tvshows/detail';
+import Services from '../../src/service';
 
 class Index extends Component {
 
   static async getInitialProps({  store, query }) {
-
+    store.dispatch(menuActions.fetchMenu("tvshows"));
     await store.dispatch(tvshowActions.fetchTvshowDetail((query.id)));
   }
 
@@ -21,6 +24,10 @@ class Index extends Component {
       isLoading: true
     };
     this.id = this.props.url.query.id;
+    this.detail = this.props.detail;
+    this.season_num;
+    if(this.detail)
+      this.season_num = Services.getLastSeasonNumber(this.detail.seasons);
   }
 
   componentDidMount() {
@@ -31,6 +38,7 @@ class Index extends Component {
     this.props.fetchImages(this.id);
     this.props.fetchVideos(this.id);
     this.props.fetchRecommendations(this.id);
+    this.props.fetchSeason(this.id, this.season_num);
   }
 
   render(){
@@ -49,11 +57,11 @@ class Index extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log("detail tvshow");
-  console.log(state);
-  return {};
-};
+const mapStateToProps = (state) => {
+  return {
+    detail: tvshowSelector(state).detail
+  };
+}
 
 // tvshow not support get reviews
 const mapDispatchToProps = (dispatch) => {
@@ -64,6 +72,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchImages : (id) => dispatch(tvshowActions.fetchImages(id)),
     fetchVideos : (id) => dispatch(tvshowActions.fetchVideos(id)),
     fetchKeywords : (id) => dispatch(tvshowActions.fetchKeywords(id)),
+    fetchSeason : (id, season_num) => dispatch(tvshowActions.fetchSeason(id, season_num)),
   };
 };
 

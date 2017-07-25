@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Crew from './Crew';
 import ModalView from './ModalView';
 import {  movieListSelector } from '../../../redux/movies/list';
+import { tvshowSelector } from '../../../redux/tvshows/detail';
+import { menuSelector } from '../../../redux/menu';
 
 
 class ContentHeader extends Component {
@@ -16,6 +18,7 @@ class ContentHeader extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.getChanges = this.getChanges.bind(this);
   }
 
   toggle() {
@@ -24,26 +27,54 @@ class ContentHeader extends Component {
     });
   }
 
+  getChanges(detail) {
+    let result = {};
+    switch(this.props.menu){
+    case "movies":
+    {
+      result.title = detail.title;
+      result.release_date = detail.release_date;
+      result.jobs = ["Director", "Screenplay", "Characters", "Story", "Writer"];
+
+      break;
+    }
+    case "tvshows":
+    {
+      result.title = detail.name;
+      result.release_date = detail.first_air_date;
+
+      result.crew = detail.created_by;
+      result.jobs = "Creator";
+      break;
+    }
+    }
+    return result;
+
+  }
+
 
   render() {
-    let detail;
-    if(this.props.isServer)
-      detail = this.props.detail;
-    else
-      detail = this.props.current;
 
-    console.log(detail.backdrop_path);
+
+
+    let detail = this.props.detail;
+    // if(this.props.isServer)
+    //   detail = this.props.detail;
+    // else
+    //   detail = this.props.current;
 
     let images = this.props.images;
 
     if(!detail || !images)
       return (<div></div>);
+    let changes = this.getChanges(detail);
+    // console.log(changes);
+
     let posters = images.posters;
 
+    let title;
     return (
       <div>
-
-
         <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
@@ -51,7 +82,7 @@ class ContentHeader extends Component {
         <div className="content-header d-flex">
           <div className="img-movie" >
             <img  src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
-            detail.poster_path} alt={detail.title} placeholder={detail.title}
+            detail.poster_path} alt={title} placeholder={changes.title}
             crossOrigin="anonymous"/>
 
             <div className="zoom" onClick={this.toggle}>
@@ -67,7 +98,7 @@ class ContentHeader extends Component {
           </div>
 
           <div className="info-movie">
-            <h1>{detail.original_title} ({new Date(detail.release_date).getFullYear()})</h1>
+            <h1>{changes.title} ({new Date(changes.release_date).getFullYear()})</h1>
 
             <div className="action d-flex">
               <div className="item">
@@ -120,24 +151,43 @@ class ContentHeader extends Component {
               </div>
               <br />
 
-              <Crew />
+              <Crew crew={changes.crew} jobs={changes.jobs} />
             </div>
           </div>
         </div>
       </div>
     );
-
   }
 }
 
+
+
 const mapStateToProps = (state) => {
+  const menu = menuSelector(state).menuTitle;
 
-  return {
-    current: movieListSelector(state).current,
-    detail: movieSelector(state).detail,
-    images: movieSelector(state).images,
+  switch(menu) {
+  case "movies":
+    return {
+      menu : menuSelector(state).menuTitle,
+      current: movieListSelector(state).current,
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+    };
+  case "tvshows":
+    return {
+      menu : menuSelector(state).menuTitle,
+      detail: tvshowSelector(state).detail,
+      images: tvshowSelector(state).images,
+    };
+  default:
+    return {
+      menu : menuSelector(state).menuTitle,
+      current: movieListSelector(state).current,
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+    };
+  }
 
-  };
 };
 
 export default connect(mapStateToProps, undefined)(ContentHeader);

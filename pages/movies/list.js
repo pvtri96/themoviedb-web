@@ -21,17 +21,15 @@ class Index extends Component {
   }
 
   // didmount chi chay 1 lan nen khi click vao movies se chi render tren server
+  componentDidMount() {
 
+    setTimeout(() => this.setState({ isLoading: false }), 100);
+    this.props.fetchGenres();
+  }
 
 
   render() {
-    if(this.state.isLoading) {
-      return (
-        <Master>
-          <Loading />
-        </Master>
-      );
-    }
+
     return (
       <Master>
         <List />

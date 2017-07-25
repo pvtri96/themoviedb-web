@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { movieSelector } from '../../../redux/movies/detail';
 import moviesService from '../../../service';
 
+
 class Social extends Component {
   constructor(props) {
     super(props);

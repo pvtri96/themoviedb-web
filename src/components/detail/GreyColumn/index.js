@@ -2,31 +2,21 @@ import React , {Component }from 'react';
 import Fontawesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 import { movieSelector } from '../../../redux/movies/detail';
-import moviesService from '../../../service';
+import { tvshowSelector } from '../../../redux/tvshows/detail';
+import { menuSelector } from '../../../redux/menu';
+import Genres from './genres';
+import Keywords from './keywords';
+import Homepage from './homepage';
+import Revenue from './movies/revenue';
+import Budget from './movies/budget';
+import Runtime from './runtime';
+import ReleaseInfo from './movies/releaseInfo';
+import OriginalLanguage from './originalLanguage';
+import Type from './tvshows/type';
+import Networks from './tvshows/networks';
 
-const getTypeReleaseDates = i => {
-  switch(i) {
-  case 1: return "Premiere";
-  case 2: return "Theatrical (limited) ";
-  case 3: return "Theatrical";
-  case 4: return "Digital";
-  case 5: return "Physical";
-  case 6: return "TV";
-  }
-};
 
-const getOriginalLanguage = (code, arr) => {
-  let result = "";
-  arr.map(temp => {
-    if(temp.iso_639_1 == code)
-    {
-      result = temp.name;
-    }
-  });
-  return result;
-};
 
-const limitLengthTextHomepage = 40;
 
 class Index extends Component {
 
@@ -41,7 +31,7 @@ class Index extends Component {
     let keywords = this.props.keywords;
     console.log("Grey column");
     console.log(detail);
-    if(!detail|| Object.getOwnPropertyNames(detail).length == 0 || !releaseDates || !keywords )
+    if(!detail)
       return (<div></div>);
 
     return (
@@ -76,71 +66,39 @@ class Index extends Component {
         <div className="content">{detail.status}</div>
         {/* Status */}
 
-        <div className="title">Release Information</div>
-        <div className="content">
-          {releaseDates.map((temp,index) => (
-            <div key={index} className="d-flex">
-              <img src={process.env.FLAT_IMAGE_US_URL} alt="US"/>
-              <span>
-                {new Date(temp.release_date).toDateString()},{' '}
-                {temp.certification}, {getTypeReleaseDates(temp.type)}
-              </span>
-            </div>
-          ))}
-        </div>
+        <ReleaseInfo releaseDates={releaseDates} />
         {/* Release Information */}
 
-        <div className="title">Original Language</div>
-        <div className="content">
-          {getOriginalLanguage(detail.original_language, detail.spoken_languages)}
-        </div> {/* Original Language */}
+        <Networks networks={detail.networks} />
+        {/* Networks */}
 
-        <div className="title">Runtime</div>
-        <div className="content">
-          {moviesService.setMinutesToHours(detail.runtime)}
-        </div> {/* Runtime */}
+        <Type type={detail.type} />
+        {/* Type */}
 
-        <div className="title">Budget </div>
-        <div className="content">
-          ${moviesService.setTextMoney(detail.budget) }
-        </div> {/* Budget */}
+        <OriginalLanguage
+          original_language={detail.original_language}
+          spoken_languages={detail.spoken_languages}
+        />
+        {/* Original Language */}
 
-        <div className="title">Revenue </div>
-        <div className="content">
-          {detail.revenue ?
-            `$ ${moviesService.setTextMoney(detail.revenue)}`  :
-            "-"
-          }
-        </div> {/* Revenue */}
-
-        <div className="title">Homepage </div>
-        <div className="content">
-          {detail.homepage ?
-            <a href={detail.homepage} target="_blank">
-              {moviesService.reducerLengthText(detail.homepage, limitLengthTextHomepage)}
-            </a> :
-            "-"
-          }
-        </div> {/* Homepage */}
-
-        <div className="title">Genres </div>
-        <div className="content">
-          {detail.genres.map(genre => (
-            <div className="genre_item" key={genre.id}>
-              {genre.name}
-            </div>
-          ))}
-        </div> {/* Genres */}
+        <Runtime runtime={detail.runtime} />
+        {/* Runtime */}
 
 
-        <div className="title">Keywords </div>
-        <div className="content">
-          {keywords.map(keyword => (
-            <div className="keyword_item" key={keyword.id}>
-              {keyword.name}
-            </div>
-          ))}
-        </div> {/* Keywords */}
+        <Budget budget={detail.budget} />
+        {/* Budget */}
+
+        <Revenue revenue={detail.revenue} />
+        {/* Revenue */}
+
+        <Homepage homepage={detail.homepage} />
+        {/* Homepage */}
+
+        <Genres genres={detail.genres} />
+        {/* Genres */}
+
+        <Keywords keywords={keywords} />
+        {/* Keywords */}
 
         <div className="title">
           <br />
@@ -156,11 +114,28 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    detail: movieSelector(state).detail,
-    releaseDates: movieSelector(state).releaseDates,
-    keywords: movieSelector(state).keywords
-  };
+  const menu = menuSelector(state).menuTitle;
+
+  switch(menu) {
+  case "tvshows":
+    return {
+      detail: tvshowSelector(state).detail,
+      keywords: tvshowSelector(state).keywords
+    };
+  case "movies":
+    return {
+      detail: movieSelector(state).detail,
+      releaseDates: movieSelector(state).releaseDates,
+      keywords: movieSelector(state).keywords
+    };
+  default:
+    return {
+      detail: movieSelector(state).detail,
+      releaseDates: movieSelector(state).releaseDates,
+      keywords: movieSelector(state).keywords
+    };
+  }
+
 };
 
 export default connect(mapStateToProps, undefined)(Index);

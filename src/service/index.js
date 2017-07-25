@@ -64,8 +64,8 @@ export const getGenresMovie = (inititalGenres, genres) => {
   return temp.join(', ');
 };
 
-export const getCrewMovie = (crew, limit) => {
-  const jobs = ["Director", "Screenplay", "Characters", "Story", "Writer"];
+export const getCrewMovie = (crew, jobs, limit) => {
+
   let temp = [];
   crew.map(item => {
 
@@ -119,6 +119,27 @@ export const getElementWithIndex = (arr, index) => {
   return arr.slice(index, index+1)[0];
 };
 
+// lay mang gia tri theo thuoc tinh tu mot mang object
+export const getNameCreatedByOfTvshows = (arr) => {
+  let result = [];
+  arr.map(object => {
+    result.push(object.name);
+  });
+  return result;
+};
+
+export const getNetworkTvshows = (networks) => {
+  let temp = [];
+  networks.map(network => {
+    temp.push(network.name);
+  });
+  return temp.join(', ');
+};
+
+export const getLastSeasonNumber = (seasons) => {
+  return seasons[seasons.length-1].season_number;
+};
+
 export default {
   subContentString,
   subTitleString,
@@ -137,5 +158,9 @@ export default {
   setMinutesToHours,
   setTextMoney,
   getElementWithIndex,
+  getNameCreatedByOfTvshows,
+  getNetworkTvshows,
+  getLastSeasonNumber,
+
 
 };

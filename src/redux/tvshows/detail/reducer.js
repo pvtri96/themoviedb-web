@@ -133,6 +133,26 @@ const Reducer = (state = INITIAL_STATE, action) => {
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
 
+    // season
+  case actionTypes.SEASON_FETCH_REQUESTED :
+    return {
+      ...state,
+      fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
+    };
+
+  case actionTypes.SEASON_FETCH_FULLFILLED :
+    return {
+      ...state,
+      season: action.payload,
+      fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
+    };
+
+  case actionTypes.SEASON_FETCH_REJECTED :
+    return {
+      ...state,
+      fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
+    };
+
 
   default :
     return state;

@@ -10,6 +10,7 @@ export const fetchTvshowDetail = (id) => async (dispatch) => {
     const detail = await axios.get(process.env.API_URL + 'tv/' + id, {
       params: {
         api_key: process.env.API_KEY,
+        language: "en"
       }
     })
       .then(resp => resp.data);
@@ -65,7 +66,7 @@ export const fetchKeywords = (id) => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     })
-      .then(resp => resp.data.keywords);
+      .then(resp => resp.data.results);
       // keywords
     return dispatch(actionCreators.keywordsFetchFullfilled(keywords));
   } catch(error) {
@@ -108,6 +109,23 @@ export const fetchVideos = (id) => async (dispatch) => {
   }
 };
 
+// fetch season from API
+export const fetchSeason = (id, season_num) => async (dispatch) => {
+  dispatch(actionCreators.seasonFetchRequested());
+  try {
+    const season = await axios.get(process.env.API_URL + 'tv/' + id + '/season/' + season_num,{
+      params: {
+        api_key: process.env.API_KEY
+      }
+    })
+      .then(resp => resp.data);
+      // season
+    return dispatch(actionCreators.seasonFetchFullfilled(season));
+  } catch(error) {
+    return dispatch(actionCreators.seasonFetchRejected(error));
+  }
+};
+
 
 
 
@@ -119,5 +137,6 @@ export default {
   fetchKeywords,
   fetchImages,
   fetchVideos,
+  fetchSeason,
 
 };

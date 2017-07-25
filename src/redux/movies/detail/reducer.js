@@ -32,118 +32,118 @@ const Reducer = (state = INITIAL_STATE, action) => {
     };
 
     // credits
-  case actionTypes.CREDITS_FETCH_REQUESTED :
+  case actionTypes.MOVIE_CREDITS_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.CREDITS_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_CREDITS_FETCH_FULLFILLED :
     return {
       ...state,
       credits: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.CREDITS_FETCH_REJECTED :
+  case actionTypes.MOVIE_CREDITS_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
 
     // reviews
-  case actionTypes.REVIEWS_FETCH_REQUESTED :
+  case actionTypes.MOVIE_REVIEWS_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.REVIEWS_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_REVIEWS_FETCH_FULLFILLED :
     return {
       ...state,
       reviews: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.REVIEWS_FETCH_REJECTED :
+  case actionTypes.MOVIE_REVIEWS_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
     // recommendations
-  case actionTypes.RECOMMENDATIONS_FETCH_REQUESTED :
+  case actionTypes.MOVIE_RECOMMENDATIONS_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.RECOMMENDATIONS_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_RECOMMENDATIONS_FETCH_FULLFILLED :
     return {
       ...state,
       recommendations: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.RECOMMENDATIONS_FETCH_REJECTED :
+  case actionTypes.MOVIE_RECOMMENDATIONS_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
 
     // release dates
-  case actionTypes.RELEASE_DATES_FETCH_REQUESTED :
+  case actionTypes.MOVIE_RELEASE_DATES_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.RELEASE_DATES_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_RELEASE_DATES_FETCH_FULLFILLED :
     return {
       ...state,
       releaseDates: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.RELEASE_DATES_FETCH_REJECTED :
+  case actionTypes.MOVIE_RELEASE_DATES_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
 
     // keywords
-  case actionTypes.KEYWORDS_FETCH_REQUESTED :
+  case actionTypes.MOVIE_KEYWORDS_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.KEYWORDS_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_KEYWORDS_FETCH_FULLFILLED :
     return {
       ...state,
       keywords: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.KEYWORDS_FETCH_REJECTED :
+  case actionTypes.MOVIE_KEYWORDS_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
     };
     // images
-  case actionTypes.IMAGES_FETCH_REQUESTED :
+  case actionTypes.MOVIE_IMAGES_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.IMAGES_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_IMAGES_FETCH_FULLFILLED :
     return {
       ...state,
       images: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.IMAGES_FETCH_REJECTED :
+  case actionTypes.MOVIE_IMAGES_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`
@@ -151,20 +151,20 @@ const Reducer = (state = INITIAL_STATE, action) => {
 
 
     // videos
-  case actionTypes.VIDEOS_FETCH_REQUESTED :
+  case actionTypes.MOVIE_VIDEOS_FETCH_REQUESTED :
     return {
       ...state,
       fetchStatus : `Data fetching ... ${(new Date()).toLocaleTimeString()}`
     };
 
-  case actionTypes.VIDEOS_FETCH_FULLFILLED :
+  case actionTypes.MOVIE_VIDEOS_FETCH_FULLFILLED :
     return {
       ...state,
       videos: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 
-  case actionTypes.VIDEOS_FETCH_REJECTED :
+  case actionTypes.MOVIE_VIDEOS_FETCH_REJECTED :
     return {
       ...state,
       fetchStatus: `Error: ${action.payload} ${(new Date()).toLocaleTimeString()}`

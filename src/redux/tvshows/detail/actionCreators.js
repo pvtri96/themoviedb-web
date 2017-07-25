@@ -110,6 +110,21 @@ export const videosFetchRejected = (err) => ({
   payload: err,
   error: true
 });
+// season
+export const seasonFetchRequested = () => ({
+  type: actionTypes.SEASON_FETCH_REQUESTED
+});
+
+export const seasonFetchFullfilled = (payload) => ({
+  type: actionTypes.SEASON_FETCH_FULLFILLED,
+  payload
+});
+
+export const seasonFetchRejected = (err) => ({
+  type: actionTypes.SEASON_FETCH_REJECTED,
+  payload: err,
+  error: true
+});
 
 export default {
   tvshowDetailFetchRequested,
@@ -139,5 +154,9 @@ export default {
   videosFetchRequested,
   videosFetchFullfilled,
   videosFetchRejected,
+
+  seasonFetchRequested,
+  seasonFetchFullfilled,
+  seasonFetchRejected,
 
 };
