@@ -10,10 +10,15 @@ import ContentHeader from './ContentHeader';
 import ContentWrapper from './ContentWrapper';
 import WhiteColumn from './WhiteColumn';
 import GreyColumn from './GreyColumn';
+import { connect } from 'react-redux';
+import { menuSelector } from '../../redux/menu';
 
 
-class MovieDetailShowing extends Component
+class DetailShowing extends Component
 {
+  constructor (props) {
+    super(props);
+  }
 
   render()
   {
@@ -21,7 +26,7 @@ class MovieDetailShowing extends Component
       <div style={{width: "100%"}}>
 
         <style dangerouslySetInnerHTML={{ __html: contentHeader }} />
-        <ContentHeader />
+        <ContentHeader  isServer={this.props.isServer} />
         {/* contentHeader */}
 
         <style dangerouslySetInnerHTML={{ __html: contentWrapper }} />
@@ -36,7 +41,9 @@ class MovieDetailShowing extends Component
 
           <style dangerouslySetInnerHTML={{ __html: greyColumn }} />
           <GreyColumn />
+
         </div> {/* column_wrapper */}
+
 
 
 
@@ -45,6 +52,10 @@ class MovieDetailShowing extends Component
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    menu: menuSelector(state).title
+  }
+}
 
-
-export default MovieDetailShowing;
+export default connect(mapStateToProps, undefined)(DetailShowing);

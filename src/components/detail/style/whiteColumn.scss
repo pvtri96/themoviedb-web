@@ -142,6 +142,26 @@
 
   } //recommendations
 
+  .season {
+    margin: 20px 0px;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .info-season {
+      padding: 10px 15px;
+
+      .link_title {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        &:hover {
+          color: #3498db;
+        }
+      }
+    }
+  } //season
+
+
+
   .title {
     padding: 10px 20px 10px 0px;
     font-family: 'Vidaloka', serif;
@@ -151,38 +171,15 @@
       text-decoration: none;
       &:hover {
         color: #3498db;
+        cursor: pointer;
       }
     }
-  }
+  } // title
 } //white column
 
 
 
 
 
-
-
-
-
-
-
-// .rating {
-//   unicode-bidi: bidi-override;
-//   direction: rtl;
-//   color: #d35400;
-// }
-// .rating > span {
-//   display: inline-block;
-//   position: relative;
-//   width: 1.1em;
-// }
-// .rating > span:hover:before,
-// .rating > span:hover ~ span:before {
-//    content: "\2605";
-//    position: absolute;
-// }
-
-
-// circle
 
 

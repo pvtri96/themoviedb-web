@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { movieSelector } from '../../../redux/movies/detail';
 import moviesService from '../../../service';
 
+
 class Social extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,7 @@ class Social extends Component {
           <div>
             <div className="grouped">
               <div className="avatar">
-                <img width="100" src="https://football-board.de/img/default_user.jpg" alt="user image"/>
+                <img width="100" src="../../../../static/image/user-image.png" alt="user image"/>
               </div> {/* avatar */}
 
               <div className="info">
@@ -41,14 +42,14 @@ class Social extends Component {
                 <div >
                   <ReactMarkdown source={moviesService.reduceWordsText(review.content,105)} />
                   <Link href={review.url}>
-                    <a className="link"><b>Read more</b></a>
+                    <a target="_blank" className="link"><b>Read more</b></a>
                   </Link>
                 </div>
               </div>
             </div>
-            <Link >
-              <a className="link"><h5>Read All Reviews</h5></a>
-            </Link>
+
+            <a className="link"><h5>Read All Reviews</h5></a>
+
             <br/>
           </div>
           :

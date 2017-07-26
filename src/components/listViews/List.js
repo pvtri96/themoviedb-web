@@ -30,7 +30,7 @@ class Index extends Component {
   }
 
   render() {
-    console.log(this.props.filter);
+    console.log(this.props.datas);
     return (
       <div className="container">
         <Filter/>
