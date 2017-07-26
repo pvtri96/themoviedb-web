@@ -14,8 +14,11 @@ const Index = props => {
       <h4>Last Season</h4>
       <div className="season d-flex">
         <div>
-          <img width="130" height="195"  src={process.env.MOVIE_IMG_URL + 'w130_and_h195_bestv2' +
-            season.poster_path} alt={season.name} title={season.name}/>
+          {season.poster_path ?
+            <img width="130" height="195"  src={process.env.MOVIE_IMG_URL + 'w130_and_h195_bestv2' +
+            season.poster_path} alt={season.name} title={season.name}/> :
+            <img width="130" height="195" alt="no-image" src="../../../../static/image/no-image.jpg" />
+          }
         </div>
         <div className="info-season">
           <a href="" className="link_title">Season {season.season_number}</a>

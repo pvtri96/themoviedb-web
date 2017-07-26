@@ -13,6 +13,7 @@ const limitLengthPosters = 7;
 
 
 const MediaShowing = (i, detail,videos,backdrops,posters) => {
+
   const videosLimit = videos.slice(0, limitLengthVideos);
   const backdropsLimit = backdrops.slice(0,limitLengthBackdrops);
   const postersLimit = posters.slice(0,limitLengthPosters);
@@ -20,13 +21,17 @@ const MediaShowing = (i, detail,videos,backdrops,posters) => {
   case 1:
   {
     const video = videos[0];
+
     return (
       <div className="content_media d-flex">
-        <div className="video">
-          <iframe id="cartoonVideo" width="533" height="300"
-            src={process.env.TRAILER_URL + video.key+ "?enablejsapi=1&autoplay=0&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en-US&modestbranding=1&fs=1"}
-            frameBorder="0" allowFullScreen></iframe>
-        </div>
+        {videos.length !== 0 ?
+          <div className="video">
+            <iframe id="cartoonVideo" width="533" height="300"
+              src={process.env.TRAILER_URL + video.key+ "?enablejsapi=1&autoplay=0&origin=https%3A%2F%2Fwww.themoviedb.org&hl=en-US&modestbranding=1&fs=1"}
+              frameBorder="0" allowFullScreen></iframe>
+          </div> :
+          <div></div>
+        }
 
         <div className="backdrop">
           <img src={process.env.MOVIE_IMG_URL + 'w533_and_h300_bestv2' +
@@ -85,6 +90,7 @@ const MediaShowing = (i, detail,videos,backdrops,posters) => {
       </div>
     );
   }
+  default: return (<div></div>);
   }
 }; // Media Showing
 
