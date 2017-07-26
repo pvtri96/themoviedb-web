@@ -3,19 +3,22 @@ import FontAwesome      from 'react-fontawesome';
 import { movieSelector } from '../../../redux/movies/detail';
 import { connect } from 'react-redux';
 import Crew from './Crew';
-import {
-  Modal , Input, option, Row , Col , ModalHeader, ModalBody, ModalFooter, Button
-} from 'reactstrap';
+import ModalView from './ModalView';
+import {  movieListSelector } from '../../../redux/movies/list';
+import { tvshowSelector } from '../../../redux/tvshows/detail';
+import { menuSelector } from '../../../redux/menu';
 
 
 class ContentHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      posterId : 0
     };
 
     this.toggle = this.toggle.bind(this);
+    this.getChanges = this.getChanges.bind(this);
   }
 
   toggle() {
@@ -24,106 +27,63 @@ class ContentHeader extends Component {
     });
   }
 
-  // <Modal dialogClassName="movie-modal" isOpen={this.state.modal} toggle={this.toggle} >
-  //             <Row className=" ">
-  //               <Col md="6" >
-  //                 <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
-  //                 detail.poster_path} alt={detail.title} placeholder={detail.title}
-  //                 crossOrigin="anonymous"/>
-  //               </Col>
+  getChanges(detail) {
+    let result = {};
+    switch(this.props.menu){
+    case "movies":
+    {
+      result.title = detail.title;
+      result.release_date = detail.release_date;
+      result.jobs = ["Director", "Screenplay", "Characters", "Story", "Writer"];
 
-  //               <Col md="6" >
-  //                 <div className="header_modal">
-  //                   <h5  onClick={this.toggle}>
-  //                     <FontAwesome
-  //                       name="times"
-  //                       style={{cursor: 'pointer'}}
-  //                     />
-  //                   </h5>
+      break;
+    }
+    case "tvshows":
+    {
+      result.title = detail.name;
+      result.release_date = detail.first_air_date;
 
-  //                   <div className="d-flex justify-content-between">
-  //                     <h6>Info</h6>
+      result.crew = detail.created_by;
+      result.jobs = "Creator";
+      break;
+    }
+    }
+    return result;
 
-  //                     <FontAwesome
-  //                       name="lock"
-  //                     />
-  //                   </div>
-  //                 </div>
-
-  //                 <hr />
-  //                 <div className="info-img">
-  //                   <h6>Primary ?</h6>
-  //                   <FontAwesome
-  //                     name="times-circle"
-  //                   />
-  //                   <br/><br/>
-
-  //                   <h6>Added by</h6>
-  //                   <div> Tran Van Thuc</div>
-  //                   <br/><br/>
-
-  //                   <h6>Size</h6>
-  //                   <div>
-  //                     2000x3000 {' '}
-  //                     <FontAwesome
-  //                       name="check-circle"
-  //                     />
-  //                   </div>
-  //                   <br/><br/>
-
-  //                   <h6>Language</h6>
-  //                   <Input type="select" disabled name="select" id="exampleSelect">
-  //                     <option>Englist</option>
-
-  //                   </Input>
-
-  //                   <br/>
-  //                 </div>
-
-  //                 <hr/>
-
-  //                 <div className="d-flex justify-content-between info-footer">
-  //                   <div>
-  //                     <FontAwesome name="arrow-circle-left"
-  //                       style={{ fontSize: '25px'}}
-  //                     />
-  //                   </div>
-  //                   <div>
-  //                     <FontAwesome name="arrow-circle-right"
-  //                       style={{ fontSize: '25px'}}
-  //                     />
-  //                   </div>
-  //                 </div>
-  //               </Col>
-  //             </Row>
-  //           </Modal>
+  }
 
 
   render() {
+
+
+
     let detail = this.props.detail;
+    // if(this.props.isServer)
+    //   detail = this.props.detail;
+    // else
+    //   detail = this.props.current;
 
-    console.log(detail);
-    if(!detail)
+    let images = this.props.images;
+
+    if(!detail || !images)
       return (<div></div>);
+    let changes = this.getChanges(detail);
+    // console.log(changes);
 
+    let posters = images.posters;
+
+    let title;
     return (
       <div>
-
-
         <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
 
         </div>
 
-
-
-
         <div className="content-header d-flex">
           <div className="img-movie" >
             <img  src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
-            detail.poster_path} alt={detail.title} placeholder={detail.title}
+            detail.poster_path} alt={title} placeholder={changes.title}
             crossOrigin="anonymous"/>
-
-
 
             <div className="zoom" onClick={this.toggle}>
               <FontAwesome
@@ -132,95 +92,13 @@ class ContentHeader extends Component {
               />
             </div>
 
-            {/* modal */}
-            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <div className="d-flex">
-                <div>
-                  <img width="359" src={process.env.MOVIE_IMG_URL + 'w640' +
-                  detail.poster_path} alt={detail.title} placeholder={detail.title}
-                  crossOrigin="anonymous"/>
-                </div> {/* left modal */}
-
-
-                <div className="content-modal">
-                  <div className="header-modal">
-                    <div style={{textAlign: 'right'}} onClick={this.toggle}>
-                      <FontAwesome
-                        className="icon"
-                        name="times"
-                      />
-                    </div>
-
-                    <br/>
-
-                    <div className="d-flex justify-content-between">
-                      <div className="title">Info</div>
-
-                      <FontAwesome
-                        className="icon"
-                        name="lock"
-                      />
-                    </div>
-
-                    <hr/>
-                  </div> {/* header modal */}
-
-                  <div className="info-img">
-                    <div className="title">Primary ?</div>
-                    <div>
-                      <FontAwesome
-                        name="times-circle"
-                      />
-                    </div>
-                    <br/>
-
-                    <div className="title">Added by</div>
-                    <div> Tran Van Thuc</div>
-                    <br/>
-
-                    <div className="title">Size</div>
-                    <div>
-                      2000x3000 {' '}
-                      <FontAwesome
-                        name="check-circle"
-                      />
-                    </div>
-                    <br/>
-
-                    <div className="title">Language</div>
-                    <div style={{marginTop: '5px'}}>
-                      <Input type="select" disabled name="select" id="exampleSelect">
-                        <option>English</option>
-
-                      </Input>
-                    </div>
-
-                    <br/>
-                  </div>
-
-                  <hr/>
-                  <br/>
-                  <div className="d-flex justify-content-between info-footer">
-                    <div>
-                      <FontAwesome className="icon" name="arrow-circle-left"
-                        style={{ fontSize: '25px'}}
-                      />
-                    </div>
-                    <div>
-                      <FontAwesome className="icon" name="arrow-circle-right"
-                        style={{ fontSize: '25px'}}
-                      />
-                    </div>
-                  </div>
-
-                </div> {/* right modal */}
-              </div> {/* d-flex */}
-            </Modal>
+            {/* Modal */}
+            <ModalView modal={this.state.modal} toggle={this.toggle} posters={posters} className={this.props.className}/>
 
           </div>
 
           <div className="info-movie">
-            <h1>{detail.original_title} ({new Date(detail.release_date).getFullYear()})</h1>
+            <h1>{changes.title} ({new Date(changes.release_date).getFullYear()})</h1>
 
             <div className="action d-flex">
               <div className="item">
@@ -273,22 +151,43 @@ class ContentHeader extends Component {
               </div>
               <br />
 
-              <Crew />
+              <Crew crew={changes.crew} jobs={changes.jobs} />
             </div>
           </div>
         </div>
       </div>
     );
-
   }
 }
 
+
+
 const mapStateToProps = (state) => {
+  const menu = menuSelector(state).menuTitle;
 
-  return {
-    detail: movieSelector(state).detail,
+  switch(menu) {
+  case "movies":
+    return {
+      menu : menuSelector(state).menuTitle,
+      current: movieListSelector(state).current,
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+    };
+  case "tvshows":
+    return {
+      menu : menuSelector(state).menuTitle,
+      detail: tvshowSelector(state).detail,
+      images: tvshowSelector(state).images,
+    };
+  default:
+    return {
+      menu : menuSelector(state).menuTitle,
+      current: movieListSelector(state).current,
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+    };
+  }
 
-  };
 };
 
 export default connect(mapStateToProps, undefined)(ContentHeader);

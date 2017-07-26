@@ -98,7 +98,8 @@ class Header extends Component {
                     </div>
                     <ul className="dropdown-content">
                       <div onClick={() =>{
-                        this.props.fetchMenu(menu.tvshows.submenu.popular);
+                        this.props.fetchMenu(menu.tvshows.title);
+                        this.props.fetchSubMenu(menu.tvshows.submenu.popular);
                         Router.push('/tv-show');
                       }}>
                         <NavLink>Popular</NavLink>

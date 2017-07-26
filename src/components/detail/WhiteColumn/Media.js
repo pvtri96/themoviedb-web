@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import { movieSelector } from '../../../redux/movies/detail';
 import Link from 'next/link';
+import { tvshowSelector } from '../../../redux/tvshows/detail';
+import { menuSelector } from '../../../redux/menu';
+
 
 const limitLengthVideos = 5;
 const limitLengthBackdrops = 5;
@@ -123,14 +126,16 @@ class Media extends Component {
 
   render(){
     let detail = this.props.detail;
+    let videos = this.props.videos;
+    let images = this.props.images;
 
-    if(!detail || !detail.videos)
+    if(!detail || !videos || !images)
       return (<div></div>);
-    let videos = detail.videos.results;
-    let images = detail.images;
+
     let backdrops = images.backdrops;
     let mediaIndex = this.state.mediaIndex;
     // let limitBackdrops = moviesService.getLimitBackdrops(backdrops, )
+
 
     let posters = images.posters;
     return (
@@ -163,10 +168,29 @@ class Media extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    detail: movieSelector(state).detail
+  const menu = menuSelector(state).menuTitle;
 
-  };
+  switch(menu) {
+  case "tvshows":
+    return {
+      detail: tvshowSelector(state).detail,
+      images: tvshowSelector(state).images,
+      videos: tvshowSelector(state).videos
+    };
+  case "movies":
+    return {
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+      videos: movieSelector(state).videos
+    };
+  default:
+    return {
+      detail: movieSelector(state).detail,
+      images: movieSelector(state).images,
+      videos: movieSelector(state).videos
+    };
+  }
+
 };
 
 export default connect(mapStateToProps, undefined)(Media);

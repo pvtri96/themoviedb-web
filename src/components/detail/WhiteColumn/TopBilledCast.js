@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import { movieSelector } from '../../../redux/movies/detail';
 import moviesService from '../../../service';
+import { tvshowSelector } from '../../../redux/tvshows/detail';
+import { menuSelector } from '../../../redux/menu';
 
 const limitLengthTopBilledCast=5;
 
@@ -14,6 +16,7 @@ class TopBilledCast extends Component {
 
   render() {
     let credits = this.props.credits;
+    console.log(credits);
     if( !credits )
       return (<div></div>);
     let topBilledCast = moviesService.getTopBilledCast(credits.cast, limitLengthTopBilledCast);
@@ -24,7 +27,8 @@ class TopBilledCast extends Component {
         <div className="people">
           {topBilledCast.map(person => (
             <div key={person.id} className="person">
-              <img width="138" height="175"  src={process.env.MOVIE_IMG_URL + 'w138_and_h175_bestv2' + person.profile_path} alt={person.name} title={person.name}/>
+              <img width="138" height="175"  src={process.env.MOVIE_IMG_URL + 'w138_and_h175_bestv2' +
+              person.profile_path} alt={person.name} title={person.name}/>
               <div className="character">
                 <Link >
                   <a>{person.name}</a>
@@ -38,9 +42,7 @@ class TopBilledCast extends Component {
           ))}
         </div> { /* people */}
 
-        <Link href="">
-          <a className="link"><h5>Full Cast & Crew</h5></a>
-        </Link>
+        <a className="link"><h5>Full Cast & Crew</h5></a>
         <br/>
         <hr/>
       </div>
@@ -49,10 +51,23 @@ class TopBilledCast extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    credits: movieSelector(state).credits
+  const menu = menuSelector(state).menuTitle;
 
-  };
+  switch(menu) {
+  case "tvshows":
+    return {
+      credits: tvshowSelector(state).credits
+    };
+  case "movies":
+    return {
+      credits: movieSelector(state).credits
+    };
+  default:
+    return {
+      credits: movieSelector(state).credits
+    };
+  }
+
 };
 
 export default connect(mapStateToProps, undefined)(TopBilledCast);

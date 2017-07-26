@@ -5,7 +5,7 @@ import Social from './Social';
 import TopBilledCast from './TopBilledCast';
 import Media from './Media';
 import Recommendations from './Recommendations';
-
+import Season from './Season';
 
 
 
@@ -14,6 +14,9 @@ const WhiteColumn = () => (
 
     <TopBilledCast />
     {/* TopBilledCast*/}
+
+    <Season />
+    {/* Season */}
 
     <Social />
     {/* Social */}

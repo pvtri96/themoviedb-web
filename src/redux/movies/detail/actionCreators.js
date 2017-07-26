@@ -16,85 +16,115 @@ export const movieDetailFetchRejected = (err) => ({
 });
 
 // credits
-export const creditsFetchRequested = () => ({
-  type: actionTypes.CREDITS_FETCH_REQUESTED
+export const movieCreditsFetchRequested = () => ({
+  type: actionTypes.MOVIE_CREDITS_FETCH_REQUESTED
 });
 
-export const creditsFetchFullfilled = (payload) => ({
-  type: actionTypes.CREDITS_FETCH_FULLFILLED,
+export const movieCreditsFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_CREDITS_FETCH_FULLFILLED,
   payload
 });
 
-export const creditsFetchRejected = (err) => ({
-  type: actionTypes.CREDITS_FETCH_REJECTED,
+export const movieCreditsFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_CREDITS_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 // reviews
-export const reviewsFetchRequested = () => ({
-  type: actionTypes.REVIEWS_FETCH_REQUESTED
+export const movieReviewsFetchRequested = () => ({
+  type: actionTypes.MOVIE_REVIEWS_FETCH_REQUESTED
 });
 
-export const reviewsFetchFullfilled = (payload) => ({
-  type: actionTypes.REVIEWS_FETCH_FULLFILLED,
+export const movieReviewsFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_REVIEWS_FETCH_FULLFILLED,
   payload
 });
 
-export const reviewsFetchRejected = (err) => ({
-  type: actionTypes.REVIEWS_FETCH_REJECTED,
+export const movieReviewsFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_REVIEWS_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 // recommendations
-export const recommendationsFetchRequested = () => ({
-  type: actionTypes.RECOMMENDATIONS_FETCH_REQUESTED
+export const movieRecommendationsFetchRequested = () => ({
+  type: actionTypes.MOVIE_RECOMMENDATIONS_FETCH_REQUESTED
 });
 
-export const recommendationsFetchFullfilled = (payload) => ({
-  type: actionTypes.RECOMMENDATIONS_FETCH_FULLFILLED,
+export const movieRecommendationsFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_RECOMMENDATIONS_FETCH_FULLFILLED,
   payload
 });
 
-export const recommendationsFetchRejected = (err) => ({
-  type: actionTypes.RECOMMENDATIONS_FETCH_REJECTED,
+export const movieRecommendationsFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_RECOMMENDATIONS_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 // release dates
-export const releaseDatesFetchRequested = () => ({
-  type: actionTypes.RELEASE_DATES_FETCH_REQUESTED
+export const movieReleaseDatesFetchRequested = () => ({
+  type: actionTypes.MOVIE_RELEASE_DATES_FETCH_REQUESTED
 });
 
-export const releaseDatesFetchFullfilled = (payload) => ({
-  type: actionTypes.RELEASE_DATES_FETCH_FULLFILLED,
+export const movieReleaseDatesFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_RELEASE_DATES_FETCH_FULLFILLED,
   payload
 });
 
-export const releaseDatesFetchRejected = (err) => ({
-  type: actionTypes.RELEASE_DATES_FETCH_REJECTED,
+export const movieReleaseDatesFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_RELEASE_DATES_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
 // keywords
-export const keywordsFetchRequested = () => ({
-  type: actionTypes.KEYWORDS_FETCH_REQUESTED
+export const movieKeywordsFetchRequested = () => ({
+  type: actionTypes.MOVIE_KEYWORDS_FETCH_REQUESTED
 });
 
-export const keywordsFetchFullfilled = (payload) => ({
-  type: actionTypes.KEYWORDS_FETCH_FULLFILLED,
+export const movieKeywordsFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_KEYWORDS_FETCH_FULLFILLED,
   payload
 });
 
-export const keywordsFetchRejected = (err) => ({
-  type: actionTypes.KEYWORDS_FETCH_REJECTED,
+export const movieKeywordsFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_KEYWORDS_FETCH_REJECTED,
   payload: err,
   error: true
 });
 
+// images
+export const movieImagesFetchRequested = () => ({
+  type: actionTypes.MOVIE_IMAGES_FETCH_REQUESTED
+});
+
+export const movieImagesFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_IMAGES_FETCH_FULLFILLED,
+  payload
+});
+
+export const movieImagesFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_IMAGES_FETCH_REJECTED,
+  payload: err,
+  error: true
+});
+// videos
+export const movieVideosFetchRequested = () => ({
+  type: actionTypes.MOVIE_VIDEOS_FETCH_REQUESTED
+});
+
+export const movieVideosFetchFullfilled = (payload) => ({
+  type: actionTypes.MOVIE_VIDEOS_FETCH_FULLFILLED,
+  payload
+});
+
+export const movieVideosFetchRejected = (err) => ({
+  type: actionTypes.MOVIE_VIDEOS_FETCH_REJECTED,
+  payload: err,
+  error: true
+});
 
 
 
@@ -103,25 +133,31 @@ export default {
   movieDetailFetchFullfilled,
   movieDetailFetchRejected,
 
-  creditsFetchRequested,
-  creditsFetchFullfilled,
-  creditsFetchRejected,
+  movieCreditsFetchRequested,
+  movieCreditsFetchFullfilled,
+  movieCreditsFetchRejected,
 
-  reviewsFetchRequested,
-  reviewsFetchFullfilled,
-  reviewsFetchRejected,
+  movieReviewsFetchRequested,
+  movieReviewsFetchFullfilled,
+  movieReviewsFetchRejected,
 
-  recommendationsFetchRequested,
-  recommendationsFetchFullfilled,
-  recommendationsFetchRejected,
+  movieRecommendationsFetchRequested,
+  movieRecommendationsFetchFullfilled,
+  movieRecommendationsFetchRejected,
 
-  releaseDatesFetchRequested,
-  releaseDatesFetchFullfilled,
-  releaseDatesFetchRejected,
+  movieReleaseDatesFetchRequested,
+  movieReleaseDatesFetchFullfilled,
+  movieReleaseDatesFetchRejected,
 
-  keywordsFetchRequested,
-  keywordsFetchFullfilled,
-  keywordsFetchRejected,
+  movieKeywordsFetchRequested,
+  movieKeywordsFetchFullfilled,
+  movieKeywordsFetchRejected,
 
+  movieImagesFetchRequested,
+  movieImagesFetchFullfilled,
+  movieImagesFetchRejected,
 
+  movieVideosFetchRequested,
+  movieVideosFetchFullfilled,
+  movieVideosFetchRejected,
 };

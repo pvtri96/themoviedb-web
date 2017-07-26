@@ -54,8 +54,8 @@ class Index extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("movie List");
-  console.log(state);
+  // console.log("movie List");
+  // console.log(state);
   return {
     list : movieListSelector(state).list,
   };
