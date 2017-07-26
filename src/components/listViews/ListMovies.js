@@ -19,9 +19,9 @@ class Index extends Component {
   renderItemView (data) {
     switch (this.props.filter){
     case filterConstant.BACKDROP_CARD:
-      return <BackdropCard sub="movies"  data = {data} key = {data.id}/>;
+      return <BackdropCard data = {data} key = {data.id}/>;
     case filterConstant.POSTER_CARD:
-      return <PosterCard sub="movies" data = {data} key = {data.id}/>;
+      return <PosterCard data = {data} key = {data.id}/>;
     }
   }
 

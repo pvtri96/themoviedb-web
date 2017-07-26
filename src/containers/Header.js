@@ -35,18 +35,18 @@ class Header extends Component {
         title: "movies",
         submenu: {
           popular: "popular",
-          toprated: "top-rated",
+          toprated: "top_rated",
           upcoming: "upcoming",
-          nowplaying: "now-playing"
+          nowplaying: "now_playing"
         }
       },
       tvshows: {
         title: "tv-show",
         submenu: {
           popular: "popular",
-          toprated: "top-rated",
-          ontv: "on-tv",
-          airingtoday: "airing-today"
+          toprated: "top_rated",
+          ontv: "on_the_air",
+          airingtoday: "airing_today"
         }
       }
     };
@@ -111,8 +111,20 @@ class Header extends Component {
                       }}>
                         <NavLink>Top Rated</NavLink>
                       </div>
-                      <li><Link href="/tv-show/on-the-air"><NavLink>On TV</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Airing Today</NavLink></Link></li>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.tvshows.title);
+                        this.props.fetchSubMenu(menu.tvshows.submenu.ontv);
+                        Router.push('/tv-show/on-the-air');
+                      }}>
+                        <NavLink>On TV</NavLink>
+                      </div>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.tvshows.title);
+                        this.props.fetchSubMenu(menu.tvshows.submenu.airingtoday);
+                        Router.push('/tv-show/airing-today');
+                      }}>
+                        <NavLink>Airing Today</NavLink>
+                      </div>
                     </ul>
                   </li>
                 </ul>

@@ -40,7 +40,7 @@ const Reducer = (state = INITIAL_STATE, action) => {
   case actionTypes.SUB_MENU_FETCH_FULLFILLED :
     return {
       ...state,
-      submenu: action.payload,
+      subMenu: action.payload,
       fetchStatus : `Data fetched success ${(new Date()).toLocaleTimeString()}!`
     };
 

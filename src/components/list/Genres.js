@@ -2,6 +2,8 @@ import React from 'react';
 import moviesService from '../../service';
 import { movieListSelector } from '../../redux/movies/list';
 import { connect } from 'react-redux';
+import  { menuSelector } from '../../redux/menu';
+import { tvshowsSelector } from '../../redux/tvshows/list';
 
 
 const Index = props => {
@@ -17,9 +19,18 @@ const Index = props => {
 };
 
 const mapStateToProps = state => {
-  return {
-    genres: movieListSelector(state).genres
-  };
+  const menu = menuSelector(state).menuTitle;
+  switch(menu) {
+  case "movies":
+    return {
+      genres: movieListSelector(state).genres
+    };
+  case "tvshow":
+    return {
+      genres: tvshowsSelector(state).genres
+    };
+  default: return {genres: movieListSelector(state).genres}
+  }
 };
 
 export default connect(mapStateToProps, undefined)(Index);
