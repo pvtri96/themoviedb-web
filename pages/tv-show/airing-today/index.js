@@ -15,9 +15,9 @@ import { tvshowsActionsTypes } from '../../../src/redux/tvshows/list';
 class Index extends Component {
 
   static async getInitialProps ({ store }) {
-    await store.dispatch(tvshowsActions.fetchTVshowOnTheAir());
+    await store.dispatch(tvshowsActions.fetchTVshowAiringToday());
     store.dispatch(menuActions.fetchMenu("tvshows"));
-    store.dispatch(menuActions.fetchSubMenu(tvshowsActionsTypes.ON_THE_AIR));
+    store.dispatch(menuActions.fetchSubMenu(tvshowsActionsTypes.AIRING_TODAY));
   }
   render(){
     return (

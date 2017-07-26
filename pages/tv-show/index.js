@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 // or, if you work with plain css
 // import stylesheet from 'styles/index.css'
 import Master from '../../src/containers/Master';
@@ -7,18 +6,35 @@ import Master from '../../src/containers/Master';
 import {getStore} from '../../src/redux';
 import withRedux from 'next-redux-wrapper';
 import List from '../../src/components/listViews/List';
+import {tvshowsActions} from '../../src/redux/tvshows/list';
+import { menuActions } from '../../src/redux/menu';
 
 
-const Index = () => {
-  return (
-    <Master >
-      <List sub="tvshows"></List>
-    </Master>
-  );
+
+class Index extends Component {
+
+  static async getInitialProps ({ store }) {
+    await store.dispatch(tvshowsActions.fetchTVshowPopular());
+    store.dispatch(menuActions.fetchMenu("tvshows"));
+  }
+
+  render(){
+    return (
+      <Master >
+        <List></List>
+      </Master>
+    );
+  }
+  componentDidMount() {
+    setTimeout(() => this.setState({ isLoading: false }), 100);
+    this.props.fetchTvShowGenres();
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return  {
+    fetchTvShowGenres: () => dispatch(tvshowsActions.fetchTvShowGenres())
+  }
 };
 
-Index.propTypes = {
-
-};
-
-export default withRedux(getStore)(Index);
+export default withRedux(getStore, undefined, mapDispatchToProps)(Index);
