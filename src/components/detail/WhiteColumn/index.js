@@ -21,6 +21,7 @@ const WhiteColumn = () => (
     <Social />
     {/* Social */}
 
+    <Media />
     {/* Media */}
 
     <Recommendations />
