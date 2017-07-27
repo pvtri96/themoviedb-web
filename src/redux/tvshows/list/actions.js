@@ -7,7 +7,7 @@ import actionTypes from './actionTypes';
 export const fetchTVshowPopular = () => async (dispatch) => {
   dispatch(actionCreators.tvshowsFetchRequested());
   try {
-    const tvshow = await axios.get(process.env.TV_SHOW_URL + actionTypes.POPULAR , {
+    const tvshows = await axios.get(process.env.TV_SHOW_URL + actionTypes.POPULAR , {
       params: {
         api_key: process.env.API_KEY
       }
@@ -16,7 +16,7 @@ export const fetchTVshowPopular = () => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     }).then(response => response.data.genres);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshow,genres));
+    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
     return dispatch(actionCreators.tvshowsFetchRejected(err));
@@ -26,7 +26,7 @@ export const fetchTVshowPopular = () => async (dispatch) => {
 export const fetchTVshowTopRated = () => async (dispatch) => {
   dispatch(actionCreators.tvshowsFetchRequested());
   try {
-    const tvshow = await axios.get(process.env.TV_SHOW_URL + actionTypes.TOP_RATED , {
+    const tvshows = await axios.get(process.env.TV_SHOW_URL + actionTypes.TOP_RATED , {
       params: {
         api_key: process.env.API_KEY
       }
@@ -36,7 +36,7 @@ export const fetchTVshowTopRated = () => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     }).then(response => response.data.genres);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshow,genres));
+    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
     return dispatch(actionCreators.tvshowsFetchRejected(err));
@@ -46,7 +46,7 @@ export const fetchTVshowTopRated = () => async (dispatch) => {
 export const fetchTVshowOnTheAir = () => async (dispatch) => {
   dispatch(actionCreators.tvshowsFetchRequested());
   try {
-    const tvshow = await axios.get(process.env.TV_SHOW_URL + actionTypes.ON_THE_AIR , {
+    const tvshows = await axios.get(process.env.TV_SHOW_URL + actionTypes.ON_THE_AIR , {
       params: {
         api_key: process.env.API_KEY
       }
@@ -56,7 +56,7 @@ export const fetchTVshowOnTheAir = () => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     }).then(response => response.data.genres);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshow,genres));
+    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
     return dispatch(actionCreators.tvshowsFetchRejected(err));
@@ -66,7 +66,7 @@ export const fetchTVshowOnTheAir = () => async (dispatch) => {
 export const fetchTVshowAiringToday = () => async (dispatch) => {
   dispatch(actionCreators.tvshowsFetchRequested());
   try {
-    const tvshow = await axios.get(process.env.TV_SHOW_URL + actionTypes.AIRING_TODAY , {
+    const tvshows = await axios.get(process.env.TV_SHOW_URL + actionTypes.AIRING_TODAY , {
       params: {
         api_key: process.env.API_KEY
       }
@@ -76,7 +76,7 @@ export const fetchTVshowAiringToday = () => async (dispatch) => {
         api_key: process.env.API_KEY
       }
     }).then(response => response.data.genres);
-    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshow,genres));
+    return dispatch(actionCreators.tvshowsFetchFulfilled(tvshows,genres));
   }
   catch (err) {
     return dispatch(actionCreators.tvshowsFetchRejected(err));

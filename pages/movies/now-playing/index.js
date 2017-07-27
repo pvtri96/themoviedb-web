@@ -6,18 +6,18 @@ import Master from '../../../src/containers/Master';
 // import ListTVShows from '../../src/components/list/ListTVShows';
 import {getStore} from '../../../src/redux';
 import withRedux from 'next-redux-wrapper';
-import List from '../../../src/components/listViews/List';
-import { tvshowsActions} from '../../../src/redux/tvshows/list';
+import List from '../../../src/components/listViews/ListMovies';
+import { movieListActions } from '../../../src/redux/movies/list';
 import { menuActions } from '../../../src/redux/menu';
-import { tvshowsActionsTypes } from '../../../src/redux/tvshows/list';
+import { movieListActionTypes } from '../../../src/redux/movies/list';
 
 
 class Index extends Component {
 
   static async getInitialProps ({ store }) {
-    await store.dispatch(tvshowsActions.fetchTVshowOnTheAir());
-    store.dispatch(menuActions.fetchMenu("tvshows"));
-    store.dispatch(menuActions.fetchSubMenu(tvshowsActionsTypes.ON_THE_AIR));
+    await store.dispatch(movieListActions.fetchMovieNowPlaying());
+    store.dispatch(menuActions.fetchMenu("movies"));
+    store.dispatch(menuActions.fetchSubMenu(movieListActionTypes.NOW_PLAYING));
   }
   render(){
     return (

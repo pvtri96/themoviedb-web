@@ -5,7 +5,7 @@ import Master from '../../src/containers/Master';
 // import ListTVShows from '../../src/components/list/ListTVShows';
 import {getStore} from '../../src/redux';
 import withRedux from 'next-redux-wrapper';
-import List from '../../src/components/listViews/List';
+import List from '../../src/components/listViews/ListTvShows';
 import {tvshowsActions} from '../../src/redux/tvshows/list';
 import { menuActions } from '../../src/redux/menu';
 

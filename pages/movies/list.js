@@ -9,7 +9,7 @@ import {menuActions} from '../../src/redux/menu';
 class Index extends Component {
 
   static async getInitialProps ({ store }) {
-    await store.dispatch(movieListActions.fetchMovies());
+    await store.dispatch(movieListActions.fetchMoviePopular());
     store.dispatch(menuActions.fetchMenu("movies"));
   }
 

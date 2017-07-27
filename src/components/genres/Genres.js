@@ -13,7 +13,7 @@ const Index = props => {
   let genres = moviesService.getGenresMovie(props.genre_ids, props.genres);
   return (
     <span className="genres">
-      <i>{moviesService.reducerLengthText(genres, 35)}</i>
+      <i>{moviesService.reducerLengthText(genres, 25)}</i>
     </span>
   );
 };
