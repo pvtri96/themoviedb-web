@@ -38,7 +38,6 @@ class Recommendations extends Component {
     return result;
 
   }
-
   render(){
     let recommendations = this.props.recommendations;
     if(!recommendations)
@@ -53,7 +52,7 @@ class Recommendations extends Component {
             let changes = this.getChanges(item);
             return ((
               <div className="recommendations_item"  key={item.id}>
-                <img onClick={() => {
+                <img width="250" height="141" onClick={() => {
                   // Since that's a new page, it'll unload the current page,
                   // load the new one and call getInitialProps
                   // even though we asked to do shallow routing.
@@ -64,8 +63,8 @@ class Recommendations extends Component {
                   // window.location.reload();
                   window.location.href=window.location.href;
 
-                }} src={process.env.MOVIE_IMG_URL + 'w250_and_h141_bestv2' +
-                item.backdrop_path} alt={changes.title} placeholder={changes.title} />
+                }} src={item.backdrop_path ? process.env.MOVIE_IMG_URL + 'w250_and_h141_bestv2' +
+                item.backdrop_path : "../../../../static/image/no-image.jpg"} alt={changes.title} placeholder={changes.title} />
 
                 <div className="meta" >
                   <div className="d-flex">
