@@ -5,12 +5,14 @@ import ImageOverlay from '../ImageOverlay';
 import MainStyle from '../style.scss';
 import style from './style.scss';
 import Genres from '../../genres/Genres';
+import { menuSelector } from '../../../redux/menu';
+import { connect } from 'react-redux';
 
 const Index = (props) => {
   let data = props.data;
   let dataTitle = props.dataTitle;
   let dataDate = props.dataDate;
-  if (props.sub == "movies") {
+  if (props.menu == "movies") {
     dataTitle =  data.original_title ;
     dataDate = data.release_date;
   }
@@ -56,6 +58,10 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+const mapStateToProps = state => {
+  return {
+    menu: menuSelector(state).menuTitle
+  };
+};
 
-
+export default connect(mapStateToProps,undefined)(Index);
