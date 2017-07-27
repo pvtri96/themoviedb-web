@@ -32,16 +32,19 @@ const MediaShowing = (i, detail,videos,backdrops,posters) => {
           </div> :
           <div></div>
         }
+        {detail.backdrop_path ?
+          <div className="backdrop">
+            <img src={process.env.MOVIE_IMG_URL + 'w533_and_h300_bestv2' +
+            detail.backdrop_path} alt={detail.title} placeholder={detail.title} />
+          </div> : <div></div>
+        }
 
-        <div className="backdrop">
-          <img src={process.env.MOVIE_IMG_URL + 'w533_and_h300_bestv2' +
-          detail.backdrop_path} alt={detail.title} placeholder={detail.title} />
-        </div>
-
-        <div className="poster">
-          <img src={process.env.MOVIE_IMG_URL + 'w200_and_h300_bestv2' +
-          detail.poster_path} alt={detail.title} placeholder={detail.title} />
-        </div>
+        {detail.poster_path ?
+          <div className="poster">
+            <img src={process.env.MOVIE_IMG_URL + 'w200_and_h300_bestv2' +
+            detail.poster_path} alt={detail.title} placeholder={detail.title} />
+          </div> : <div></div>
+        }
       </div>
     );
   }

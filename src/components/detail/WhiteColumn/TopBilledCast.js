@@ -27,8 +27,13 @@ class TopBilledCast extends Component {
         <div className="people">
           {topBilledCast.map(person => (
             <div key={person.id} className="person">
-              <img width="138" height="175"  src={process.env.MOVIE_IMG_URL + 'w138_and_h175_bestv2' +
-              person.profile_path} alt={person.name} title={person.name}/>
+              {person.profile_path ?
+                <img width="138" height="175"  src={process.env.MOVIE_IMG_URL + 'w138_and_h175_bestv2' +
+                person.profile_path} alt={person.name} title={person.name}/> :
+                <img width="138" height="175" alt="no-image"
+                  src="../../../../static/image/no-image.jpg" />
+              }
+
               <div className="character">
                 <Link >
                   <a>{person.name}</a>

@@ -1,5 +1,4 @@
 import React  from 'react';
-import Services from '../../../service';
 import { tvshowSelector } from '../../../redux/tvshows/detail';
 import { connect } from 'react-redux';
 

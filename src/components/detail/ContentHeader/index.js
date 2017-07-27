@@ -75,10 +75,11 @@ class ContentHeader extends Component {
     let title;
     return (
       <div>
-        <div className="background-under" style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
-
+        <div className="background-under"
+          style={{backgroundImage: `url(${process.env.MOVIE_IMG_URL + 'w1400_and_h450_bestv2' + detail.backdrop_path}) `}}>
         </div>
 
+        <div className="custom-bg"></div>
         <div className="content-header d-flex">
           <div className="img-movie" >
             <img  src={process.env.MOVIE_IMG_URL + 'w300_and_h450_bestv2' +
@@ -98,13 +99,14 @@ class ContentHeader extends Component {
           </div>
 
           <div className="info-movie">
-            <h1>{changes.title} ({new Date(changes.release_date).getFullYear()})</h1>
+            <h2 style={{fontWeight:'900'}}>{changes.title} ({new Date(changes.release_date).getFullYear()})</h2>
 
             <div className="action d-flex">
               <div className="item">
                 <a href="#">
                   <FontAwesome
                     name="list"
+                    className="icon"
                   />
                 </a>
               </div>
@@ -113,6 +115,7 @@ class ContentHeader extends Component {
                 <a href="#">
                   <FontAwesome
                     name="heart"
+                    className="icon"
                   />
                 </a>
               </div>
@@ -121,6 +124,7 @@ class ContentHeader extends Component {
                 <a href="#">
                   <FontAwesome
                     name="bookmark"
+                    className="icon"
                   />
                 </a>
               </div>
@@ -129,18 +133,18 @@ class ContentHeader extends Component {
                 <a href="#">
                   <FontAwesome
                     name="star"
+                    className="icon"
                   />
                 </a>
               </div>
 
-              <div style={{ lineHeight: '300%', margin: '0px 10px'}}>
-                <a href="#">
-                  <FontAwesome
-                    name="play"
-                  />
-                  {' '}
-                  Play trailer
-                </a>
+              <div style={{ lineHeight: '300%', margin: '0px 10px', color: '#ecf0f1', fontWeight: '600'}}>
+                <FontAwesome
+                  name="play"
+                  className="icon"
+                />
+                {' '}
+                Play trailer
               </div>
             </div>
 
