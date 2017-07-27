@@ -13,7 +13,7 @@ const getLink = (menu) => {
   case "movies":
     return "movies";
   case "tvshows":
-    return "tv-show";
+    return "tv-shows";
   default: return "movies";
   }
 };

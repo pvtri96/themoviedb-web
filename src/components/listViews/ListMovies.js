@@ -1,9 +1,9 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { BackdropCard, PosterCard } from '../listViews';
-import { movieListSelector } from '../../redux/movies/list';
+import { movieListSelector, movieListActions, movieListActionTypes } from '../../redux/movies/list';
 import { filterConstant, filterSelector } from '../../redux/filter';
-import { movieListActions } from '../../redux/movies/list';
+import { menuSelector } from '../../redux/menu';
 import Filter from '../listViews/filter/Filter';
 // import { tvshowsActionsTypes } from '../../redux/tvshows/list';
 class Index extends Component {
@@ -12,8 +12,21 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    let movie = this.props.movie;
-    this.props.fetchCurrentMovie(movie);
+    switch (this.props.subMenu) {
+    case movieListActionTypes.TOP_RATED: {
+      this.props.fetchMovieTopRated();
+      break;
+    }
+    case movieListActionTypes.UPCOMING: {
+      this.props.fetchMovieUpComing();
+      break;
+    }
+    case movieListActionTypes.NOW_PLAYING: {
+      this.props.fetchMovieNowPlaying();
+      break;
+    }
+    default: this.props.fetchMoviePopular();
+    }
   }
 
   renderItemView (data) {
@@ -42,22 +55,24 @@ class Index extends Component {
 
 const mapStateToProps = state => ({
   datas: movieListSelector(state).list,
-  filter: filterSelector(state).viewType
+  filter: filterSelector(state).viewType,
+  subMenu: menuSelector(state).subMenu,
+  genres: movieListSelector(state).genres
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchTVshowPopular: () => {
-    //   dispatch(tvshowsActions.fetchTVshowPopular());
-    // },
-    // fetchTVshowTopRated: () => {
-    //   dispatch(tvshowsActions.fetchTVshowTopRated());
-    // },
-    // fetchTVshowOnTheAir: () => {
-    //   dispatch(tvshowsActions.fetchTVshowOnTheAir());
-    // }
-    fetchCurrentMovie: (movie) => {
-      dispatch(movieListActions.fetchCurrentMovie(movie));
+    fetchMoviePopular: () => {
+      dispatch(movieListActions.fetchMoviePopular());
+    },
+    fetchMovieTopRated: () => {
+      dispatch(movieListActions.fetchMovieTopRated());
+    },
+    fetchMovieUpComing: () => {
+      dispatch(movieListActions.fetchMovieUpComing());
+    },
+    fetchMovieNowPlaying: () => {
+      dispatch(movieListActions.fetchMovieNowPlaying());
     }
   };
 };

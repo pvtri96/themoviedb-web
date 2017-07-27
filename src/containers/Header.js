@@ -5,6 +5,8 @@ import style from './header.scss';
 import { menuActions } from '../redux/menu';
 import { connect } from 'react-redux';
 import Router from 'next/router';
+import { movieListActionTypes } from '../redux/movies/list';
+import { tvshowsActionsTypes } from '../redux/tvshows/list';
 // import stylesheet from './movie/Main.scss';
 //
 /**
@@ -31,24 +33,8 @@ class Header extends Component {
 
   render () {
     let menu = {
-      movies:{
-        title: "movies",
-        submenu: {
-          popular: "popular",
-          toprated: "top_rated",
-          upcoming: "upcoming",
-          nowplaying: "now_playing"
-        }
-      },
-      tvshows: {
-        title: "tv-show",
-        submenu: {
-          popular: "popular",
-          toprated: "top_rated",
-          ontv: "on_the_air",
-          airingtoday: "airing_today"
-        }
-      }
+      movies: "movies",
+      tvshows: "tv-show"
     };
     return (
       <div className="header fixed-top">
@@ -73,16 +59,40 @@ class Header extends Component {
                 <ul className="dropdown">
                   <li className="dropdown-list">
                     <div onClick={() =>{
-                      this.props.fetchMenu(menu.movies.title);
+                      this.props.fetchMenu(menu.movies);
                       Router.push('/movies');
                     }}>
                       <NavLink>Movies</NavLink>
                     </div>
                     <ul className="dropdown-content">
-                      <li><Link href="/"><NavLink>Popular</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Top Rated</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Up Coming</NavLink></Link></li>
-                      <li><Link href="/"><NavLink>Now Playing</NavLink></Link></li>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.movies);
+                        this.props.fetchSubMenu(movieListActionTypes.POPULAR);
+                        Router.push('/movies');
+                      }}>
+                        <NavLink>Popular</NavLink>
+                      </div>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.movies);
+                        this.props.fetchSubMenu(movieListActionTypes.TOP_RATED);
+                        Router.push('/movies/top-rated');
+                      }}>
+                        <NavLink>Top Rated</NavLink>
+                      </div>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.movies);
+                        this.props.fetchSubMenu(movieListActionTypes.UPCOMING);
+                        Router.push('/movies/upcoming');
+                      }}>
+                        <NavLink>Upcoming</NavLink>
+                      </div>
+                      <div onClick={() =>{
+                        this.props.fetchMenu(menu.movies);
+                        this.props.fetchSubMenu(movieListActionTypes.NOW_PLAYING);
+                        Router.push('/movies/now-playing');
+                      }}>
+                        <NavLink>Now Playing</NavLink>
+                      </div>
                     </ul>
                   </li>
                 </ul>
@@ -91,37 +101,37 @@ class Header extends Component {
                 <ul className="dropdown">
                   <li className="dropdown-list">
                     <div onClick={() =>{
-                      this.props.fetchMenu(menu.tvshows.title);
-                      Router.push('/tv-show');
+                      this.props.fetchMenu(menu.tvshows);
+                      Router.push('/tv-shows');
                     }}>
                       <NavLink>TV Shows</NavLink>
                     </div>
                     <ul className="dropdown-content">
                       <div onClick={() =>{
-                        this.props.fetchMenu(menu.tvshows.title);
-                        this.props.fetchSubMenu(menu.tvshows.submenu.popular);
-                        Router.push('/tv-show');
+                        this.props.fetchMenu(menu.tvshows);
+                        this.props.fetchSubMenu(tvshowsActionsTypes.POPULAR);
+                        Router.push('/tv-shows');
                       }}>
                         <NavLink>Popular</NavLink>
                       </div>
                       <div onClick={() =>{
-                        this.props.fetchMenu(menu.tvshows.title);
-                        this.props.fetchSubMenu(menu.tvshows.submenu.toprated);
-                        Router.push('/tv-show/top-rated');
+                        this.props.fetchMenu(menu.tvshows);
+                        this.props.fetchSubMenu(tvshowsActionsTypes.TOP_RATED);
+                        Router.push('/tv-shows/top-rated');
                       }}>
                         <NavLink>Top Rated</NavLink>
                       </div>
                       <div onClick={() =>{
-                        this.props.fetchMenu(menu.tvshows.title);
-                        this.props.fetchSubMenu(menu.tvshows.submenu.ontv);
-                        Router.push('/tv-show/on-the-air');
+                        this.props.fetchMenu(menu.tvshows);
+                        this.props.fetchSubMenu(tvshowsActionsTypes.ON_THE_AIR);
+                        Router.push('/tv-shows/on-the-air');
                       }}>
                         <NavLink>On TV</NavLink>
                       </div>
                       <div onClick={() =>{
-                        this.props.fetchMenu(menu.tvshows.title);
-                        this.props.fetchSubMenu(menu.tvshows.submenu.airingtoday);
-                        Router.push('/tv-show/airing-today');
+                        this.props.fetchMenu(menu.tvshows);
+                        this.props.fetchSubMenu(tvshowsActionsTypes.AIRING_TODAY);
+                        Router.push('/tv-shows/airing-today');
                       }}>
                         <NavLink>Airing Today</NavLink>
                       </div>
