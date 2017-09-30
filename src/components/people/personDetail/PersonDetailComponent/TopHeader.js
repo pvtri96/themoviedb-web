@@ -12,14 +12,30 @@ class TopHeader extends Component {
     super(props);
     this.state = {
       modalReadMore: false,
+<<<<<<< HEAD:src/components/people/personDetail/PersonDetailComponent/TopHeader.js
       modalExpand:false
     };
     this.toggleReadMore = this.toggleReadMore.bind(this);
     this.toggleExpand= this.toggleExpand.bind(this);
+=======
+      modalZoomImage: false
+    };
+    this.toggleReadMore = this.toggleReadMore.bind(this);
+    this.toggleZoomImage = this.toggleZoomImage.bind(this);
+
+>>>>>>> c24f2309d4982c24f7888ed26d5a1ec451599077:src/components/people/PersonDetailComponent/TopHeader.js
   }
   toggleReadMore() {
     this.setState({
       modalReadMore: !this.state.modalReadMore
+<<<<<<< HEAD:src/components/people/personDetail/PersonDetailComponent/TopHeader.js
+=======
+    });
+  }
+  toggleZoomImage() {
+    this.setState({
+      modalZoomImage: !this.state.modalZoomImage
+>>>>>>> c24f2309d4982c24f7888ed26d5a1ec451599077:src/components/people/PersonDetailComponent/TopHeader.js
     });
   }
 
@@ -75,6 +91,7 @@ class TopHeader extends Component {
         </span>
       );
     }
+<<<<<<< HEAD:src/components/people/personDetail/PersonDetailComponent/TopHeader.js
     //render expand
     let expand;
     expand = (
@@ -110,31 +127,71 @@ class TopHeader extends Component {
         </Modal>
       </span>
     );
+=======
+    //render zoom image
+    let zoomImage;
+    zoomImage = (
+      <span>
+        <a href = "#" onClick = {this.toggleZoomImage} >
+          <FontAwesome style = {{color:'white'}} name = 'search-plus'/>{' '}Expand
+        </a>
+        <Modal isOpen = {this.state.modalZoomImage} toggle = {this.toggleZoomImage} className = "modal_biogr" >
+          <ModalHeader toggle = {this.toggleZoomImage}>Show zoom image</ModalHeader>
+          <ModalBody >
+            aa
+          </ModalBody>
+        </Modal>
+      </span>
+    );
+    //style of background
+    let tagged_images = this.props.tagged_images;
+    let Background = process.env.BACKGROUND_IMAGE
+                      + tagged_images.results[0].media.backdrop_path;
+    let bg_style = {
+      width: "100%",
+      height: "400px",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "top",
+      backgroundImage: `url(${Background})`
+    };
+>>>>>>> c24f2309d4982c24f7888ed26d5a1ec451599077:src/components/people/PersonDetailComponent/TopHeader.js
     return (
       <div className="topheader ">
         <style dangerouslySetInnerHTML = {{ __html: stylesheet }} />
-        <div className="container m-auto d-flex">
+        <div style = {bg_style} >
+          <div className="container m-auto d-flex">
 
+<<<<<<< HEAD:src/components/people/personDetail/PersonDetailComponent/TopHeader.js
           <div className="bg-image">
             <CardImg top className = "per_img" src = {process.env.IMAGE + person.profile_path}
               alt = {person.name}  />
             <div className="zoom_image">
               {expand}
+=======
+            <div className="bg-image">
+              <CardImg top className = "per_img" src = {process.env.IMAGE + person.profile_path}
+                alt = {person.name}  />
+              <div className="zoom_image">
+                <h3 className="text">
+                  {zoomImage}
+                </h3>
+              </div>
+>>>>>>> c24f2309d4982c24f7888ed26d5a1ec451599077:src/components/people/PersonDetailComponent/TopHeader.js
             </div>
-          </div>
 
-          <div className = "text_biogrh">
-            <h2>{person.name} {' '}
-              {facebok}
-              {twitter}
-              {instagram}
-            </h2>
-            <h4>Biorgaphy</h4>
-            <p >
-              {reduceBiography.split('\n').map((item, index) => {
-                return <span key = {index}>{item}<br/> </span>;
-              })}</p>
-            {read_more}
+            <div className = "text_biogrh">
+              <h2>{person.name} {' '}
+                {facebok}
+                {twitter}
+                {instagram}
+              </h2>
+              <h4>Biorgaphy</h4>
+              <p >
+                {reduceBiography.split('\n').map((item, index) => {
+                  return <span key = {index}>{item}<br/> </span>;
+                })}</p>
+              {read_more}
+            </div>
           </div>
         </div>
       </div>
