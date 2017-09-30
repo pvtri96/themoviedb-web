@@ -20,7 +20,7 @@ class PersonDetail extends Component{
                       + tagged_images.results[0].media.backdrop_path;
     let bg_style = {
       width: "100%",
-      height: "402px",
+      height: "400px",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "top",
       backgroundImage: `url(${Background})`

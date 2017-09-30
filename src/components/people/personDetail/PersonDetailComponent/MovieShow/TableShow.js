@@ -9,7 +9,7 @@ const renderAsCrew = (valueJob, valueCharacter) => {
       <span> ... <i>{valueJob}</i></span>
     );
   }
-  if(valueCharacter !=null || valueCharacter != " " ){
+  if(valueCharacter != null || valueCharacter != '' ){
     return (
       <span> as <i>{valueCharacter}</i></span>
     );
@@ -35,30 +35,28 @@ class RenderCrew extends Component {
     if(array.length != 0){
       return (
         <Row className="per_movies_content">
-          <div>
-            <h5>{array[0].department}</h5>
-            {array.map(item => (
-              <Table className="tb_movies" key={item.credit_id} >
-                <tbody>
-                  <tr >
-                    <th scope = "row" className = "tb_year">
-                      {item.release_date && PeopleServices.reduceYear(String(item.release_date), 1)}
-                    </th>
-                    <td className = "tb_view" >
-                      <PopoverItem id={item.credit_id} />
-                    </td>
-                    <td className = "tb_movie"><b>{item.title}</b>
-                      {renderAsCrew(item.job, item.character)}
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            )) }
-          </div>
+          <h5>{array[0].department}</h5>
+          {array.map(item => (
+            <Table className="tb_movies" key={item.credit_id} >
+              <tbody>
+                <tr >
+                  <th scope = "row" className = "tb_year">
+                    {item.release_date && PeopleServices.reduceYear(String(item.release_date), 1)}
+                  </th>
+                  <td className = "tb_view" >
+                    <PopoverItem id={item.credit_id} />
+                  </td>
+                  <td className = "tb_movie"><b>{item.title}</b>
+                    {renderAsCrew(item.job, item.character)}
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          )) }
         </Row>
       );
     }
-    else return <div></div>;
+    else return <div><br /></div>;
   }
 
   render() {

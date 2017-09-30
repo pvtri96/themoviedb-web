@@ -17,15 +17,16 @@ class PeopleService {
   }
 
   static reduceWord (text, limit) {
-    let words= text.split(' ');
+    let words= text.split(" ");
     let arr=[];
     if(words.length > limit){
-      arr = text.split(' ', limit);
+      arr = text.split(" ", limit);
       arr.push(" ...");
       return arr.join(" ");
     }
     return text;
   }
+
   static reduceYear (text, limit) {
     let words= text.split('-');
     let arr=[];

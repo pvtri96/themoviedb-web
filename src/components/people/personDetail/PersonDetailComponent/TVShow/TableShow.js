@@ -9,7 +9,7 @@ const renderAsCrew = ( valueCharacter, valueEpisode) => {
       <span> - (<i>{valueEpisode} episode</i>)</span>
     );
   }
-  if(valueCharacter != null || valueCharacter != "" ){
+  if(valueCharacter != null || valueCharacter != '' ){
     return (
       <span> as <i>{valueCharacter}</i></span>
     );

@@ -17,7 +17,7 @@ class PeopleShowing extends Component {
   render() {
     console.log(this.props.listPeople);
     return (
-      <div  >
+      <div className="people_div">
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         <br />
         <h3>Popular people</h3><br />
